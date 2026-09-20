@@ -206,6 +206,13 @@ h1.nm .ln:nth-child(2) span{transition-delay:.09s}
 .cstat.err{color:var(--bad)}
 .cstat a{color:var(--accent);border-bottom:1px solid var(--accent)}
 
+/* TWO TRACKS */
+.tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1px;background:var(--line2);border:1px solid var(--line2)}
+.track{background:var(--bg);padding:32px 28px;display:flex;flex-direction:column;gap:15px}
+.track.hire{background:var(--surface2);position:relative}
+.track.hire::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)}
+.track h3{margin:0;font-size:25px;font-weight:700;letter-spacing:-.03em}
+
 /* PRICING */
 .scopebar{display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap;
   margin-top:28px;padding:26px 28px;border:1px solid var(--accent);background:var(--accent-soft)}
@@ -399,7 +406,7 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
   <div class="wrap nav">
     <a href="#top" class="brand">S.&nbsp;MWANIA</a>
     <nav class="navlinks" id="navlinks">
-      <a href="#live">Live</a><a href="#about">About</a><a href="#work">Work</a><a href="#pricing">Pricing</a><a href="#stack">Stack</a><a href="#contact">Contact</a>
+      <a href="#live">Live</a><a href="#about">About</a><a href="#work">Work</a><a href="#pricing">Work together</a><a href="#stack">Stack</a><a href="#contact">Contact</a>
       <button class="sb" id="opensearch" aria-label="Open search">
         <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="5"/><path d="M11 11l4 4"/></svg><span class="kbd">⌘K</span>
       </button>
@@ -415,14 +422,14 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
   <div>
     <div class="eyebrow reveal">
       <span class="status"><span class="sq"></span><span class="lbl" style="color:var(--accent)">Available now, open to work</span></span>
-      <span class="lbl">Fully remote &middot; Any time zone</span>
+      <span class="lbl">Full-time or contract &middot; Remote or relocating</span>
     </div>
     <h1 class="nm" id="bigname"><span class="ln"><span>Samuel</span></span><span class="ln"><span>Mwania</span></span></h1>
     <div class="rule reveal"></div>
     <div class="roles reveal">
       <span class="pill hot">Software Engineer</span><span class="pill">Machine Learning</span><span class="pill">Production Systems</span>
     </div>
-    <p class="lede reveal">I ship machine learning systems that run in production. Model, API, container, deployment, load test, retraining path. Six built. Two answering live requests right now, and you can call one of them from this page.</p>
+    <p class="lede reveal">I ship machine learning systems that run in production. Model, API, container, deployment, load test, retraining path. Six built. Two answering live requests right now, and you can call one of them from this page. Open to full-time roles, remote or relocating.</p>
     <div class="cta reveal">
       <a href="#live" class="btn solid">Run my model</a>
       <a href="#work" class="btn ghost">See the work</a>
@@ -448,7 +455,7 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
     <div class="cbody">
       <div class="cpane">
         <div class="lbl" style="margin-bottom:8px">Service health</div>
-        <p style="font-size:14px;line-height:1.6;color:var(--muted);margin:0 0 10px">Polled from your browser on load. Both run on Render's free tier, so a cold instance takes up to 50 seconds to wake.</p>
+        <p style="font-size:14px;line-height:1.6;color:var(--muted);margin:0 0 10px">Polled live from your browser when this page loads. Status and round-trip latency are measured, not cached.</p>
         <div id="svcs"></div>
         <div class="lbl" style="margin-top:18px;line-height:1.9" id="cspnote"></div>
       </div>
@@ -491,7 +498,7 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
       <p class="pull">Most machine learning work dies in a notebook. Mine <em>ships</em>, and I can show you the endpoint answering requests.</p>
       <p class="body">I am a software engineer specialising in machine learning. I take a problem from raw data through to a running service: training, evaluation against a named baseline, an API with real validation, a container that behaves identically on any machine, a deployment, load testing, and a retraining path so the model does not quietly decay.</p>
       <p class="body">I work in the open. Every project below links to its source, and two of them link to a live endpoint you can hit yourself. Nothing on this page is a claim you have to take on faith.</p>
-      <p class="body">I am available now and open to work, fully remote, for teams and clients anywhere in the world. I hold a BSc in Software Engineering with a machine learning specialisation from African Leadership University, 2026.</p>
+      <p class="body">I am available now and open to work. Full-time roles, remote or relocating, with a particular interest in Germany, the Netherlands, the UK and Canada. I also take on contract projects for teams and clients anywhere in the world. I hold a BSc in Software Engineering with a machine learning specialisation from African Leadership University, 2026.</p>
 
       <div class="prin">
         <div><span class="ix">01</span><h5>I measure against a baseline</h5><p>A metric with nothing to compare it to is decoration. Every model here is scored against a stated alternative, so the number means something.</p></div>
@@ -512,7 +519,7 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
 
 <section id="pricing">
   <div class="wrap">
-    <div class="shead"><h2>Pricing</h2>
+    <div class="shead"><h2>Work together</h2>
       <div class="curbar">
         <label for="cur" class="lbl">Show in</label>
         <select id="cur" aria-label="Display currency">
@@ -523,7 +530,38 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
         <span class="lbl" id="ratesrc">·</span>
       </div>
     </div>
-    <p class="body" style="max-width:700px;margin-bottom:38px">Each tier links to something I have already built and shipped. Scope is negotiable. The rate is not. If the number is above your budget, tell me the budget and I will tell you what fits inside it.</p>
+    <div class="tracks">
+      <div class="track hire">
+        <span class="tix">Track 01</span>
+        <h3>Full-time roles</h3>
+        <p class="tdesc">Permanent ML, data or backend engineering. Remote, or relocating for the right team. I am most interested in Germany, the Netherlands, the UK and Canada, and I hold an EU Blue Card eligible degree.</p>
+        <ul class="tlist">
+          <li>Available immediately, no notice period</li>
+          <li>Open to relocation and visa sponsorship</li>
+          <li>Also considering MLOps, data engineering and platform roles</li>
+        </ul>
+        <div class="tmeta"><span>Start date</span><span>Immediate</span></div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:4px">
+          <a class="btn solid" href="#contact" style="min-height:46px;padding:0 22px;font-size:14px">Get in touch</a>
+          <a class="btn ghost" href="https://docs.google.com/document/d/1P5MNIAe3ejL193irf26fcbxkm3EahZN5T39hx1_UtCg/view" target="_blank" rel="noopener" style="min-height:46px;padding:0 22px;font-size:14px">Resume</a>
+        </div>
+      </div>
+      <div class="track">
+        <span class="tix">Track 02</span>
+        <h3>Contract projects</h3>
+        <p class="tdesc">Fixed-scope builds for teams that need something shipped. Each tier below links to something I have already built and deployed.</p>
+        <ul class="tlist">
+          <li>Written scope before any work begins</li>
+          <li>50% up front, 50% on delivery</li>
+          <li>Scope is negotiable, the rate is not</li>
+        </ul>
+        <div class="tmeta"><span>Rates</span><span>Below</span></div>
+        <a class="tproof" href="#tiers">See the four tiers</a>
+      </div>
+    </div>
+
+    <div id="tiers" class="lbl" style="margin:52px 0 18px">Contract rates</div>
+    <p class="body" style="max-width:700px;margin-bottom:28px">If the number is above your budget, tell me the budget and I will tell you what fits inside it.</p>
 
     <div class="tiers">
       <div class="tier reveal">
@@ -653,7 +691,7 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
         <a class="btn solid" href="https://docs.google.com/document/d/1P5MNIAe3ejL193irf26fcbxkm3EahZN5T39hx1_UtCg/export?format=pdf" target="_blank" rel="noopener" style="margin-top:26px">Download resume (PDF)</a>
         <div class="links" style="margin-top:34px">
           <a href="https://github.com/mwaniasam" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://www.linkedin.com/in/mwaaniasam">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/samuel-mwania-73sa17">LinkedIn</a>
         </div>
       </div>
 
@@ -1003,19 +1041,25 @@ sel.innerHTML=STATES.map(s=>`<option>${esc(s)}</option>`).join("");sel.value="Ka
 const out=document.getElementById("predout"),runBtn=document.getElementById("runpred");
 runBtn.addEventListener("click",async()=>{
   runBtn.disabled=true;runBtn.textContent="Calling the endpoint…";
-  out.innerHTML=`<div class="outmeta">POST ${esc(API.maize)}/predict<br>Waiting. A cold Render instance can take up to 50 seconds to wake.</div>`;
+  out.innerHTML=`<div class="outmeta">POST ${esc(API.maize)}/predict<br>Calling the model.</div>`;
+  // only explain the cold start if it actually is one
+  const slow=setTimeout(()=>{
+    out.innerHTML=`<div class="outmeta">POST ${esc(API.maize)}/predict<br>Still waiting. The instance was asleep and is waking up, which can take up to a minute.</div>`;
+  },6000);
   const payload={state:sel.value,season:document.getElementById("f-season").value,year:2024,area_ha:parseFloat(document.getElementById("f-area").value)||1,quality_grade:document.getElementById("f-grade").value};
   const t0=performance.now();
   try{
     const c=new AbortController(),to=setTimeout(()=>c.abort(),70000);
     const r=await fetch(API.maize+"/predict",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload),signal:c.signal});
     clearTimeout(to);
+    clearTimeout(slow);
     const ms=Math.round(performance.now()-t0);
     if(!r.ok){out.innerHTML=`<div class="outmeta">HTTP ${r.status} in ${ms}ms. The endpoint rejected the request.</div>`;}
     else{const d=await r.json();
       out.innerHTML=`<div class="bignum">${esc(d.predicted_yield)}<span style="font-size:17px;color:var(--muted);font-weight:500"> t/ha</span></div>
         <div class="outmeta">${esc(d.model_used||"Random Forest")} · round trip ${ms}ms<br>${esc(payload.state)} · ${esc(payload.season)} season · ${esc(payload.area_ha)} ha · ${esc(payload.quality_grade)}</div>`;}
   }catch(_){
+    clearTimeout(slow);
     out.innerHTML=`<div class="outmeta">Could not reach the endpoint from this page.<br>The API is public and works: <a href="${esc(API.maize)}/docs" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">${esc(API.maize)}/docs</a></div>`;
   }
   runBtn.disabled=false;runBtn.textContent="Predict yield";
@@ -1307,7 +1351,7 @@ if(cform){
 
 /* ---------- palette ---------- */
 const pal=document.getElementById("pal"),palq=document.getElementById("palq"),palres=document.getElementById("palres");
-const INDEX=[{l:"Live endpoints",h:"section",t:"#live"},{l:"About",h:"section",t:"#about"},{l:"Work",h:"section",t:"#work"},{l:"Pricing",h:"section",t:"#pricing"},{l:"Stack",h:"section",t:"#stack"},{l:"Contact",h:"section",t:"#contact"},
+const INDEX=[{l:"Live endpoints",h:"section",t:"#live"},{l:"About",h:"section",t:"#about"},{l:"Work",h:"section",t:"#work"},{l:"Work together",h:"section",t:"#pricing"},{l:"Full-time roles",h:"hiring",t:"#pricing"},{l:"Contract rates",h:"pricing",t:"#tiers"},{l:"Stack",h:"section",t:"#stack"},{l:"Contact",h:"section",t:"#contact"},
   ...PROJECTS.map(p=>({l:p.name,h:p.year,t:"#work"})),{l:"GitHub",h:"external",t:"https://github.com/mwaniasam"}];
 let cur=0,shown=INDEX;
 function draw(q){shown=INDEX.filter(i=>!q||i.l.toLowerCase().includes(q.toLowerCase()));cur=0;
