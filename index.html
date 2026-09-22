@@ -1012,24 +1012,49 @@ const SVCS=[
   {n:"Maize yield regressor",u:API.maize+"/health"}
 ];
 document.getElementById("svcs").innerHTML=SVCS.map((s,i)=>`<div class="svc"><span class="led wake" id="led${i}"></span><span class="svcname">${esc(s.n)}</span><span class="svcstat" id="st${i}">checking…</span></div>`).join("");
+/* A sleeping Render instance answers with a holding page that carries no CORS
+   headers, so the browser reports it as a network error. That means "waking",
+   not "down". Keep trying for about a minute and let the visitor watch it wake. */
+const WAKE_TRIES=14, WAKE_GAP=5000;
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+let wakingNoteShown=false;
+
+async function probe(svc){
+  const c=new AbortController(),to=setTimeout(()=>c.abort(),15000);
+  const opts=svc.opaque?{signal:c.signal,cache:"no-store",mode:"no-cors"}
+                       :{signal:c.signal,cache:"no-store"};
+  try{ const r=await fetch(svc.u,opts); clearTimeout(to); return r; }
+  finally{ clearTimeout(to); }
+}
+
 async function ping(i){
-  const led=document.getElementById("led"+i),st=document.getElementById("st"+i),t0=performance.now();
-  const svc=SVCS[i];
-  try{
-    const c=new AbortController(),to=setTimeout(()=>c.abort(),60000);
-    // Streamlit sends no CORS headers, so that one is checked with an opaque request:
-    // it proves the server answered, which is all "awake" means.
-    const opts=svc.opaque?{signal:c.signal,cache:"no-store",mode:"no-cors"}
-                         :{signal:c.signal,cache:"no-store"};
-    const r=await fetch(svc.u,opts);clearTimeout(to);
-    const ms=Math.round(performance.now()-t0);
-    if(svc.opaque){led.className="led up";st.textContent=`awake · ${ms}ms`;}
-    else if(r.ok){led.className="led up";st.textContent=`200 OK · ${ms}ms`;}
-    else{led.className="led down";st.textContent=`HTTP ${r.status}`;}
-  }catch(_){
-    led.className="led down";st.textContent="unreachable";
-    document.getElementById("cspnote").textContent="If both read unreachable, this page is running somewhere that blocks outbound requests. Deploy it to your own domain and it connects.";
+  const led=document.getElementById("led"+i),st=document.getElementById("st"+i);
+  const svc=SVCS[i], t0=performance.now();
+  for(let n=0;n<WAKE_TRIES;n++){
+    try{
+      const r=await probe(svc);
+      const ms=Math.round(performance.now()-t0);
+      if(svc.opaque || r.ok){
+        led.className="led up";
+        st.textContent=(svc.opaque?"awake":"200 OK")+` · ${ms}ms`;
+        if(n>0) st.textContent+=" · woke on request";
+        return;
+      }
+      if(r.status!==502 && r.status!==503){           // a real error, stop
+        led.className="led down"; st.textContent=`HTTP ${r.status}`; return;
+      }
+    }catch(_){ /* waking: fall through and retry */ }
+    led.className="led wake";
+    st.textContent=`waking · ${Math.round((performance.now()-t0)/1000)}s`;
+    if(!wakingNoteShown){
+      wakingNoteShown=true;
+      document.getElementById("cspnote").textContent=
+        "These services sleep when idle to stay on a free tier. Opening this page wakes them, which takes up to a minute.";
+    }
+    await sleep(WAKE_GAP);
   }
+  led.className="led down";
+  st.textContent="still asleep";
 }
 SVCS.forEach((_,i)=>ping(i));
 
@@ -1040,29 +1065,37 @@ sel.innerHTML=STATES.map(s=>`<option>${esc(s)}</option>`).join("");sel.value="Ka
 (async()=>{try{const r=await fetch(API.maize+"/states");if(r.ok){const d=await r.json();if(d.states&&d.states.length){sel.innerHTML=d.states.map(s=>`<option>${esc(s)}</option>`).join("");sel.value=d.states.includes("Kano")?"Kano":d.states[0];}}}catch(_){}})();
 const out=document.getElementById("predout"),runBtn=document.getElementById("runpred");
 runBtn.addEventListener("click",async()=>{
-  runBtn.disabled=true;runBtn.textContent="Calling the endpoint…";
-  out.innerHTML=`<div class="outmeta">POST ${esc(API.maize)}/predict<br>Calling the model.</div>`;
-  // only explain the cold start if it actually is one
-  const slow=setTimeout(()=>{
-    out.innerHTML=`<div class="outmeta">POST ${esc(API.maize)}/predict<br>Still waiting. The instance was asleep and is waking up, which can take up to a minute.</div>`;
-  },6000);
-  const payload={state:sel.value,season:document.getElementById("f-season").value,year:2024,area_ha:parseFloat(document.getElementById("f-area").value)||1,quality_grade:document.getElementById("f-grade").value};
+  runBtn.disabled=true; runBtn.textContent="Calling the model…";
+  const meta=msg=>{out.innerHTML=`<div class="outmeta">POST ${esc(API.maize)}/predict<br>${msg}</div>`;};
+  meta("Calling the model.");
+  const payload={state:sel.value,season:document.getElementById("f-season").value,year:2024,
+    area_ha:parseFloat(document.getElementById("f-area").value)||1,quality_grade:document.getElementById("f-grade").value};
   const t0=performance.now();
-  try{
-    const c=new AbortController(),to=setTimeout(()=>c.abort(),70000);
-    const r=await fetch(API.maize+"/predict",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload),signal:c.signal});
-    clearTimeout(to);
-    clearTimeout(slow);
-    const ms=Math.round(performance.now()-t0);
-    if(!r.ok){out.innerHTML=`<div class="outmeta">HTTP ${r.status} in ${ms}ms. The endpoint rejected the request.</div>`;}
-    else{const d=await r.json();
-      out.innerHTML=`<div class="bignum">${esc(d.predicted_yield)}<span style="font-size:17px;color:var(--muted);font-weight:500"> t/ha</span></div>
-        <div class="outmeta">${esc(d.model_used||"Random Forest")} · round trip ${ms}ms<br>${esc(payload.state)} · ${esc(payload.season)} season · ${esc(payload.area_ha)} ha · ${esc(payload.quality_grade)}</div>`;}
-  }catch(_){
-    clearTimeout(slow);
-    out.innerHTML=`<div class="outmeta">Could not reach the endpoint from this page.<br>The API is public and works: <a href="${esc(API.maize)}/docs" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">${esc(API.maize)}/docs</a></div>`;
+
+  for(let n=0;n<WAKE_TRIES;n++){
+    try{
+      const c=new AbortController(),to=setTimeout(()=>c.abort(),20000);
+      const r=await fetch(API.maize+"/predict",{method:"POST",headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(payload),signal:c.signal});
+      clearTimeout(to);
+      const ms=Math.round(performance.now()-t0);
+      if(r.ok){
+        const d=await r.json();
+        out.innerHTML=`<div class="bignum">${esc(d.predicted_yield)}<span style="font-size:17px;color:var(--muted);font-weight:500"> t/ha</span></div>
+          <div class="outmeta">${esc(d.model_used||"Random Forest")} · round trip ${ms}ms${n>0?" · woke the service first":""}<br>${esc(payload.state)} · ${esc(payload.season)} season · ${esc(payload.area_ha)} ha · ${esc(payload.quality_grade)}</div>`;
+        runBtn.disabled=false; runBtn.textContent="Predict yield"; return;
+      }
+      if(r.status===422){ meta("The model rejected that input. Check the area is between 0.1 and 1000 hectares."); break; }
+      if(r.status!==502 && r.status!==503){ meta(`HTTP ${r.status}. Something went wrong on the server.`); break; }
+    }catch(_){ /* waking, retry */ }
+    meta(`The model was asleep and is waking up. ${Math.round((performance.now()-t0)/1000)}s so far, usually under a minute.`);
+    runBtn.textContent="Waking the model…";
+    await sleep(WAKE_GAP);
+    if(n===WAKE_TRIES-1){
+      meta(`It is taking longer than usual to wake. Try again in a minute, or call it directly at <a href="${esc(API.maize)}/docs" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">the live API docs</a>.`);
+    }
   }
-  runBtn.disabled=false;runBtn.textContent="Predict yield";
+  runBtn.disabled=false; runBtn.textContent="Predict yield";
 });
 
 /* ---------- clock ---------- */
