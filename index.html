@@ -75,7 +75,10 @@ header{position:sticky;top:0;z-index:70;background:color-mix(in srgb,var(--bg) 8
 .navlinks a{color:var(--muted);transition:color .18s;position:relative}
 .navlinks a:hover,.navlinks a.on{color:var(--text)}
 .navlinks a.on::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--accent)}
-@media(max-width:900px){.navlinks a{display:none}}
+@media(max-width:900px){.navlinks a,.navlinks .sep{display:none}}
+.navlinks .sep{width:1px;height:16px;background:var(--line)}
+.navlinks a.sec{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.06em;color:var(--faint)}
+.navlinks a.sec:hover{color:var(--accent)}
 .ib{width:36px;height:36px;border:1px solid var(--line);border-radius:2px;display:grid;place-items:center;color:var(--muted);transition:.18s}
 .ib:hover{border-color:var(--accent);color:var(--accent)}
 .sb{height:36px;padding:0 12px;border:1px solid var(--line);border-radius:2px;display:flex;align-items:center;gap:9px;color:var(--faint);font-family:'JetBrains Mono',monospace;font-size:11.5px;transition:.18s}
@@ -239,6 +242,8 @@ p.body:last-child{margin-bottom:0}
 .prin > div{background:var(--bg);padding:24px 22px}
 .prin h5{margin:0 0 9px;font-size:15px;font-weight:700;letter-spacing:-.01em}
 .prin p{margin:0;font-size:14px;line-height:1.65;color:var(--muted)}
+#about .prin{background:none;border:none;gap:0}
+#about .prin>div{border:1px solid var(--line2);margin:0 -1px -1px 0}
 .prin .ix{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);display:block;margin-bottom:12px}
 
 .filters{display:flex;gap:6px;flex-wrap:wrap}
@@ -256,8 +261,21 @@ p.body:last-child{margin-bottom:0}
 .tg i{width:4px;height:4px;background:var(--faint);flex:0 0 auto}
 .ptitle{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:7px}
 h3.pn{font-weight:700;font-size:clamp(25px,3.9vw,40px);letter-spacing:-.035em;margin:0}
+.badge.dev{border-color:var(--accent);color:var(--accent)}
 .badge{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border:1px solid var(--ok);color:var(--ok)}
 .sub{font-size:15px;color:var(--faint);margin:0 0 20px}
+.pnum{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;color:var(--accent)}
+.meta .yr{color:var(--faint)}
+.pline{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:2px 0 10px;line-height:1.7}
+.case dd .links{font-size:15px}
+.livehook .console{margin:0 0 24px}
+#projects .proj.extra{display:none}
+#projects.all .proj.extra{display:grid}
+.allbtn{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+  display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);padding:14px 20px;margin-top:34px;transition:.18s}
+.allbtn:hover{border-color:var(--accent)}
+.allbtn svg{transition:transform .25s}
+.allbtn[aria-expanded="true"] svg{transform:rotate(180deg)}
 .hit{font-size:17px;line-height:1.68;color:var(--text);border-left:2px solid var(--accent);padding-left:18px;margin:0 0 22px}
 .deep{border-left:1px solid var(--line);padding-left:22px;margin:2px 0 22px;display:none}
 .deep.open{display:block;animation:sl .35s ease both}
@@ -396,7 +414,7 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
   <div class="wrap nav">
     <a href="#top" class="brand">S.&nbsp;MWANIA</a>
     <nav class="navlinks" id="navlinks">
-      <a href="#about">About</a><a href="#work">Work</a><a href="#research">Research</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+      <a href="#about">About</a><a href="#work">Work</a><a href="#research">Research</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#contact">Contact</a><span class="sep" aria-hidden="true"></span><a href="consulting/" class="sec">Consulting</a>
       <button class="sb" id="opensearch" aria-label="Open search">
         <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="5"/><path d="M11 11l4 4"/></svg><span class="kbd">⌘K</span>
       </button>
@@ -427,7 +445,6 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
     </ul>
     <div class="cta reveal">
       <a href="#work" class="btn solid">View the work</a>
-      <a href="#live" class="btn ghost">Run the live model</a>
       <a href="https://github.com/mwaniasam" target="_blank" rel="noopener" class="btn ghost">GitHub</a>
       <a href="https://docs.google.com/document/d/1P5MNIAe3ejL193irf26fcbxkm3EahZN5T39hx1_UtCg/view" target="_blank" rel="noopener" class="btn ghost">Resume</a>
       <a href="#contact" class="btn ghost">Contact</a>
@@ -442,77 +459,19 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
   </figure>
 </div>
 
-<div class="wrap" id="live" style="padding-bottom:clamp(36px,5vw,64px)">
-  <div class="console reveal">
-    <div class="ctop">
-      <div style="display:flex;align-items:center;gap:10px"><span class="sq"></span><span class="lbl" style="color:var(--accent)">Live production endpoints</span></div>
-      <div class="lbl" id="clock">&middot;</div>
-    </div>
-    <div class="cbody">
-      <div class="cpane">
-        <div class="lbl" style="margin-bottom:8px">Service health</div>
-        <p style="font-size:14px;line-height:1.6;color:var(--muted);margin:0 0 10px">Polled live from your browser when this page loads. Status and round-trip latency are measured, not cached.</p>
-        <div id="svcs"></div>
-        <div class="lbl" style="margin-top:18px;line-height:1.9" id="cspnote"></div>
-      </div>
-      <div class="cpane">
-        <div class="lbl" style="margin-bottom:8px">Call the maize yield model</div>
-        <p style="font-size:14px;line-height:1.6;color:var(--muted);margin:0 0 15px">Posts to my deployed Random Forest and returns a real prediction. Nothing is simulated.</p>
-        <div class="frow">
-          <div class="fld"><label for="f-state">State</label><select id="f-state"></select></div>
-          <div class="fld"><label for="f-season">Season</label><select id="f-season"><option value="wet">Wet</option><option value="dry">Dry</option></select></div>
-        </div>
-        <div class="frow">
-          <div class="fld"><label for="f-area">Area, hectares</label><input id="f-area" type="number" value="5" min="0.1" max="1000" step="0.1"></div>
-          <div class="fld"><label for="f-grade">Quality grade</label><select id="f-grade"><option>Grade A</option><option>Grade B</option><option>Grade C</option></select></div>
-        </div>
-        <button class="btn solid" id="runpred" style="width:100%;margin-top:3px">Predict yield</button>
-        <div class="out" id="predout"><div class="outmeta">Waiting for input. Choose a state and press predict.</div></div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div class="wrap"><div class="stats reveal">
-  <div class="stat"><div class="n" data-count="6">0</div><div class="c lbl">Systems built</div></div>
-  <div class="stat"><div class="n" data-count="2">0</div><div class="c lbl">Live deployments</div></div>
-  <div class="stat"><div class="n" data-count="98.8" data-suffix="%">0</div><div class="c lbl">Best accuracy</div></div>
-  <div class="stat"><div class="n" data-count="5" data-suffix="GB">0</div><div class="c lbl">Largest dataset</div></div>
-  <div class="stat"><div class="n" data-count="30">0</div><div class="c lbl">RL experiments, team study</div></div>
-  <div class="stat"><div class="n" data-count="0" data-suffix="%">0</div><div class="c lbl">Load test failures</div></div>
+  <div class="stat"><div class="n" data-count="6">6</div><div class="c lbl">Systems built</div></div>
+  <div class="stat"><div class="n" data-count="2">2</div><div class="c lbl">Live deployments</div></div>
+  <div class="stat"><div class="n" data-count="5" data-suffix="GB">5GB</div><div class="c lbl">Largest dataset processed</div></div>
+  <div class="stat"><div class="n" data-count="30">30</div><div class="c lbl">Controlled RL experiments, team study</div></div>
 </div></div>
-
-<div class="mq" style="margin-top:0"><div class="mqin">
-  <span class="mqi">PyTorch</span><span class="mqi">TensorFlow</span><span class="mqi">FastAPI</span><span class="mqi">Docker</span><span class="mqi">PostgreSQL</span><span class="mqi">Next.js</span><span class="mqi">Neo4j</span><span class="mqi">Flutter</span><span class="mqi">Prisma</span><span class="mqi">CUDA</span><span class="mqi">Locust</span><span class="mqi">Render</span>
-  <span class="mqi">PyTorch</span><span class="mqi">TensorFlow</span><span class="mqi">FastAPI</span><span class="mqi">Docker</span><span class="mqi">PostgreSQL</span><span class="mqi">Next.js</span><span class="mqi">Neo4j</span><span class="mqi">Flutter</span><span class="mqi">Prisma</span><span class="mqi">CUDA</span><span class="mqi">Locust</span><span class="mqi">Render</span>
-</div></div>
-
-<section id="about">
-  <div class="wrap two">
-    <div class="lbl">About</div>
-    <div>
-      <h2 style="margin-bottom:26px">What I build</h2>
-      <p class="pull">Most machine learning work dies in a notebook. Mine <em>ships</em>, and I can show you the endpoint answering requests.</p>
-      <p class="body">I am a software engineer specialising in machine learning and data systems. I take a problem from raw data through to a running service: training, evaluation against a named baseline, an API with real validation, a container that behaves identically on any machine, a deployment, load testing, and a retraining path so the model does not quietly decay.</p>
-      <p class="body"><strong style="color:var(--text)">Evidence over claims.</strong> Every project below links to its source code and documentation, every model is reported against a stated baseline, and two projects link to a live deployment you can call yourself. Nothing on this page is a claim you have to take on faith.</p>
-      <p class="body">My work spans machine learning, backend engineering, data engineering and production systems. My current research applies graph methods to Kenyan public procurement data, and I am most interested in problems where software meets financial systems, public institutions and development.</p>
-      <p class="body">I am finishing a BSc in Software Engineering with a machine learning specialisation at African Leadership University. I complete the degree in December 2026, and the graduation ceremony is in June 2027. I am open to internships, graduate roles, research opportunities, contract work and full-time roles. I am available for internships and project-based work now, and for full-time employment from January 2027. I am based in Kenya, work remotely, and am open to international relocation and employer-sponsored opportunities where available.</p>
-
-      <div class="prin">
-        <div><span class="ix">01</span><h5>I measure against a baseline</h5><p>A metric with nothing to compare it to is decoration. Every model here is scored against a stated alternative, so the number means something.</p></div>
-        <div><span class="ix">02</span><h5>I tell you what is weak</h5><p>One project below has an R squared of 0.237. It stays on the page with a written explanation of why and what would fix it. You will always know what you are getting.</p></div>
-        <div><span class="ix">03</span><h5>I finish the last mile</h5><p>Containerised, deployed, load tested, documented. The part most people skip is the part that decides whether the work is worth anything.</p></div>
-        <div><span class="ix">04</span><h5>I hand over cleanly</h5><p>Every repository has a README another engineer can follow without asking me a question. The work does not depend on me being in the room.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <section id="work">
   <div class="wrap">
-    <div class="shead"><h2>Work</h2><div class="filters" id="filters" role="group" aria-label="Filter projects"></div></div>
-    <p class="body" style="max-width:760px;margin-bottom:10px">Each project is laid out the same way: the problem, the data, the method, the baseline it was measured against, the result, how it was engineered, and what is still weak. Source code and evidence are linked at the bottom of each one.</p>
+    <div class="shead"><h2>Selected work</h2></div>
     <div id="projects"></div>
+    <button class="allbtn" id="allwork" type="button" aria-expanded="false"><span>View all work</span>
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 4.5L6 7.5L9 4.5"/></svg></button>
   </div>
 </section>
 
@@ -521,32 +480,61 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
     <div class="lbl">Research</div>
     <div>
       <h2 style="margin-bottom:26px">Research</h2>
-      <p class="pull">I am interested in applying machine learning to problems involving <em>public institutions, financial systems, development and governance</em>.</p>
-      <p class="body">The same discipline runs through the engineering work: state the question, name the baseline, report what the evidence supports, and write down what it does not.</p>
+      <p class="pull">Machine learning for <em>public institutions, financial systems, development and governance</em>.</p>
 
       <div class="rcard reveal" style="margin-top:30px">
         <span class="rstat">In progress &middot; Capstone, Sept &ndash; Nov 2026</span>
         <h3>Uncovering Hidden Supplier Links in Kenyan Public Procurement: A Graph-Based Machine Learning Approach</h3>
         <div class="lbl">Research project &middot; Graph Machine Learning &middot; Kenya</div>
-        <dl class="case" style="margin:22px 0 0">
-          <dt>Problem</dt><dd>Supplier screening compares a bidder's registered name against published debarment and sanctions lists. It fails when a debarred party returns through a related company with an unrelated name. In 2021 the African Development Bank debarred a Kenyan firm alongside five affiliates whose names shared nothing with the parent; they were found only by tracing common officers, and a name check would have passed all five.</dd>
-          <dt>Questions</dt><dd>Can relational structure in public procurement and ownership records identify supplier exposure that name-based screening does not detect? Do learned graph representations, mostly validated on synthetic data, stay effective on a real Kenyan graph, and if not, which properties of the data explain why? How do Kenyan compliance and procurement professionals judge the accuracy, interpretability and workflow fit of the approach?</dd>
-          <dt>Data</dt><dd>Public records only: PPRA contract awards and published beneficial ownership of awarded entities, World Bank and AfDB debarment listings, OpenSanctions, the ICIJ Offshore Leaks and adjudicated EACC cases. The portal held 109,163 awards to 79,870 suppliers by August 2026. Unproven allegations are excluded.</dd>
-          <dt>Method</dt><dd>A graph linking companies, people, awards and adverse records, built with entity resolution whose precision is measured on at least 200 manually adjudicated pairs. A graph attention network scores the neighbourhood around each bidding entity, using ego identifiers, reverse message passing and port numbering.</dd>
-          <dt>Baselines</dt><dd>A deterministic baseline, conventional machine learning on tabular features, and engineered graph features with a tree ensemble as the principal comparison, so the value of learned representations is measured, not assumed.</dd>
-          <dt>Evaluation</dt><dd>Entity-disjoint splits, with the edge that defines each label removed before scoring so the model cannot read the answer. Ten random seeds with confidence intervals, an ablation over each architectural component, and permutation testing against at least 10,000 label shuffles. Ranking metrics suited to rare positives: ROC AUC, average precision and recall at a low false positive rate. Accuracy is not used. Twelve to fifteen semi-structured interviews with Kenyan compliance and procurement professionals.</dd>
-          <dt>System</dt><dd>AegisVeritas, a web screening application: bidder and supplier-list screening, ownership path tracing, the factors behind every assessment, and a tamper-evident audit trail of analyst decisions. No decision is automated.</dd>
-          <dt>Status</dt><dd>Proposal complete. Results, including the conditions under which the approach does not work, will be published here when the evaluation is done.</dd>
-          <dt class="why">Why it matters</dt><dd class="why">No published work applies graph representation learning to ownership and directorship graphs to detect debarment circumvention, or evaluates such methods on African procurement data. The result is informative either way.</dd>
+        <dl class="case" style="margin:22px 0 20px">
+          <dt>Problem</dt><dd>Supplier screening compares a bidder's registered name against debarment and sanctions lists. A debarred party can return through a related company with an unrelated name: in 2021 the African Development Bank debarred a Kenyan firm and five affiliates whose names shared nothing with the parent, found only by tracing common officers.</dd>
+          <dt>Question</dt><dd>Can relational structure in public procurement and ownership records identify supplier exposure that name-based screening does not detect, and do learned graph representations remain effective on a real Kenyan graph?</dd>
+          <dt>Approach</dt><dd>An ownership, directorship and contract award graph built from public Kenyan records, a graph attention network scoring the neighbourhood around each bidder, and a comparison against engineered-feature baselines and the judgement of compliance professionals.</dd>
+          <dt>Status</dt><dd>Proposal complete; the research runs to November 2026. Results will be published here when the evaluation is done.</dd>
         </dl>
+        <button class="more" type="button" aria-expanded="false" data-t="research" data-open="Hide the methodology" data-closed="Read the methodology"><span>Read the methodology</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 4.5L6 7.5L9 4.5"/></svg></button>
+        <div class="deep" id="deep-research">
+          <dl class="case" style="margin:0">
+            <dt>Data</dt><dd>Public records only: PPRA contract awards and the published beneficial ownership of awarded entities, World Bank and AfDB debarment listings, OpenSanctions, the ICIJ Offshore Leaks and adjudicated EACC cases. The procurement portal held 109,163 awards to 79,870 suppliers by August 2026. Cases still under investigation are excluded.</dd>
+            <dt>Method</dt><dd>A graph linking companies, people, awards and adverse records, built with entity resolution whose precision is measured on at least 200 manually adjudicated pairs. A graph attention network with ego identifiers, reverse message passing and port numbering scores each bidder's neighbourhood.</dd>
+            <dt>Baselines</dt><dd>A deterministic baseline, conventional machine learning on tabular features, and engineered graph features with a tree ensemble as the principal comparison.</dd>
+            <dt>Evaluation</dt><dd>Entity-disjoint splits, with the edge that defines each label removed before scoring. Ten random seeds with confidence intervals, an ablation over each architectural component, and permutation testing against at least 10,000 label shuffles. ROC AUC, average precision and recall at a low false positive rate. Twelve to fifteen semi-structured interviews with Kenyan compliance and procurement professionals.</dd>
+            <dt>System</dt><dd>AegisVeritas, the screening application listed under Selected work: bidder and supplier-list screening, ownership path tracing, the factors behind every assessment, and a tamper-evident audit trail of analyst decisions. No decision is automated.</dd>
+            <dt>Limitations</dt><dd>Unlabelled entities are treated as negatives, so compromised but undetected entities count against the model and reported performance is a lower bound. About 800 of Kenya's 34,000 procuring authorities use the national electronic portal, and the completeness of published beneficial ownership is unknown; both are measured and reported with the results. Entity resolution accuracy may differ across naming conventions and is measured rather than assumed.</dd>
+            <dt class="why">Why it matters</dt><dd class="why">The study is designed to identify both where graph representations help and where data limitations constrain their effectiveness. The literature review found no published empirical evaluation of graph representation learning for debarment-circumvention detection using African procurement and ownership data.</dd>
+          </dl>
+        </div>
         <div class="chips">
           <span class="pill">Graph attention networks</span><span class="pill">Entity resolution</span><span class="pill">Beneficial ownership</span><span class="pill">Procurement integrity</span><span class="pill">Design science</span>
         </div>
       </div>
 
       <h4 style="margin-top:34px">Completed research work</h4>
-      <p class="body"><a href="#p-freeway" style="color:var(--accent);border-bottom:1px solid var(--accent)">Freeway DQN</a>, a controlled 30-experiment study of how much Deep Q-Network performance is decided by hyperparameters. My sweep produced the study's counterintuitive result, that a discount factor of 0.90 beat the conventional 0.99. The full experiment log is public.</p>
+      <p class="body"><a href="#p-freeway" style="color:var(--accent);border-bottom:1px solid var(--accent)">Freeway DQN</a>: a controlled 30-experiment study of how much Deep Q-Network performance is decided by hyperparameters. In my sweep, a discount factor of 0.90 beat the conventional 0.99. The full experiment log is public.</p>
       <p class="body" style="margin-bottom:0"><span class="lbl">Interests</span><br>Graph machine learning &middot; Entity resolution &middot; Risk analytics &middot; AI for public-sector and financial systems &middot; Evaluation methodology</p>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap two">
+    <div class="lbl">About</div>
+    <div>
+      <h2 style="margin-bottom:26px">About</h2>
+      <p class="body">Software engineer specialising in machine learning and data systems, based in Kenya. The work spans model training and evaluation, backend APIs, data pipelines and deployment: a problem taken from raw data to a running service with a retraining path.</p>
+      <p class="body">Current research applies graph machine learning to Kenyan public procurement and ownership records, with a focus on problems where software meets financial systems, public institutions and development.</p>
+      <p class="body">BSc Software Engineering (Machine Learning), African Leadership University. Completing December 2026, graduation ceremony June 2027. Open to internships, graduate roles, research opportunities, contract work and full-time roles: internships and project-based work now, full-time from January 2027. Remote, or relocating where employer-sponsored opportunities are available.</p>
+      <p class="body">Every completed project includes source code and documentation, every model is evaluated against a stated baseline, and live evidence is linked where available.</p>
+
+      <div class="lbl" style="color:var(--accent);margin-top:38px">Engineering approach</div>
+      <div class="prin" style="margin-top:16px">
+        <div><span class="ix">01</span><h5>Every model has a baseline</h5><p>A metric with nothing to compare it to is decoration. Maize yield is scored against the mean predictor, the Milan forecasters against SARIMA, the DQN sweep against a shared default configuration.</p></div>
+        <div><span class="ix">02</span><h5>Production deployment</h5><p>Containerised, deployed and given a retraining path. Two services are running on Render.</p></div>
+        <div><span class="ix">03</span><h5>Testing and validation</h5><p>Load tests with Locust: zero failed requests at 50 concurrent users on CoffeeGuard. Strict request validation at the API boundary.</p></div>
+        <div><span class="ix">04</span><h5>Limitations are reported</h5><p>The maize model reached an R squared of 0.237. The write-up documents why the result was weak and what additional data or modelling changes could improve it.</p></div>
+        <div><span class="ix">05</span><h5>Built for handover</h5><p>Each repository includes enough documentation for another engineer to reproduce and extend the work.</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -582,16 +570,16 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
         <div><h4>Collaborative projects</h4><p>Freeway DQN, a three-person reinforcement learning study where I owned the discount factor and batch size experiments and the final combined agent. MoMo Analyst, a four-person data pipeline and dashboard for mobile money transactions.</p></div>
       </div>
       <div class="xrow reveal">
-        <div><div class="yr">Ongoing</div><div class="lbl" style="margin-top:6px">Open source</div></div>
-        <div><h4>Public code</h4><p>The source for every project on this page is public, with a README another engineer can follow. <a href="https://github.com/mwaniasam" target="_blank" rel="noopener">github.com/mwaniasam</a></p></div>
+        <div><div class="yr">Ongoing</div><div class="lbl" style="margin-top:6px">Public code</div></div>
+        <div><h4>Project repositories</h4><p>Source code for every completed project on this page is publicly available, with a README another engineer can follow. <a href="https://github.com/mwaniasam" target="_blank" rel="noopener">github.com/mwaniasam</a></p></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="hire">
+<section id="opportunities">
   <div class="wrap">
-    <div class="shead"><h2>Work with me</h2></div>
+    <div class="shead"><h2>Opportunities</h2></div>
     <div class="tracks">
       <div class="track hire">
         <span class="tix">Employment</span>
@@ -669,11 +657,45 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
     </div>
   </div>
 </section>
+<div id="livehold" hidden>
+  <div class="console" id="live">
+    <div class="ctop">
+      <div style="display:flex;align-items:center;gap:10px"><span class="sq"></span><span class="lbl" style="color:var(--accent)">Live production endpoints</span></div>
+      <div class="lbl" id="clock">&middot;</div>
+    </div>
+    <div class="cbody">
+      <div class="cpane">
+        <div class="lbl" style="margin-bottom:8px">Service health</div>
+        <p style="font-size:14px;line-height:1.6;color:var(--muted);margin:0 0 10px">Polled from your browser when this page loads, with round-trip latency.</p>
+        <div id="svcs"></div>
+        <div class="lbl" style="margin-top:18px;line-height:1.9" id="cspnote"></div>
+      </div>
+      <div class="cpane">
+        <div class="lbl" style="margin-bottom:8px">Call the maize yield model</div>
+        <p style="font-size:14px;line-height:1.6;color:var(--muted);margin:0 0 15px">Posts to the deployed Random Forest and returns a live prediction.</p>
+        <div class="frow">
+          <div class="fld"><label for="f-state">State</label><select id="f-state"></select></div>
+          <div class="fld"><label for="f-season">Season</label><select id="f-season"><option value="wet">Wet</option><option value="dry">Dry</option></select></div>
+        </div>
+        <div class="frow">
+          <div class="fld"><label for="f-area">Area, hectares</label><input id="f-area" type="number" value="5" min="0.1" max="1000" step="0.1"></div>
+          <div class="fld"><label for="f-grade">Quality grade</label><select id="f-grade"><option>Grade A</option><option>Grade B</option><option>Grade C</option></select></div>
+        </div>
+        <button class="btn solid" id="runpred" style="width:100%;margin-top:3px">Predict yield</button>
+        <div class="out" id="predout"><div class="outmeta">Waiting for input. Choose a state and press predict.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
 </main>
 
 <footer class="wrap">
   <div class="lbl" style="line-height:2">Designed and built by Samuel Mwania<br>© 2026</div>
-  <div class="lbl" style="line-height:2;text-align:right"><a href="consulting/" style="color:var(--muted);border-bottom:1px solid var(--line)">Consulting</a><br>Juja, Kenya · UTC+3</div>
+  <div class="lbl" style="line-height:2;text-align:right">
+    <a href="https://github.com/mwaniasam" target="_blank" rel="noopener" style="color:var(--muted)">GitHub</a> &middot;
+    <a href="https://www.linkedin.com/in/samuel-mwania-73sa17" target="_blank" rel="noopener" style="color:var(--muted)">LinkedIn</a> &middot;
+    <a href="https://docs.google.com/document/d/1P5MNIAe3ejL193irf26fcbxkm3EahZN5T39hx1_UtCg/view" target="_blank" rel="noopener" style="color:var(--muted)">Resume</a> &middot;
+    <a href="consulting/" style="color:var(--muted)">Consulting</a><br>Juja, Kenya · UTC+3</div>
 </footer>
 <script>
 const ASSETS = {
@@ -692,7 +714,7 @@ const API = {
 
 const PROJECTS = [
 /* ---------------- 1. CoffeeGuard ---------------- */
-{id:"coffeeguard",year:"2026",name:"CoffeeGuard",live:true,
+{id:"coffeeguard",line:"Computer vision · Transfer learning · FastAPI · Docker · Load testing",year:"2026",name:"CoffeeGuard",live:true,
  sub:"Coffee leaf disease classifier, trained, served, containerised and load tested",
  tags:["TensorFlow","MobileNetV2","FastAPI","Streamlit","Docker","SQLite","Locust"],
  filters:["Machine Learning","Deployment","Computer Vision"],
@@ -704,7 +726,7 @@ const PROJECTS = [
   eng:"Eight FastAPI endpoints, a Streamlit dashboard, SQLite for uploads and retraining history, Docker Compose, deployed on Render, load tested with Locust. Zero failed requests at 10 and 50 concurrent users.",
   limits:"Inference is CPU bound. A second container barely changed latency at 50 users (672ms against 702ms), so scaling needs a GPU instance or a quantised model, not more containers."},
  story:["Coffee is Rwanda's largest agricultural export and supports over 400,000 smallholder farming families. Coffee Leaf Rust can destroy up to 70% of a harvest, and almost none of those farmers can reach a plant pathologist. CoffeeGuard returns a diagnosis from a single photograph of a leaf.",
- "I trained a MobileNetV2 classifier on the JMuBEN Arabica dataset across five disease classes in two phases: a frozen-base phase to fit the head, then fine-tuning with the top 30 layers unfrozen at a learning rate ten times lower. Then I did the part that usually gets skipped. Eight FastAPI endpoints, a Streamlit dashboard, SQLite behind the uploads and retraining history, Docker Compose around all of it, deployed to Render, and load tested with Locust until I knew exactly where it slowed down."],
+ "I trained a MobileNetV2 classifier on the JMuBEN Arabica dataset across five disease classes in two phases: a frozen-base phase to fit the head, then fine-tuning with the top 30 layers unfrozen at a learning rate ten times lower. Around the model sits the serving layer: eight FastAPI endpoints, a Streamlit dashboard, SQLite behind the uploads and retraining history, Docker Compose around all of it, deployed to Render, and load tested with Locust until I knew exactly where it slowed down."],
  hit:"98.80% accuracy and 98.36% macro F1 over 58,549 images. Zero request failures under load, prediction averaging 143.9ms at 10 concurrent users.",
  kpis:[["98.80%","Accuracy"],["98.36%","Macro F1"],["99.33%","Best val acc"],["58,549","Images"],["8","Endpoints"],["~2,400","Lines"]],
  deep:[
@@ -727,7 +749,7 @@ const PROJECTS = [
         {t:"Video demo",u:"https://www.youtube.com/watch?v=Ec3W6HzD1a8"}]},
 
 /* ---------------- 2. Milan ---------------- */
-{id:"milan",year:"2026",name:"Milan Traffic Forecasting",
+{id:"milan",line:"Time series · Data engineering · PyTorch · CUDA",year:"2026",name:"Milan Traffic Forecasting",
  sub:"5GB of mobile network telemetry, forecast three ways and benchmarked on GPU",
  tags:["PyTorch","LSTM","TCN","SARIMA","Parquet","GeoPandas","CUDA"],
  filters:["Machine Learning","Data Engineering","Time Series"],
@@ -745,7 +767,7 @@ const PROJECTS = [
  deep:[
   {h:"Why scripts and not notebooks",t:"Jupyter holds every intermediate DataFrame in the interactive namespace, so a 5GB ingest turns into an out-of-memory crash rather than a slow cell. Moving the heavy work to ingest_data.py and run_models.py let Python's garbage collector do its job and kept peak memory under 3GB. It also freed the PyTorch training to use the GPU without a notebook kernel holding the session. The separation is not stylistic. It is the difference between the pipeline running and the pipeline crashing."},
   {h:"The TCN is the interesting result",t:"LSTM gave the best MAE on area 4159 at 16.24 against the TCN's 17.99, so on raw accuracy the recurrent model wins narrowly. But the TCN trained in 3.4 seconds against the LSTM's 10.2, and on the other two areas it actually beat the LSTM outright: 28.31 against 29.82 on area 4556, and 118.14 against 121.39 on area 5161. Dilated causal convolutions parallelise across the sequence where an LSTM has to step through it. For anything that needs frequent retraining, that tradeoff decides the architecture."},
-  {h:"The baseline earns its place",t:"SARIMA was not run to be beaten, it was run to establish what the problem actually costs. MAE 76.00 against the LSTM's 16.24 on area 4159, and a MAPE of 43% against 7.5%. Without that number, a MAPE of 7.5% is just a figure. With it, the neural models are demonstrably worth their complexity, which is the only honest way to justify reaching for deep learning."},
+  {h:"The baseline earns its place",t:"SARIMA was not run to be beaten, it was run to establish what the problem actually costs. MAE 76.00 against the LSTM's 16.24 on area 4159, and a MAPE of 43% against 7.5%. Without that number, a MAPE of 7.5% is just a figure. With it, the neural models are demonstrably worth their complexity, which is what justifies reaching for deep learning."},
   {h:"What the EDA found",t:"Traffic across the 10,000 grids is log-normally distributed with a rigid 24-hour seasonality, confirmed through ACF and PACF rather than assumed from the shape of a line chart. Rolling statistics exposed the non-stationarity that drove the SARIMA differencing terms, and the anomaly pass surfaced spikes that line up with public events rather than sensor faults."}],
  tables:[
   {title:"Area 4159",head:["Model","MAE","MAPE","RMSE"],nums:[1,2,3],best:1,
@@ -764,7 +786,7 @@ const PROJECTS = [
  links:[{t:"Source",u:"https://github.com/mwaniasam/time-series_forecasting"}]},
 
 /* ---------------- 3. Maize ---------------- */
-{id:"maize",year:"2025",name:"Maize Yield Prediction",live:true,
+{id:"maize",liveDemo:true,line:"Production ML · Random Forest · FastAPI · Flutter",year:"2025",name:"Maize Yield Prediction",live:true,
  sub:"Regression API and Flutter mobile app for Nigerian smallholder farms",
  tags:["scikit-learn","Random Forest","FastAPI","Flutter","Dart","Render"],
  filters:["Machine Learning","Deployment","Mobile"],
@@ -772,16 +794,16 @@ const PROJECTS = [
   data:"17,516 cultivation records covering all 37 Nigerian states. Features: state, area, quality grade, season and year.",
   method:"Random Forest regressor with 100 estimators, served through FastAPI and consumed by a Flutter mobile app.",
   baseline:"Predicting the mean yield for every farm, which scores an R squared of 0.",
-  result:"R squared 0.2372 and MSE 0.3713. Weak, and explained openly below.",
-  eng:"Six FastAPI endpoints with strict Pydantic validation, deployed on Render with public Swagger docs. It is the model you can call from the console at the top of this page.",
+  result:"R squared 0.2372 and MSE 0.3713, a weak fit. The cause and the fix are documented under Limitations.",
+  eng:"Six FastAPI endpoints with strict Pydantic validation, deployed on Render with public Swagger docs. The console below calls it live.",
   limits:"The features are mostly proxies for geography. Rainfall, soil nitrogen and planting date are missing, and those drive real yield.",
   why:"Demonstrates the complete path from tabular ML training to validated API inference and an externally accessible deployment."},
  story:["Maize yields across much of Africa run roughly 60% below global averages. This system predicts yield in tonnes per hectare from a farm's state, season, area, quality grade and year, and puts that prediction in a farmer's hand rather than in a notebook.",
- "A Random Forest regressor with 100 estimators trained on 17,516 cultivation records covering all 37 Nigerian states, served through a FastAPI backend with six endpoints and strict Pydantic validation on every field, then consumed by a Flutter app built in Material Design 3. The API is live on Render with public Swagger docs, which is what you are calling from the console at the top of this page."],
+ "A Random Forest regressor with 100 estimators trained on 17,516 cultivation records covering all 37 Nigerian states, served through a FastAPI backend with six endpoints and strict Pydantic validation on every field, then consumed by a Flutter app built in Material Design 3. The API is live on Render with public Swagger docs, which the console in this card calls live."],
  hit:"An R squared of 0.2372. That is weak, and I have left it on the page on purpose, because how you read a bad number matters more than whether you can produce a good one.",
  kpis:[["0.2372","R squared"],["0.3713","MSE"],["17,516","Records"],["37","States"],["6","Endpoints"],["14,012","Train samples"]],
  deep:[
-  {h:"Why the R squared is low, honestly",t:"0.2372 means the model explains under a quarter of the variance in yield. The reason is the feature set, not the algorithm. Real maize yield is driven by rainfall, soil nitrogen, seed variety, fertiliser application, pest pressure and planting date. The dataset carries state, area, quality grade, season and year. Those are mostly proxies for geography, and geography alone does not determine a harvest. Swapping the Random Forest for gradient boosting would move this a few points at best. Joining rainfall and soil data would move it substantially. Knowing which of those two is the real fix is the actual skill being demonstrated."},
+  {h:"Why the R squared is low",t:"0.2372 means the model explains under a quarter of the variance in yield. The reason is the feature set, not the algorithm. Real maize yield is driven by rainfall, soil nitrogen, seed variety, fertiliser application, pest pressure and planting date. The dataset carries state, area, quality grade, season and year. Those are mostly proxies for geography, and geography alone does not determine a harvest. Swapping the Random Forest for gradient boosting would move this a few points at best. Joining rainfall and soil data would move it substantially."},
   {h:"What I would do next",t:"Merge NASA POWER rainfall and temperature series by state and planting month, add soil nitrogen from ISRIC SoilGrids, and treat year as a trend term rather than a categorical. If R squared did not improve materially after that, the honest conclusion would be that state-level aggregation is too coarse to predict farm-level yield at all, and the product should report a distribution with confidence bounds instead of a single number. I would rather ship an honest interval than a precise-looking point estimate."},
   {h:"Validation is not decoration",t:"Every field is constrained at the API boundary: state must be one of the 37 valid names, season must be wet or dry case-insensitively, year between 2000 and 2030, area greater than zero and at most 1000 hectares, grade one of three values. A mobile client on a poor connection will send malformed requests eventually, and an ML endpoint that returns a confident number for nonsense input is worse than one that returns an error."},
   {h:"The mobile layer",t:"Flutter with Material Design 3, covering all 37 states, wet and dry season selection, area entry, grade selection, and a chart comparing the predicted yield against benchmarks. It runs on Android 5.0 and up, which matters because the target user is not on a recent flagship phone."}],
@@ -798,7 +820,7 @@ const PROJECTS = [
         {t:"Video demo",u:"https://youtu.be/PsY4venVtxM"}]},
 
 /* ---------------- 4. Freeway ---------------- */
-{id:"freeway",year:"2026",name:"Freeway DQN",
+{id:"freeway",line:"Reinforcement learning · Experimental study · Stable Baselines3",year:"2026",name:"Freeway DQN",
  sub:"Hyperparameter optimisation of a Deep Q-Network across 30 controlled experiments",
  tags:["Stable Baselines3","Gymnasium","PyTorch","ale-py","Reinforcement Learning"],
  filters:["Machine Learning","Reinforcement Learning","Research"],
@@ -834,7 +856,7 @@ const PROJECTS = [
         {t:"Experiment log, 35 rows",u:"https://github.com/kelvintawe12/Freeway-DQN_formative3/blob/main/experiments/experiment_log.csv"}]},
 
 /* ---------------- 5. Synapse ---------------- */
-{id:"synapse",year:"2025",name:"Synapse Platform",
+{id:"synapse",line:"Full stack · Next.js · PostgreSQL · LLM integration",year:"2025",name:"Synapse Platform",
  sub:"Adaptive learning platform driven by live cognitive assessment",
  tags:["Next.js 13","TypeScript","Prisma","PostgreSQL","NextAuth","Gemini"],
  filters:["Full Stack","Product"],
@@ -849,7 +871,7 @@ const PROJECTS = [
  hit:"12,623 lines of TypeScript across 79 components, ten Prisma models and seven API routes, including a closed loop from psychometric test result to AI-generated content difficulty.",
  kpis:[["12,623","Lines of TS"],["79","Components"],["10","DB models"],["7","API routes"],["3","Psychometric tests"]],
  deep:[
-  {h:"Closing the loop is the hard part",t:"Plenty of apps run a quiz and show you a score. The engineering problem here is making the score change what happens next. A completed Stroop or N-Back run writes to CognitiveData, that record is read when the next content request is made, and the Gemini prompt is constructed with the measured state included, so difficulty moves with the user rather than with a setting they chose once during onboarding."},
+  {h:"Closing the loop is the hard part",t:"The engineering problem is making a test score change what happens next. A completed Stroop or N-Back run writes to CognitiveData, that record is read when the next content request is made, and the Gemini prompt is constructed with the measured state included, so difficulty moves with the user rather than with a setting they chose once during onboarding."},
   {h:"The schema is the product",t:"Ten Prisma models: Account, Session, User and UserSettings for identity, LearningResource, Bookmark and LearningProgress for content, PomodoroSession for focus tracking, CognitiveData for assessment results, and KnowledgeNode for the concept graph. Relations between CognitiveData, LearningProgress and KnowledgeNode are what make adaptation possible. Get that wrong and the adaptive behaviour cannot be built at all, regardless of how good the UI is."},
   {h:"Cost and latency of an LLM in the request path",t:"Generating content per request means every page view can become an API call with real money and real latency attached. Generated resources are persisted to LearningResource and tagged so they can be retrieved and reused rather than regenerated, which turns an unbounded per-request cost into a cache that improves as the library grows."},
   {h:"What is weak",t:"The platform measures cognitive state and adapts to it, but there is no controlled evaluation yet showing that the adaptation improves learning outcomes. The three tests are browser implementations of standard psychometric instruments, not clinically validated ones, and should not be read as diagnostic. The next step would be a comparison between adaptive and fixed-difficulty groups on the same material."}],
@@ -864,7 +886,7 @@ const PROJECTS = [
  links:[{t:"Source",u:"https://github.com/mwaniasam/synapse-platform"}]},
 
 /* ---------------- 6. MoMo ---------------- */
-{id:"momo",year:"2025",name:"MoMo Analyst",
+{id:"momo",line:"Data engineering · Flask · MySQL",year:"2025",name:"MoMo Analyst",
  sub:"Mobile money SMS turned into a searchable transaction dashboard",
  tags:["Python","Flask","MySQL","XML parsing","JavaScript"],
  filters:["Data Engineering","Full Stack"],
@@ -888,37 +910,47 @@ const PROJECTS = [
         {key:"momo.report",file:"images/report.png",label:"PDF report"}],
  youtube:"momo.youtube",
  note:"Team project with Adebayo Seyi Quadri, Esther Afi Edi Sessenou and Avellin Bonaparte Uteramahoro.",
- links:[{t:"Source",u:"https://github.com/Bonaparte003/Momo-Data_Analyst"}]}
+ links:[{t:"Source",u:"https://github.com/Bonaparte003/Momo-Data_Analyst"}]},
+/* ---------------- 7. AegisVeritas ---------------- */
+{id:"aegis",year:"2026",name:"AegisVeritas",dev:true,
+ line:"Graph ML · Entity resolution · Risk scoring · Audit trail",
+ sub:"Supplier screening application for the capstone research on Kenyan public procurement",
+ cs:{problem:"Name-based screening passes a debarred party that returns through a related company with an unrelated name.",
+  result:"In development. A working version is scheduled for the expert interviews from 28 September 2026, with the selected model integrated by 31 October 2026. No results yet.",
+  eng:"Designed as separate client, edge, application, intelligence and data tiers: an API gateway for authentication and quotas, an inference cache, a message queue for batch and scheduled re-screening, entity resolution, and a tamper-evident audit trail of analyst decisions.",
+  method:"A graph attention network scores the neighbourhood around each bidding entity. Where an entity has too few recorded relationships, a deterministic baseline scores it instead and the method used is reported with the result.",
+  baseline:"A deterministic baseline, conventional machine learning, and engineered graph features with a tree ensemble. See Research.",
+  limits:"Design stage. Coverage depends on how completely the beneficial ownership of awarded entities has been published."},
+ story:["AegisVeritas screens bidders and supplier lists against the relationships around them, not only their names. It is the artefact of the capstone research and is being built during the research period."],
+ kpis:[],
+ deep:[
+  {h:"Label isolation before scoring",t:"The neighbourhood extractor removes the record that defines an entity's label before any data reaches the model server, so the model scores structure rather than reading the answer. The same isolation applies in benchmark and real-data evaluation and is verified by automated test."},
+  {h:"Every assessment explains itself",t:"Each assessment returns the factors behind it. No decision is automated: escalating or clearing an alert requires a written reason, enforced in the alert state machine, and the audit entry is committed before the assessment is returned."}],
+ tables:[],media:[],
+ links:[{t:"Research design",u:"#research",internal:true}]}
 ];
 /* ---------- render ---------- */
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const dig=(o,p)=>p.split('.').reduce((a,k)=>(a&&a[k]!==undefined?a[k]:""),o);
 
-function mediaHTML(p){
+const ORDER=["maize","coffeeguard","aegis","freeway","milan","synapse","momo"];
+const SELECTED=4;
+PROJECTS.sort((x,y)=>ORDER.indexOf(x.id)-ORDER.indexOf(y.id));
+
+function shotsOf(p){return (p.media||[]).map(m=>({...m,src:dig(ASSETS,m.key)}));}
+function leadHTML(m){
+  if(!m) return "";
+  return m.src
+    ? `<figure class="lead"><div class="leadbox"><img src="${esc(m.src)}" alt="${esc(m.label)}" loading="lazy"></div><figcaption>${esc(m.label)}</figcaption></figure>`
+    : `<figure class="lead"><div class="leadbox slot"><div class="sn">${esc(m.label)}</div><div class="sd">${esc(m.file)}</div></div></figure>`;
+}
+function galleryHTML(p,rest){
   const yt=p.youtube?dig(ASSETS,p.youtube):"";
-  const shots=(p.media||[]).map(m=>{
-    const src=dig(ASSETS,m.key);
-    return {...m,src};
-  });
-  const lead=shots[0];
-  const rest=shots.slice(1);
-
-  let leadHTML="";
-  if(lead){
-    leadHTML = lead.src
-      ? `<figure class="lead">
-           <div class="leadbox"><img src="${esc(lead.src)}" alt="${esc(lead.label)}" loading="lazy"></div>
-           <figcaption>${esc(lead.label)}</figcaption>
-         </figure>`
-      : `<figure class="lead"><div class="leadbox slot"><div class="sn">${esc(lead.label)}</div><div class="sd">${esc(lead.file)}</div></div></figure>`;
-  }
-
   const cards=rest.map(m=>{
     if(!m.src) return `<figure class="gitem"><div class="slot" style="min-height:190px"><div class="sn">${esc(m.label)}</div><div class="sd">${esc(m.file)}</div></div></figure>`;
     if(m.video) return `<figure class="gitem"><video controls preload="metadata" src="${esc(m.src)}" aria-label="${esc(m.label)}"></video><figcaption>${esc(m.label)}</figcaption></figure>`;
     return `<figure class="gitem"><img src="${esc(m.src)}" alt="${esc(m.label)}" loading="lazy"><figcaption>${esc(m.label)}</figcaption></figure>`;
   });
-
   if(yt){
     cards.unshift(`<figure class="gitem vid" data-yt="${esc(yt)}">
         <button class="vfacade" type="button" aria-label="Play the video demo">
@@ -928,71 +960,88 @@ function mediaHTML(p){
         <figcaption>Walkthrough · <a href="https://www.youtube.com/watch?v=${esc(yt)}" target="_blank" rel="noopener">open on YouTube</a></figcaption>
       </figure>`);
   }
-
-  if(!cards.length) return leadHTML;
-  const n=cards.length;
-  return leadHTML+
-    `<button class="gbtn" type="button" aria-expanded="false" data-g="${esc(p.id)}">
-       <span>View ${n} more</span>
+  if(!cards.length) return "";
+  return `<button class="gbtn" type="button" aria-expanded="false" data-g="${esc(p.id)}">
+       <span>View ${cards.length} more</span>
        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 4.5L6 7.5L9 4.5"/></svg>
      </button>
      <div class="gallery" id="gal-${esc(p.id)}">${cards.join("")}</div>`;
 }
-
 function tableHTML(t){
   const head=t.head.map(h=>`<th>${esc(h)}</th>`).join("");
   const rows=t.rows.map((r,ri)=>`<tr${t.best===ri?' class="best"':""}>${r.map((c,ci)=>`<td${(t.nums||[]).includes(ci)?' class="num"':""}>${esc(c)}</td>`).join("")}</tr>`).join("");
   return `<h4>${esc(t.title)}</h4><div class="scroller"><table><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>`;
 }
-const CASE_ROWS=[["problem","Problem"],["data","Data"],["method","Method"],["baseline","Baseline"],["result","Result"],["eng","Engineering"],["limits","Limitations"],["why","Why it matters"]];
-function caseHTML(p){
-  if(!p.cs)return "";
-  return `<dl class="case">${CASE_ROWS.filter(([k])=>p.cs[k]).map(([k,l])=>{
+function rowsHTML(p,keys){
+  return keys.filter(([k])=>p.cs&&p.cs[k]).map(([k,l])=>{
     const c=k==="why"?' class="why"':"";
-    return `<dt${c}>${esc(l)}</dt><dd${c}>${esc(p.cs[k])}</dd>`;}).join("")}</dl>`;
+    return `<dt${c}>${esc(l)}</dt><dd${c}>${esc(p.cs[k])}</dd>`;}).join("");
 }
-function projectHTML(p){
-  return `<article class="proj two reveal" id="p-${esc(p.id)}" data-filters="${esc(p.filters.join("|"))}">
-    <div class="meta"><div class="yr">${esc(p.year)}</div><div class="taglist">${p.tags.map(t=>`<span class="tg"><i></i>${esc(t)}</span>`).join("")}</div></div>
+function linksHTML(p){
+  return `<div class="links">${p.links.map(l=>`<a href="${esc(l.u)}"${l.live?' class="live"':""}${l.internal?"":' target="_blank" rel="noopener"'}>${esc(l.t)}</a>`).join("")}</div>`;
+}
+const SUMMARY=[["problem","Problem"],["result","Result"],["eng","Engineering"]];
+const DETAIL=[["data","Data"],["method","Method"],["baseline","Baseline"],["limits","Limitations"],["why","Why it matters"]];
+function projectHTML(p,i){
+  const shots=shotsOf(p);
+  const lead=p.liveDemo?"":leadHTML(shots[0]);
+  const rest=p.liveDemo?shots:shots.slice(1);
+  const badge=p.live?'<span class="badge">Live in production</span>':p.dev?'<span class="badge dev">In development</span>':"";
+  const kpis=(p.kpis&&p.kpis.length)?`<div class="kpis">${p.kpis.map(k=>`<div class="kpi"><div class="v">${esc(k[0])}</div><div class="k lbl">${esc(k[1])}</div></div>`).join("")}</div>`:"";
+  return `<article class="proj two reveal${i>=SELECTED?" extra":""}" id="p-${esc(p.id)}">
+    <div class="meta"><div class="pnum">${String(i+1).padStart(2,"0")}</div><div class="yr">${esc(p.year)}</div></div>
     <div>
-      <div class="ptitle"><h3 class="pn">${esc(p.name)}</h3>${p.live?'<span class="badge">Live in production</span>':""}</div>
+      <div class="ptitle"><h3 class="pn">${esc(p.name)}</h3>${badge}</div>
+      <p class="pline">${esc(p.line)}</p>
       <p class="sub">${esc(p.sub)}</p>
-      <p class="hit">${esc(p.hit)}</p>
-      ${caseHTML(p)}
-      <div class="kpis">${p.kpis.map(k=>`<div class="kpi"><div class="v">${esc(k[0])}</div><div class="k lbl">${esc(k[1])}</div></div>`).join("")}</div>
-      <button class="more" aria-expanded="false" data-t="${esc(p.id)}"><span>Read the detail</span>
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 4.5L6 7.5L9 4.5"/></svg></button>
-      <div class="deep" id="deep-${esc(p.id)}">${p.story.map(s=>`<p class="body">${esc(s)}</p>`).join("")}${(p.deep||[]).map(d=>`<h4>${esc(d.h)}</h4><p class="body">${esc(d.t)}</p>`).join("")}${(p.tables||[]).map(tableHTML).join("")}</div>
-      ${mediaHTML(p)}
+      <dl class="case">${rowsHTML(p,SUMMARY)}<dt>Evidence</dt><dd>${linksHTML(p)}</dd></dl>
+      ${p.liveDemo?'<div class="livehook"></div>':""}
+      ${lead}
       ${p.note?`<p class="body" style="font-size:15px;color:var(--faint)">${esc(p.note)}</p>`:""}
-      <div class="links">${p.links.map(l=>`<a href="${esc(l.u)}"${l.live?' class="live"':""} target="_blank" rel="noopener">${esc(l.t)}</a>`).join("")}</div>
+      <button class="more" type="button" aria-expanded="false" data-t="${esc(p.id)}" data-open="Hide project detail" data-closed="View project"><span>View project</span>
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 4.5L6 7.5L9 4.5"/></svg></button>
+      <div class="deep" id="deep-${esc(p.id)}">
+        <dl class="case">${rowsHTML(p,DETAIL)}</dl>
+        ${kpis}
+        ${p.story.map(t=>`<p class="body">${esc(t)}</p>`).join("")}
+        ${(p.deep||[]).map(d=>`<h4>${esc(d.h)}</h4><p class="body">${esc(d.t)}</p>`).join("")}
+        ${(p.tables||[]).map(tableHTML).join("")}
+        ${p.liveDemo?leadHTML(shots[0]):""}
+        ${galleryHTML(p,p.liveDemo?shots.slice(1):rest)}
+      </div>
     </div></article>`;
 }
-document.getElementById("projects").innerHTML=PROJECTS.map(projectHTML).join("");
+const projEl=document.getElementById("projects");
+projEl.innerHTML=PROJECTS.map(projectHTML).join("");
 
-const allF=["All",...new Set(PROJECTS.flatMap(p=>p.filters))];
-document.getElementById("filters").innerHTML=allF.map((f,i)=>`<button aria-pressed="${i===0}" data-f="${esc(f)}">${esc(f)}</button>`).join("");
-document.getElementById("filters").addEventListener("click",e=>{
-  const b=e.target.closest("button");if(!b)return;
-  document.querySelectorAll("#filters button").forEach(x=>x.setAttribute("aria-pressed",x===b));
-  const f=b.dataset.f;
-  document.querySelectorAll(".proj").forEach(el=>{el.style.display=(f==="All"||el.dataset.filters.split("|").includes(f))?"":"none";});
-});
-document.getElementById("projects").addEventListener("click",e=>{
+/* the live console is evidence for the maize project, so it lives in that card */
+const liveHook=document.querySelector("#p-maize .livehook"),liveHold=document.getElementById("livehold");
+if(liveHook&&liveHold){liveHook.appendChild(document.getElementById("live"));liveHold.remove();}
+
+const allBtn=document.getElementById("allwork");
+const extraN=Math.max(PROJECTS.length-SELECTED,0);
+function setAll(open){
+  projEl.classList.toggle("all",open);
+  allBtn.setAttribute("aria-expanded",open);
+  allBtn.querySelector("span").textContent=open?"Show selected work only":`View all work (${extraN} more)`;
+}
+if(extraN){setAll(false);allBtn.addEventListener("click",()=>setAll(!projEl.classList.contains("all")));}
+else allBtn.remove();
+
+document.addEventListener("click",e=>{
   const b=e.target.closest(".more");
-  if(b){
-    const open=document.getElementById("deep-"+b.dataset.t).classList.toggle("open");
-    b.setAttribute("aria-expanded",open);
-    b.querySelector("span").textContent=open?"Hide the detail":"Read the detail";
-    return;
-  }
+  if(!b) return;
+  const open=document.getElementById("deep-"+b.dataset.t).classList.toggle("open");
+  b.setAttribute("aria-expanded",open);
+  b.querySelector("span").textContent=open?b.dataset.open:b.dataset.closed;
+});
+projEl.addEventListener("click",e=>{
   const g=e.target.closest(".gbtn");
   if(g){
     const gal=document.getElementById("gal-"+g.dataset.g);
     const open=gal.classList.toggle("open");
     g.setAttribute("aria-expanded",open);
-    const n=gal.children.length;
-    g.querySelector("span").textContent=open?"Show less":("View "+n+" more");
+    g.querySelector("span").textContent=open?"Show less":("View "+gal.children.length+" more");
     return;
   }
   const v=e.target.closest(".vfacade");
@@ -1296,14 +1345,15 @@ if(cform){
 
 /* ---------- palette ---------- */
 const pal=document.getElementById("pal"),palq=document.getElementById("palq"),palres=document.getElementById("palres");
-const INDEX=[{l:"Live endpoints",h:"section",t:"#live"},{l:"About",h:"section",t:"#about"},{l:"Work",h:"section",t:"#work"},{l:"Research",h:"section",t:"#research"},{l:"Skills",h:"section",t:"#skills"},{l:"Experience",h:"section",t:"#experience"},{l:"Work with me",h:"section",t:"#hire"},{l:"Contact",h:"section",t:"#contact"},
+const INDEX=[{l:"About",h:"section",t:"#about"},{l:"Selected work",h:"section",t:"#work"},{l:"Research",h:"section",t:"#research"},{l:"Skills",h:"section",t:"#skills"},{l:"Experience",h:"section",t:"#experience"},{l:"Opportunities",h:"section",t:"#opportunities"},{l:"Contact",h:"section",t:"#contact"},
+  {l:"Live maize yield model",h:"demo",t:"#p-maize"},
   ...PROJECTS.map(p=>({l:p.name,h:p.year,t:"#p-"+p.id})),{l:"Consulting",h:"page",t:"consulting/"},{l:"GitHub",h:"external",t:"https://github.com/mwaniasam"}];
 let cur=0,shown=INDEX;
 function draw(q){shown=INDEX.filter(i=>!q||i.l.toLowerCase().includes(q.toLowerCase()));cur=0;
   palres.innerHTML=shown.length?shown.map((i,n)=>`<button class="${n===0?"cur":""}"><span>${esc(i.l)}</span><span class="lbl">${esc(i.h)}</span></button>`).join(""):`<button class="cur"><span>Nothing matched</span></button>`;}
 function openP(){pal.classList.add("on");palq.value="";draw("");palq.focus();}
 function closeP(){pal.classList.remove("on");}
-function go(n){const it=shown[n];if(!it)return;closeP();if(it.t.startsWith("#"))location.hash=it.t;else if(it.t.startsWith("http"))window.open(it.t,"_blank","noopener");else location.href=it.t;}
+function go(n){const it=shown[n];if(!it)return;closeP();if(it.t.startsWith("#")){const el=document.querySelector(it.t);if(el&&el.classList.contains("extra"))setAll(true);location.hash=it.t;}else if(it.t.startsWith("http"))window.open(it.t,"_blank","noopener");else location.href=it.t;}
 document.getElementById("opensearch").addEventListener("click",openP);
 pal.addEventListener("click",e=>{if(e.target===pal)closeP();});
 palq.addEventListener("input",()=>draw(palq.value));
