@@ -22,7 +22,7 @@
 <meta property="og:image:alt" content="Samuel Mwania, Software Engineer, Machine Learning and Data Systems">
 <meta name="twitter:image" content="https://www.mwaaniasam.com/og-image.png">
 <link rel="canonical" href="https://www.mwaaniasam.com/">
-<meta name="description" content="Samuel Mwania. Software engineer specialising in machine learning and data systems. BSc Software Engineering (Machine Learning), African Leadership University, graduating November 2026. Six systems built, two answering live requests in production. Based in Kenya.">
+<meta name="description" content="Samuel Mwania. Software engineer specialising in machine learning and data systems. BSc Software Engineering (Machine Learning), African Leadership University, completing December 2026. Six systems built, two answering live requests in production. Based in Kenya.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -411,7 +411,7 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
 <div class="wrap hero" id="top">
   <div>
     <div class="eyebrow reveal">
-      <span class="status"><span class="sq"></span><span class="lbl" style="color:var(--accent)">Graduating Nov 2026 &middot; Open to opportunities</span></span>
+      <span class="status"><span class="sq"></span><span class="lbl" style="color:var(--accent)">Completing Dec 2026 &middot; Open to opportunities</span></span>
       <span class="lbl">Internships &middot; Graduate roles &middot; Research &middot; Full-time</span>
     </div>
     <h1 class="nm" id="bigname"><span class="ln"><span>Samuel</span></span><span class="ln"><span>Mwania</span></span></h1>
@@ -421,8 +421,8 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
     </div>
     <p class="lede reveal">I ship machine learning systems that run in production. I build machine learning and data systems that turn real-world problems into deployable software: model, API, container, deployment, load test, retraining path. Six built, two answering live requests right now, and you can call one of them from this page.</p>
     <ul class="facts reveal">
-      <li>BSc Software Engineering (Machine Learning) &middot; African Leadership University &middot; Graduating November 2026</li>
-      <li>Available for internships and project-based work now &middot; Full-time from December 2026</li>
+      <li>BSc Software Engineering (Machine Learning) &middot; African Leadership University &middot; Completing December 2026 &middot; Graduation June 2027</li>
+      <li>Available for internships and project-based work now &middot; Full-time from January 2027</li>
       <li>Based in Kenya &middot; Building AI, data and software systems for African and global problems</li>
     </ul>
     <div class="cta reveal">
@@ -496,7 +496,7 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
       <p class="body">I am a software engineer specialising in machine learning and data systems. I take a problem from raw data through to a running service: training, evaluation against a named baseline, an API with real validation, a container that behaves identically on any machine, a deployment, load testing, and a retraining path so the model does not quietly decay.</p>
       <p class="body"><strong style="color:var(--text)">Evidence over claims.</strong> Every project below links to its source code and documentation, every model is reported against a stated baseline, and two projects link to a live deployment you can call yourself. Nothing on this page is a claim you have to take on faith.</p>
       <p class="body">My work spans machine learning, backend engineering, data engineering and production systems. My current research applies graph methods to Kenyan public procurement data, and I am most interested in problems where software meets financial systems, public institutions and development.</p>
-      <p class="body">I am finishing a BSc in Software Engineering with a machine learning specialisation at African Leadership University, graduating in November 2026. I am open to internships, graduate roles, research opportunities, contract work and full-time roles. I am available for internships and project-based work now, and for full-time employment from December 2026. I am based in Kenya, work remotely, and am open to international relocation and employer-sponsored opportunities where available.</p>
+      <p class="body">I am finishing a BSc in Software Engineering with a machine learning specialisation at African Leadership University. I complete the degree in December 2026, and the graduation ceremony is in June 2027. I am open to internships, graduate roles, research opportunities, contract work and full-time roles. I am available for internships and project-based work now, and for full-time employment from January 2027. I am based in Kenya, work remotely, and am open to international relocation and employer-sponsored opportunities where available.</p>
 
       <div class="prin">
         <div><span class="ix">01</span><h5>I measure against a baseline</h5><p>A metric with nothing to compare it to is decoration. Every model here is scored against a stated alternative, so the number means something.</p></div>
@@ -525,17 +525,22 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
       <p class="body">The same discipline runs through the engineering work: state the question, name the baseline, report what the evidence supports, and write down what it does not.</p>
 
       <div class="rcard reveal" style="margin-top:30px">
-        <span class="rstat">In progress &middot; Capstone 2026</span>
-        <h3>Detecting Concealed Supplier Relationships in Kenyan Public Procurement</h3>
+        <span class="rstat">In progress &middot; Capstone, Sept &ndash; Nov 2026</span>
+        <h3>Uncovering Hidden Supplier Links in Kenyan Public Procurement: A Graph-Based Machine Learning Approach</h3>
         <div class="lbl">Research project &middot; Graph Machine Learning &middot; Kenya</div>
         <dl class="case" style="margin:22px 0 0">
-          <dt>Problem</dt><dd>Relationships between suppliers, such as shared ownership, are often not visible in procurement records viewed one tender at a time.</dd>
-          <dt>Question</dt><dd>Can a graph representation of procurement and ownership data surface supplier relationships that tabular analysis misses?</dd>
-          <dt>Approach</dt><dd>Graph construction, entity resolution and graph representation learning, evaluated against simpler baselines and against how the output would fit a professional review workflow.</dd>
-          <dt>Status</dt><dd>Proposal stage. Data, graph construction, models, evaluation, results and limitations will be published here as the work is done, including anything that does not work.</dd>
+          <dt>Problem</dt><dd>Supplier screening compares a bidder's registered name against published debarment and sanctions lists. It fails when a debarred party returns through a related company with an unrelated name. In 2021 the African Development Bank debarred a Kenyan firm alongside five affiliates whose names shared nothing with the parent; they were found only by tracing common officers, and a name check would have passed all five.</dd>
+          <dt>Questions</dt><dd>Can relational structure in public procurement and ownership records identify supplier exposure that name-based screening does not detect? Do learned graph representations, mostly validated on synthetic data, stay effective on a real Kenyan graph, and if not, which properties of the data explain why? How do Kenyan compliance and procurement professionals judge the accuracy, interpretability and workflow fit of the approach?</dd>
+          <dt>Data</dt><dd>Public records only: PPRA contract awards and published beneficial ownership of awarded entities, World Bank and AfDB debarment listings, OpenSanctions, the ICIJ Offshore Leaks and adjudicated EACC cases. The portal held 109,163 awards to 79,870 suppliers by August 2026. Unproven allegations are excluded.</dd>
+          <dt>Method</dt><dd>A graph linking companies, people, awards and adverse records, built with entity resolution whose precision is measured on at least 200 manually adjudicated pairs. A graph attention network scores the neighbourhood around each bidding entity, using ego identifiers, reverse message passing and port numbering.</dd>
+          <dt>Baselines</dt><dd>A deterministic baseline, conventional machine learning on tabular features, and engineered graph features with a tree ensemble as the principal comparison, so the value of learned representations is measured, not assumed.</dd>
+          <dt>Evaluation</dt><dd>Entity-disjoint splits, with the edge that defines each label removed before scoring so the model cannot read the answer. Ten random seeds with confidence intervals, an ablation over each architectural component, and permutation testing against at least 10,000 label shuffles. Ranking metrics suited to rare positives: ROC AUC, average precision and recall at a low false positive rate. Accuracy is not used. Twelve to fifteen semi-structured interviews with Kenyan compliance and procurement professionals.</dd>
+          <dt>System</dt><dd>AegisVeritas, a web screening application: bidder and supplier-list screening, ownership path tracing, the factors behind every assessment, and a tamper-evident audit trail of analyst decisions. No decision is automated.</dd>
+          <dt>Status</dt><dd>Proposal complete. Results, including the conditions under which the approach does not work, will be published here when the evaluation is done.</dd>
+          <dt class="why">Why it matters</dt><dd class="why">No published work applies graph representation learning to ownership and directorship graphs to detect debarment circumvention, or evaluates such methods on African procurement data. The result is informative either way.</dd>
         </dl>
         <div class="chips">
-          <span class="pill">Graph ML</span><span class="pill">Entity resolution</span><span class="pill">Neo4j</span><span class="pill">Risk analytics</span><span class="pill">Public sector</span>
+          <span class="pill">Graph attention networks</span><span class="pill">Entity resolution</span><span class="pill">Beneficial ownership</span><span class="pill">Procurement integrity</span><span class="pill">Design science</span>
         </div>
       </div>
 
@@ -555,7 +560,7 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
       <div><div class="lbl" style="color:var(--accent)">Backend &amp; APIs</div><ul><li><i></i>FastAPI, Pydantic</li><li><i></i>Flask</li><li><i></i>REST API design</li><li><i></i>NextAuth</li><li><i></i>LLM integration (Gemini)</li></ul></div>
       <div><div class="lbl" style="color:var(--accent)">ML Systems</div><ul><li><i></i>Docker, Docker Compose</li><li><i></i>CUDA, GPU training</li><li><i></i>Model serving</li><li><i></i>Load testing, Locust</li><li><i></i>Deployment, Render</li></ul></div>
       <div><div class="lbl" style="color:var(--accent)">Engineering</div><ul><li><i></i>Linux</li><li><i></i>Git</li><li><i></i>TypeScript, Next.js, React</li><li><i></i>Flutter, Dart</li><li><i></i>Streamlit</li></ul></div>
-      <div><div class="lbl" style="color:var(--accent)">Graph &amp; AI</div><ul><li><i></i>Neo4j</li><li><i></i>Graph machine learning</li><li><i></i>Entity resolution</li></ul><div class="wip">In progress through capstone research</div></div>
+      <div><div class="lbl" style="color:var(--accent)">Graph &amp; AI</div><ul><li><i></i>Neo4j</li><li><i></i>Graph neural networks (GAT)</li><li><i></i>Entity resolution</li><li><i></i>Permutation testing, ablation</li></ul><div class="wip">In progress through capstone research</div></div>
     </div>
   </div>
 </section>
@@ -565,12 +570,12 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
     <div class="shead"><h2>Experience</h2><div class="lbl">Education, research and contributions</div></div>
     <div class="xp">
       <div class="xrow reveal">
-        <div><div class="yr">2023 &ndash; 2026</div><div class="lbl" style="margin-top:6px">Education</div></div>
-        <div><h4>African Leadership University</h4><p>BSc Software Engineering, Machine Learning specialisation. Graduating November 2026.</p></div>
+        <div><div class="yr">Jan 2024 &ndash; Dec 2026</div><div class="lbl" style="margin-top:6px">Education</div></div>
+        <div><h4>African Leadership University</h4><p>BSc Software Engineering, Machine Learning specialisation. Graduation ceremony June 2027.</p></div>
       </div>
       <div class="xrow reveal">
-        <div><div class="yr">2026</div><div class="lbl" style="margin-top:6px">Research &middot; Capstone</div></div>
-        <div><h4>Concealed supplier relationships in Kenyan public procurement</h4><p>Graph machine learning, entity resolution and public procurement data. In progress. <a href="#research">Read more</a></p></div>
+        <div><div class="yr">Sept &ndash; Nov 2026</div><div class="lbl" style="margin-top:6px">Research &middot; Capstone</div></div>
+        <div><h4>Uncovering hidden supplier links in Kenyan public procurement</h4><p>Graph attention networks on a Kenyan ownership, directorship and contract award graph, delivered through AegisVeritas, a screening application with an audit trail. Evaluated against engineered-feature baselines and through interviews with compliance professionals. In progress. <a href="#research">Read more</a></p></div>
       </div>
       <div class="xrow reveal">
         <div><div class="yr">2025 &ndash; 2026</div><div class="lbl" style="margin-top:6px">Team engineering</div></div>
@@ -594,7 +599,7 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
         <p class="tdesc">Open to internships, graduate positions, research roles and full-time engineering positions in machine learning, data, backend and ML systems.</p>
         <ul class="tlist">
           <li>Internships and project-based work: available now</li>
-          <li>Full-time: from December 2026</li>
+          <li>Full-time: from January 2027</li>
           <li>Remote, or relocating where employer-sponsored opportunities are available</li>
         </ul>
         <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:auto;padding-top:6px">
