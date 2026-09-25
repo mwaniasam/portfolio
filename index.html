@@ -11,7 +11,7 @@
 <meta name="author" content="Samuel Mwania">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Samuel Mwania · Software Engineer, Machine Learning &amp; Data Systems">
-<meta property="og:description" content="Software engineer specialising in machine learning and data systems. Six systems built end to end, two answering live requests in production, and you can call one from the page.">
+<meta property="og:description" content="Software engineer specialising in machine learning and data systems. Seven systems built end to end, two answering live requests in production, and you can call one from the page.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Samuel Mwania · Software Engineer, Machine Learning &amp; Data Systems">
 <meta name="twitter:description" content="Machine learning and data systems, built, evaluated and deployed. Two answering live requests in production.">
@@ -22,7 +22,7 @@
 <meta property="og:image:alt" content="Samuel Mwania, Software Engineer, Machine Learning and Data Systems">
 <meta name="twitter:image" content="https://www.mwaaniasam.com/og-image.png">
 <link rel="canonical" href="https://www.mwaaniasam.com/">
-<meta name="description" content="Samuel Mwania. Software engineer specialising in machine learning and data systems. BSc Software Engineering (Machine Learning), African Leadership University, completing December 2026. Six systems built, two answering live requests in production. Based in Kenya.">
+<meta name="description" content="Samuel Mwania. Software engineer specialising in machine learning and data systems. BSc Software Engineering (Machine Learning), African Leadership University, completing December 2026. Seven systems built, two answering live requests in production. Zindi rank 17th of 1,651. Based in Kenya.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -437,7 +437,7 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
     <div class="roles reveal">
       <span class="pill hot">Software Engineer</span><span class="pill">Machine Learning</span><span class="pill">Data Systems</span><span class="pill">Production Systems</span>
     </div>
-    <p class="lede reveal">I ship machine learning systems that run in production. I build machine learning and data systems that turn real-world problems into deployable software: model, API, container, deployment, load test, retraining path. Six built, two answering live requests right now, and you can call one of them from this page.</p>
+    <p class="lede reveal">I ship machine learning systems that run in production. I build machine learning and data systems that turn real-world problems into deployable software: model, API, container, deployment, load test, retraining path. Seven built, two answering live requests right now, and you can call one of them from this page.</p>
     <ul class="facts reveal">
       <li>BSc Software Engineering (Machine Learning) &middot; African Leadership University &middot; Completing December 2026 &middot; Graduation June 2027</li>
       <li>Available for internships and project-based work now &middot; Full-time from January 2027</li>
@@ -460,9 +460,10 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
 </div>
 
 <div class="wrap"><div class="stats reveal">
-  <div class="stat"><div class="n" data-count="6">6</div><div class="c lbl">Systems built</div></div>
+  <div class="stat"><div class="n" data-count="7">7</div><div class="c lbl">Systems built</div></div>
   <div class="stat"><div class="n" data-count="2">2</div><div class="c lbl">Live deployments</div></div>
   <div class="stat"><div class="n" data-count="5" data-suffix="GB">5GB</div><div class="c lbl">Largest dataset processed</div></div>
+  <div class="stat"><div class="n">17th</div><div class="c lbl">Zindi final rank, of 1,651 participants</div></div>
   <div class="stat"><div class="n" data-count="30">30</div><div class="c lbl">Controlled RL experiments, team study</div></div>
 </div></div>
 
@@ -490,6 +491,7 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
           <dt>Problem</dt><dd>Supplier screening compares a bidder's registered name against debarment and sanctions lists. A debarred party can return through a related company with an unrelated name: in 2021 the African Development Bank debarred a Kenyan firm and five affiliates whose names shared nothing with the parent, found only by tracing common officers.</dd>
           <dt>Question</dt><dd>Can relational structure in public procurement and ownership records identify supplier exposure that name-based screening does not detect, and do learned graph representations remain effective on a real Kenyan graph?</dd>
           <dt>Approach</dt><dd>An ownership, directorship and contract award graph built from public Kenyan records, a graph attention network scoring the neighbourhood around each bidder, and a comparison against engineered-feature baselines and the judgement of compliance professionals.</dd>
+          <dt>Path</dt><dd>Procurement research &rarr; graph machine learning &rarr; <a href="#p-aegis" style="color:var(--accent);border-bottom:1px solid var(--accent)">AegisVeritas</a> &rarr; production screening system.</dd>
           <dt>Status</dt><dd>Proposal complete; the research runs to November 2026. Results will be published here when the evaluation is done.</dd>
         </dl>
         <button class="more" type="button" aria-expanded="false" data-t="research" data-open="Hide the methodology" data-closed="Read the methodology"><span>Read the methodology</span>
@@ -500,7 +502,7 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
             <dt>Method</dt><dd>A graph linking companies, people, awards and adverse records, built with entity resolution whose precision is measured on at least 200 manually adjudicated pairs. A graph attention network with ego identifiers, reverse message passing and port numbering scores each bidder's neighbourhood.</dd>
             <dt>Baselines</dt><dd>A deterministic baseline, conventional machine learning on tabular features, and engineered graph features with a tree ensemble as the principal comparison.</dd>
             <dt>Evaluation</dt><dd>Entity-disjoint splits, with the edge that defines each label removed before scoring. Ten random seeds with confidence intervals, an ablation over each architectural component, and permutation testing against at least 10,000 label shuffles. ROC AUC, average precision and recall at a low false positive rate. Twelve to fifteen semi-structured interviews with Kenyan compliance and procurement professionals.</dd>
-            <dt>System</dt><dd>AegisVeritas, the screening application listed under Selected work: bidder and supplier-list screening, ownership path tracing, the factors behind every assessment, and a tamper-evident audit trail of analyst decisions. No decision is automated.</dd>
+            <dt>System</dt><dd>AegisVeritas, the graph-based screening platform listed under Selected work, where the research becomes a production system: bidder and supplier-list screening, ownership path tracing, the factors behind every assessment, and a tamper-evident audit trail of analyst decisions. No decision is automated.</dd>
             <dt>Limitations</dt><dd>Unlabelled entities are treated as negatives, so compromised but undetected entities count against the model and reported performance is a lower bound. About 800 of Kenya's 34,000 procuring authorities use the national electronic portal, and the completeness of published beneficial ownership is unknown; both are measured and reported with the results. Entity resolution accuracy may differ across naming conventions and is measured rather than assumed.</dd>
             <dt class="why">Why it matters</dt><dd class="why">The study is designed to identify both where graph representations help and where data limitations constrain their effectiveness. The literature review found no published empirical evaluation of graph representation learning for debarment-circumvention detection using African procurement and ownership data.</dd>
           </dl>
@@ -529,7 +531,7 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
 
       <div class="lbl" style="color:var(--accent);margin-top:38px">Engineering approach</div>
       <div class="prin" style="margin-top:16px">
-        <div><span class="ix">01</span><h5>Every model has a baseline</h5><p>A metric with nothing to compare it to is decoration. Maize yield is scored against the mean predictor, the Milan forecasters against SARIMA, the DQN sweep against a shared default configuration.</p></div>
+        <div><span class="ix">01</span><h5>Every model has a baseline</h5><p>A metric with nothing to compare it to is decoration. Maize yield is scored against the mean predictor, the Milan forecasters against SARIMA, the Zindi pipeline against TF-IDF retrieval, the DQN sweep against a shared default configuration.</p></div>
         <div><span class="ix">02</span><h5>Production deployment</h5><p>Containerised, deployed and given a retraining path. Two services are running on Render.</p></div>
         <div><span class="ix">03</span><h5>Testing and validation</h5><p>Load tests with Locust: zero failed requests at 50 concurrent users on CoffeeGuard. Strict request validation at the API boundary.</p></div>
         <div><span class="ix">04</span><h5>Limitations are reported</h5><p>The maize model reached an R squared of 0.237. The write-up documents why the result was weak and what additional data or modelling changes could improve it.</p></div>
@@ -543,12 +545,12 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
   <div class="wrap">
     <div class="shead"><h2>Skills</h2><div class="lbl">Grouped by capability &middot; used in the work above</div></div>
     <div class="stackgrid">
-      <div><div class="lbl" style="color:var(--accent)">Machine Learning</div><ul><li><i></i>PyTorch</li><li><i></i>TensorFlow / Keras</li><li><i></i>scikit-learn</li><li><i></i>Stable Baselines3</li><li><i></i>statsmodels, pmdarima</li></ul></div>
+      <div><div class="lbl" style="color:var(--accent)">Machine Learning</div><ul><li><i></i>PyTorch</li><li><i></i>TensorFlow / Keras</li><li><i></i>scikit-learn</li><li><i></i>Stable Baselines3</li><li><i></i>statsmodels, pmdarima</li><li><i></i>Hugging Face Transformers, FAISS, LoRA</li></ul></div>
       <div><div class="lbl" style="color:var(--accent)">Data &amp; Analytics</div><ul><li><i></i>Python, pandas, NumPy</li><li><i></i>PyArrow, Parquet</li><li><i></i>GeoPandas</li><li><i></i>PostgreSQL, MySQL, SQLite</li><li><i></i>Prisma</li></ul></div>
       <div><div class="lbl" style="color:var(--accent)">Backend &amp; APIs</div><ul><li><i></i>FastAPI, Pydantic</li><li><i></i>Flask</li><li><i></i>REST API design</li><li><i></i>NextAuth</li><li><i></i>LLM integration (Gemini)</li></ul></div>
       <div><div class="lbl" style="color:var(--accent)">ML Systems</div><ul><li><i></i>Docker, Docker Compose</li><li><i></i>CUDA, GPU training</li><li><i></i>Model serving</li><li><i></i>Load testing, Locust</li><li><i></i>Deployment, Render</li></ul></div>
       <div><div class="lbl" style="color:var(--accent)">Engineering</div><ul><li><i></i>Linux</li><li><i></i>Git</li><li><i></i>TypeScript, Next.js, React</li><li><i></i>Flutter, Dart</li><li><i></i>Streamlit</li></ul></div>
-      <div><div class="lbl" style="color:var(--accent)">Graph &amp; AI</div><ul><li><i></i>Neo4j</li><li><i></i>Graph neural networks (GAT)</li><li><i></i>Entity resolution</li><li><i></i>Permutation testing, ablation</li></ul><div class="wip">In progress through capstone research</div></div>
+      <div><div class="lbl" style="color:var(--accent)">Graph &amp; AI</div><ul><li><i></i>Neo4j</li><li><i></i>PyTorch Geometric, graph attention networks</li><li><i></i>Entity resolution</li><li><i></i>Permutation testing, ablation</li></ul><div class="wip">In progress through capstone research</div></div>
     </div>
   </div>
 </section>
@@ -563,11 +565,15 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
       </div>
       <div class="xrow reveal">
         <div><div class="yr">Sept &ndash; Nov 2026</div><div class="lbl" style="margin-top:6px">Research &middot; Capstone</div></div>
-        <div><h4>Uncovering hidden supplier links in Kenyan public procurement</h4><p>Graph attention networks on a Kenyan ownership, directorship and contract award graph, delivered through AegisVeritas, a screening application with an audit trail. Evaluated against engineered-feature baselines and through interviews with compliance professionals. In progress. <a href="#research">Read more</a></p></div>
+        <div><h4>Uncovering hidden supplier links in Kenyan public procurement</h4><p>Graph attention networks on a Kenyan ownership, directorship and contract award graph, delivered through AegisVeritas, a graph-based screening platform with a tamper-evident audit trail. Evaluated against engineered-feature baselines and through interviews with compliance professionals. In progress. <a href="#research">Read more</a></p></div>
+      </div>
+      <div class="xrow reveal">
+        <div><div class="yr">June 2026</div><div class="lbl" style="margin-top:6px">Competition</div></div>
+        <div><h4>Zindi: Multilingual Health Question Answering in Low-Resource African Languages</h4><p>Final rank 17th of 1,651 participants. Dense retrieval with per-language answer selection across five African languages, 44 logged experiments. <a href="#p-healthqa">View project</a></p></div>
       </div>
       <div class="xrow reveal">
         <div><div class="yr">2025 &ndash; 2026</div><div class="lbl" style="margin-top:6px">Team engineering</div></div>
-        <div><h4>Collaborative projects</h4><p>Freeway DQN, a three-person reinforcement learning study where I owned the discount factor and batch size experiments and the final combined agent. MoMo Analyst, a four-person data pipeline and dashboard for mobile money transactions.</p></div>
+        <div><h4>Collaborative projects</h4><p>Freeway DQN, a three-person reinforcement learning study where I owned the discount factor and batch size experiments and the final combined agent. MoMo Analyst, a four-person mobile money analytics project where I built the data pipeline.</p></div>
       </div>
       <div class="xrow reveal">
         <div><div class="yr">Ongoing</div><div class="lbl" style="margin-top:6px">Public code</div></div>
@@ -909,32 +915,57 @@ const PROJECTS = [
         {key:"momo.dash2",file:"images/3.png",label:"Transaction table"},
         {key:"momo.report",file:"images/report.png",label:"PDF report"}],
  youtube:"momo.youtube",
- note:"Team project with Adebayo Seyi Quadri, Esther Afi Edi Sessenou and Avellin Bonaparte Uteramahoro.",
+ note:"Team project with Adebayo Seyi Quadri, Esther Afi Edi Sessenou and Avellin Bonaparte Uteramahoro. I built the data pipeline: parsing the SMS XML, categorising each transaction and loading it into MySQL.",
  links:[{t:"Source",u:"https://github.com/Bonaparte003/Momo-Data_Analyst"}]},
 /* ---------------- 7. AegisVeritas ---------------- */
 {id:"aegis",year:"2026",name:"AegisVeritas",dev:true,
- line:"Graph ML · Entity resolution · Risk scoring · Audit trail",
- sub:"Supplier screening application for the capstone research on Kenyan public procurement",
- cs:{problem:"Name-based screening passes a debarred party that returns through a related company with an unrelated name.",
-  result:"In development. A working version is scheduled for the expert interviews from 28 September 2026, with the selected model integrated by 31 October 2026. No results yet.",
-  eng:"Designed as separate client, edge, application, intelligence and data tiers: an API gateway for authentication and quotas, an inference cache, a message queue for batch and scheduled re-screening, entity resolution, and a tamper-evident audit trail of analyst decisions.",
-  method:"A graph attention network scores the neighbourhood around each bidding entity. Where an entity has too few recorded relationships, a deterministic baseline scores it instead and the method used is reported with the result.",
+ line:"Graph ML · Entity resolution · FastAPI · Neo4j · Audit trail",
+ sub:"Graph-based screening platform, the production system behind the capstone research on Kenyan public procurement",
+ cs:{problem:"Name-based screening passes a debarred party that returns through a related company with an unrelated name. The capstone research asks whether graph machine learning can detect that exposure; AegisVeritas is where the answer becomes a working system.",
+  result:"In development. Built so far: GNN risk scoring with a heuristic fallback for sparse subgraphs, five API endpoints with hash-chained audit logging, and 164+ passing automated tests. Evaluation results arrive with the capstone in November 2026.",
+  eng:"FastAPI with async SQLAlchemy 2.0, Neo4j for the entity graph, a PyTorch Geometric graph attention network, Argon2id authentication with timing-equalised handling of unknown accounts, and a Next.js front end.",
+  method:"A graph attention network scores the neighbourhood around each entity. Where an entity has too few recorded relationships, a heuristic scores it instead and the method used is reported with the result.",
   baseline:"A deterministic baseline, conventional machine learning, and engineered graph features with a tree ensemble. See Research.",
-  limits:"Design stage. Coverage depends on how completely the beneficial ownership of awarded entities has been published."},
- story:["AegisVeritas screens bidders and supplier lists against the relationships around them, not only their names. It is the artefact of the capstone research and is being built during the research period."],
- kpis:[],
+  limits:"Not yet evaluated on real data. Coverage depends on how completely the beneficial ownership of awarded entities has been published.",
+  why:"The same design extends beyond procurement to other domains with entities, relationships and adverse records, such as commercial banking, insurance and development finance."},
+ story:["AegisVeritas screens entities against the relationships around them, not only their names. Kenyan public procurement is the first application, because award records and debarment lists are public and allow evaluation against verified labels."],
+ kpis:[["164+","Passing tests"],["5","API endpoints"],["GAT","Scoring model"]],
  deep:[
-  {h:"Label isolation before scoring",t:"The neighbourhood extractor removes the record that defines an entity's label before any data reaches the model server, so the model scores structure rather than reading the answer. The same isolation applies in benchmark and real-data evaluation and is verified by automated test."},
-  {h:"Every assessment explains itself",t:"Each assessment returns the factors behind it. No decision is automated: escalating or clearing an alert requires a written reason, enforced in the alert state machine, and the audit entry is committed before the assessment is returned."}],
+  {h:"Label isolation before scoring",t:"The record that defines an entity's label is removed from its neighbourhood before any data reaches the model, so the model scores structure rather than reading the answer. The same isolation applies in benchmark and real-data evaluation and is verified by automated test."},
+  {h:"Every assessment explains itself",t:"Each assessment returns the factors behind it. No decision is automated: escalating or clearing an alert requires a written reason, and the audit entry, hash-chained to the one before it, is committed before the assessment is returned."}],
  tables:[],media:[],
- links:[{t:"Research design",u:"#research",internal:true}]}
+ links:[{t:"Research design",u:"#research",internal:true}]},
+
+/* ---------------- 8. Multilingual Health QA ---------------- */
+{id:"healthqa",year:"2026",name:"Multilingual Health QA",award:"Zindi · 17th of 1,651",
+ line:"NLP · Dense retrieval · Low-resource African languages · Zindi",
+ sub:"Health question answering across eight language–country subsets in five African languages",
+ cs:{problem:"Answering health questions in Akan, Amharic, Luganda, Swahili and English across Ethiopia, Ghana, Kenya and Uganda, languages with few NLP tools. Scored on ROUGE-1, ROUGE-L and an LLM judge.",
+  data:"36,501 question–answer pairs curated by health professionals, and 2,618 test questions.",
+  method:"Dense question-to-question retrieval with AfriE5-Large-instruct fine-tuned on hard negatives, then per-language answer selection: MBR consensus for the strongest languages, a cross-encoder reranker with extractive stitching for Akan and Amharic, a Qwen2.5-7B LoRA generator for Ghanaian English, and a Luganda-specific adapter.",
+  baseline:"TF-IDF character n-gram retrieval, public score 0.4908.",
+  result:"Final rank 17th of 1,651 participants. Public score 0.6908, 41% above the baseline, across 44 logged experiments.",
+  eng:"FAISS index, per-language routing, a local ROUGE harness matching the organiser's Unicode scorer, and a Colab-reproducible pipeline. Open-source models only; no paid APIs in the final solution.",
+  limits:"Fine-tuned seq2seq generation (mT5, AfriTeVa) scored well below retrieval, so most answers are retrieved rather than generated. ROUGE also disadvantages morphologically rich languages such as Akan and Amharic."},
+ story:["The system retrieves candidate answers from the training corpus with dense semantic search, then routes each language to the selection strategy that scored best for it. Every experiment, including the ones that lost ground, is recorded in a public 44-row ledger."],
+ kpis:[["17th","Final rank"],["1,651","Participants"],["0.6908","Public score"],["+41%","Over baseline"],["44","Experiments"],["5","Languages"]],
+ deep:[
+  {h:"Retrieval beat generation",t:"mT5-base scored 0.2396 and AfriTeVa V2 0.2971, both below the 0.4908 TF-IDF baseline. Dense retrieval with E5-base reached 0.5742, and AfriE5-Large with hard-negative mining 0.6545. Generation was kept only where it measurably helped, for Ghanaian English."},
+  {h:"A scoring fix worth more than a model change",t:"Correcting Unicode tokenisation so Amharic and Akan were scored the way the organiser's fixed scorer scores them moved the public score from 0.6650 to 0.6843, a larger gain than several model changes combined."}],
+ tables:[
+  {title:"Score progression",head:["Experiment","Public score","Key change"],nums:[1],best:9,
+   rows:[["TF-IDF char n-gram retrieval","0.4908","Baseline"],["mT5-base seq2seq","0.2396","Generation hurts ROUGE"],["AfriTeVa V2 seq2seq","0.2971","Still below retrieval"],["E5-base semantic retrieval","0.5742","Dense embeddings"],["AfriE5-Large + hard negatives","0.6545","African embedder"],["+ MBR consensus selection","0.6597","Consensus over top-1"],["+ Extractive stitcher","0.6650","Verbatim sentence extraction"],["+ Unicode fix","0.6843","Correct Amharic and Akan scoring"],["+ Embedding interpolation","0.6898","Hedge final"],["+ Cross-encoder reranker","0.6908","Best, selected final"]]}],
+ media:[],
+ links:[{t:"Source",u:"https://github.com/mwaniasam/multilingual-health-qa"},
+        {t:"Experiment log, 44 rows",u:"https://github.com/mwaniasam/multilingual-health-qa/blob/main/docs/experiment_log.csv"},
+        {t:"Zindi competition",u:"https://zindi.africa/competitions/multilingual-health-question-answering-in-low-resource-african-languages-challenge"}]}
 ];
 /* ---------- render ---------- */
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const dig=(o,p)=>p.split('.').reduce((a,k)=>(a&&a[k]!==undefined?a[k]:""),o);
 
-const ORDER=["maize","coffeeguard","aegis","freeway","milan","synapse","momo"];
-const SELECTED=4;
+const ORDER=["maize","coffeeguard","healthqa","aegis","freeway","milan","synapse","momo"];
+const SELECTED=5;
 PROJECTS.sort((x,y)=>ORDER.indexOf(x.id)-ORDER.indexOf(y.id));
 
 function shotsOf(p){return (p.media||[]).map(m=>({...m,src:dig(ASSETS,m.key)}));}
@@ -986,7 +1017,7 @@ function projectHTML(p,i){
   const shots=shotsOf(p);
   const lead=p.liveDemo?"":leadHTML(shots[0]);
   const rest=p.liveDemo?shots:shots.slice(1);
-  const badge=p.live?'<span class="badge">Live in production</span>':p.dev?'<span class="badge dev">In development</span>':"";
+  const badge=p.live?'<span class="badge">Live in production</span>':p.dev?'<span class="badge dev">In development</span>':p.award?`<span class="badge dev">${esc(p.award)}</span>`:"";
   const kpis=(p.kpis&&p.kpis.length)?`<div class="kpis">${p.kpis.map(k=>`<div class="kpi"><div class="v">${esc(k[0])}</div><div class="k lbl">${esc(k[1])}</div></div>`).join("")}</div>`:"";
   return `<article class="proj two reveal${i>=SELECTED?" extra":""}" id="p-${esc(p.id)}">
     <div class="meta"><div class="pnum">${String(i+1).padStart(2,"0")}</div><div class="yr">${esc(p.year)}</div></div>
