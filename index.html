@@ -72,10 +72,16 @@ header{position:sticky;top:0;z-index:70;background:color-mix(in srgb,var(--bg) 8
 .nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:12px}
 .brand{font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.13em;font-weight:500;white-space:nowrap}
 .navlinks{display:flex;align-items:center;gap:24px;font-size:14px}
-.navlinks a{color:var(--muted);transition:color .18s;position:relative}
-.navlinks a:hover,.navlinks a.on{color:var(--text)}
-.navlinks a.on::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--accent)}
-@media(max-width:900px){.navlinks a{display:none}}
+.menulinks{display:flex;align-items:center;gap:24px}
+.menulinks a{color:var(--muted);transition:color .18s;position:relative}
+.menulinks a:hover,.menulinks a.on{color:var(--text)}
+.menulinks a.on::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--accent)}
+.hamburger{display:none}
+@media(max-width:900px){
+  .menulinks{display:none;position:absolute;top:68px;left:0;right:0;background:var(--bg);flex-direction:column;padding:24px;border-bottom:1px solid var(--line2);box-shadow:var(--shadow);align-items:flex-start}
+  .menulinks.open{display:flex}
+  .hamburger{display:grid}
+}
 .ib{width:36px;height:36px;border:1px solid var(--line);border-radius:2px;display:grid;place-items:center;color:var(--muted);transition:.18s}
 .ib:hover{border-color:var(--accent);color:var(--accent)}
 .sb{height:36px;padding:0 12px;border:1px solid var(--line);border-radius:2px;display:flex;align-items:center;gap:9px;color:var(--faint);font-family:'JetBrains Mono',monospace;font-size:11.5px;transition:.18s}
@@ -406,12 +412,17 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
   <div class="wrap nav">
     <a href="#top" class="brand">S.&nbsp;MWANIA</a>
     <nav class="navlinks" id="navlinks">
-      <a href="#live">Live</a><a href="#about">About</a><a href="#work">Work</a><a href="#pricing">Work together</a><a href="#stack">Stack</a><a href="#contact">Contact</a>
+      <div class="menulinks" id="menulinks">
+        <a href="#live">Live</a><a href="#about">About</a><a href="#work">Work</a><a href="#pricing">Work together</a><a href="#stack">Stack</a><a href="#contact">Contact</a>
+      </div>
       <button class="sb" id="opensearch" aria-label="Open search">
         <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="5"/><path d="M11 11l4 4"/></svg><span class="kbd">⌘K</span>
       </button>
       <button class="ib" id="theme" aria-label="Toggle colour theme">
         <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 9.3A5.5 5.5 0 0 1 6.7 3a5.5 5.5 0 1 0 6.3 6.3z"/></svg>
+      </button>
+      <button class="ib hamburger" id="hamburger" aria-label="Toggle menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
       </button>
     </nav>
   </div>
@@ -1405,6 +1416,12 @@ document.addEventListener("keydown",e=>{
   if(e.key==="Enter"){e.preventDefault();go(cur);}
 });
 
+/* ---------- mobile menu ---------- */
+const hm=document.getElementById("hamburger"), ml=document.getElementById("menulinks");
+if(hm && ml){
+  hm.addEventListener("click",()=>ml.classList.toggle("open"));
+  ml.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>ml.classList.remove("open")));
+}
 </script>
 </body>
 </html>
