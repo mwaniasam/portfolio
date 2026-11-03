@@ -76,12 +76,12 @@ header{position:sticky;top:0;z-index:70;background:color-mix(in srgb,var(--bg) 8
 .menulinks a{color:var(--muted);transition:color .18s;position:relative}
 .menulinks a:hover,.menulinks a.on{color:var(--text)}
 .menulinks a.on::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--accent)}
-.hamburger{display:none}
+.hamburger,.ib.hamburger{display:none}
 @media(max-width:900px){
   .menulinks{display:none;position:absolute;top:68px;left:0;right:0;background:var(--bg);flex-direction:column;padding:24px;border-bottom:1px solid var(--line2);box-shadow:var(--shadow);align-items:flex-start}
   .menulinks.open{display:flex}
   .menulinks .sep{display:none}
-  .hamburger{display:grid}
+  .hamburger,.ib.hamburger{display:grid}
 }
 .menulinks .sep{width:1px;height:16px;background:var(--line)}
 .menulinks a.sec{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.06em;color:var(--faint)}
@@ -352,6 +352,87 @@ figure.lead figcaption{font-family:'JetBrains Mono',monospace;font-size:11px;let
 .stackgrid li{list-style:none;font-size:15px;color:var(--muted);padding:6px 0;display:flex;align-items:center;gap:10px}
 .stackgrid li i{width:4px;height:4px;background:var(--faint);flex:0 0 auto}
 .stackgrid .wip{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-top:8px}
+/* HEADER RESUME */
+.hbtn{height:36px;padding:0 14px;border:1px solid var(--accent);border-radius:2px;display:inline-flex;align-items:center;gap:8px;
+  color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;transition:.18s;white-space:nowrap}
+.hbtn:hover{background:var(--accent);color:#fff}
+@media(max-width:420px){.hbtn{padding:0 10px}.sb{display:none}}
+
+/* WORK TILES */
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media(max-width:760px){.tiles{grid-template-columns:1fr}}
+.tile{position:relative;border:1px solid var(--line);background:var(--surface);display:flex;flex-direction:column;
+  transition:transform .4s cubic-bezier(.16,1,.3,1),border-color .25s,box-shadow .4s}
+.tile:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--accent) 50%,var(--line));box-shadow:var(--shadow)}
+.tthumb{display:block;width:100%;aspect-ratio:16/9;overflow:hidden;background:var(--surface2);border-bottom:1px solid var(--line2);position:relative;cursor:pointer;padding:0}
+.tthumb img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.tile:hover .tthumb img{transform:scale(1.045)}
+.tthumb .badge{position:absolute;left:14px;top:14px;background:var(--bg);z-index:2}
+.ttype{display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;padding:24px;text-align:left;
+  background:radial-gradient(80% 90% at 85% 15%,var(--accent-soft),transparent 70%),var(--surface2)}
+.ttype b{font-weight:800;font-size:clamp(52px,7vw,92px);letter-spacing:-.055em;line-height:.85}
+.ttype span{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:12px}
+.tbody{padding:20px 22px 18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.tline{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);line-height:1.6}
+.tile h3{font-size:clamp(22px,2.4vw,27px);font-weight:700;letter-spacing:-.03em;margin:0;line-height:1.15}
+.thl{font-size:15px;line-height:1.55;color:var(--muted);margin:0}
+.thl b{color:var(--text);font-weight:700}
+.tlinks{margin-top:auto;padding-top:14px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;font-size:14px;border-top:1px solid var(--line2)}
+.tdet{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:inline-flex;gap:8px;align-items:center;padding:4px 0}
+.tdet svg{transition:transform .25s}.tdet:hover svg{transform:translateX(3px)}
+.tlinks a{color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:2px}
+.tlinks a:hover{color:var(--accent);border-color:var(--accent)}
+.tlinks a.live{color:var(--ok);border-color:var(--ok)}
+.minis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);border:1px solid var(--line2);margin-top:18px}
+@media(max-width:760px){.minis{grid-template-columns:1fr}}
+.mini{background:var(--bg);padding:18px 20px;text-align:left;display:flex;flex-direction:column;gap:6px;transition:background .2s}
+.mini:hover{background:var(--surface)}
+.mini b{font-size:17px;font-weight:700;letter-spacing:-.015em}
+.mini span{font-size:13.5px;line-height:1.5;color:var(--muted)}
+.mini i{font-style:normal;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-top:4px}
+
+/* PROJECT PANEL */
+.drawer{position:fixed;inset:0;z-index:150;display:none}
+.drawer.on{display:block}
+.dback{position:absolute;inset:0;background:rgba(5,5,6,.55);backdrop-filter:blur(6px);opacity:0;transition:opacity .35s}
+.drawer.in .dback{opacity:1}
+.dpanel{position:absolute;top:0;right:0;bottom:0;width:min(940px,100%);background:var(--bg);border-left:1px solid var(--line);
+  box-shadow:var(--shadow);transform:translateX(102%);transition:transform .5s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column}
+.drawer.in .dpanel{transform:none}
+.dhead{display:flex;justify-content:space-between;align-items:center;gap:12px;height:60px;padding:0 clamp(16px,4vw,40px);border-bottom:1px solid var(--line2);flex:0 0 auto}
+.dbody{overflow-y:auto;padding:clamp(22px,4vw,44px) clamp(16px,4vw,44px) 64px;flex:1;overscroll-behavior:contain}
+.dbody h3.pn{font-size:clamp(30px,4.6vw,50px)}
+.dbody .livehook .console{margin:6px 0 26px}
+.dnav{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:44px;padding-top:22px;border-top:1px solid var(--line2)}
+.dnav button{border:1px solid var(--line);padding:14px 16px;text-align:left;transition:.18s}
+.dnav button:last-child{text-align:right}
+.dnav button:hover{border-color:var(--accent)}
+.dnav b{display:block;font-size:16px;font-weight:700;margin-top:4px}
+@media (prefers-reduced-motion:reduce){.dpanel,.dback,.tile,.tthumb img{transition:none}}
+
+/* RESEARCH, ABOUT, CONTACT */
+.rgrid{display:grid;grid-template-columns:1.25fr 1fr .8fr;gap:1px;background:var(--line2);border:1px solid var(--line2)}
+@media(max-width:940px){.rgrid{grid-template-columns:1fr}}
+.rgrid>div{background:var(--bg);padding:26px 24px;display:flex;flex-direction:column;gap:10px}
+.rgrid h3{margin:0;font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1.25}
+.rgrid p{margin:0;font-size:14.5px;line-height:1.65;color:var(--muted)}
+.rgrid .go{margin-top:auto;padding-top:6px;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);align-self:flex-start}
+.rgrid ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.rgrid li{font-size:14.5px;color:var(--muted);display:flex;gap:10px;line-height:1.45}
+.rgrid li::before{content:"";width:5px;height:5px;background:var(--accent);flex:0 0 auto;margin-top:7px}
+.agrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);border:1px solid var(--line2);margin-top:30px}
+@media(max-width:900px){.agrid{grid-template-columns:1fr}}
+.agrid>div{background:var(--bg);padding:22px 22px 20px}
+.agrid h4{margin:10px 0 4px;font-size:16px;font-weight:700}
+.agrid p{margin:0;font-size:14px;line-height:1.6;color:var(--muted)}
+.agrid ul{margin:10px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
+.agrid li{font-size:14px;line-height:1.5;color:var(--muted)}
+.agrid li b{color:var(--text);font-weight:600}
+.sk{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.sk span{font-family:'JetBrains Mono',monospace;font-size:11px;padding:5px 9px;border:1px solid var(--line);border-radius:2px;color:var(--muted)}
+.how{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.how span{font-size:13.5px;padding:8px 12px;border:1px solid var(--line);border-radius:2px;color:var(--text);background:var(--surface)}
+.how span::before{content:"";display:inline-block;width:6px;height:6px;background:var(--accent);margin-right:9px;vertical-align:1px}
 /* FLAGSHIP */
 .flagcard{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(26px,4vw,56px);align-items:center;
   border:1px solid var(--line);background:var(--surface);padding:clamp(24px,4vw,52px);position:relative;overflow:hidden}
@@ -436,13 +517,23 @@ footer{border-top:1px solid var(--line);padding-top:30px;padding-bottom:44px;dis
   </figure>
 </div>
 
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dtitle">
+  <div class="dback" id="dback"></div>
+  <aside class="dpanel">
+    <div class="dhead"><span class="lbl" id="dcount"></span>
+      <button class="ib" id="dclose" aria-label="Close project"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4l12 12M16 4L4 16"/></svg></button></div>
+    <div class="dbody" id="dbody"></div>
+  </aside>
+</div>
+
 <header>
   <div class="wrap nav">
     <a href="#top" class="brand">S.&nbsp;MWANIA</a>
     <nav class="navlinks" id="navlinks">
       <div class="menulinks" id="menulinks">
-        <a href="#about">About</a><a href="#work">Work</a><a href="#research">Research</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#contact">Contact</a><span class="sep" aria-hidden="true"></span><a href="consulting/" class="sec">Consulting</a>
+        <a href="#work">Work</a><a href="#research">Research</a><a href="#about">About</a><a href="#contact">Contact</a><span class="sep" aria-hidden="true"></span><a href="consulting/" class="sec">Consulting</a>
       </div>
+      <a class="hbtn" href="https://docs.google.com/document/d/1P5MNIAe3ejL193irf26fcbxkm3EahZN5T39hx1_UtCg/view" target="_blank" rel="noopener">Resume<svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 2h6v6M10 2L3 9"/></svg></a>
       <button class="sb" id="opensearch" aria-label="Open search">
         <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="5"/><path d="M11 11l4 4"/></svg><span class="kbd">⌘K</span>
       </button>
@@ -468,15 +559,13 @@ footer{border-top:1px solid var(--line);padding-top:30px;padding-bottom:44px;dis
     <div class="roles reveal">
       <span class="pill hot">Software Engineer</span><span class="pill">Machine Learning</span><span class="pill">Data Systems</span><span class="pill">Production Systems</span>
     </div>
-    <p class="lede reveal">I ship machine learning systems that run in production. I build machine learning and data systems that turn real-world problems into deployable software: model, API, container, deployment, load test, retraining path. Seven built, two answering live requests right now, and you can call one of them from this page.</p>
+    <p class="lede reveal">I build machine learning and data systems that run in production: model, API, container, deployment, load test, retraining path.</p>
     <ul class="facts reveal">
-      <li>BSc Software Engineering (Machine Learning) &middot; African Leadership University &middot; Completing December 2026 &middot; Graduation June 2027</li>
-      <li>Available for internships and project-based work now &middot; Full-time from January 2027</li>
-      <li>Based in Kenya &middot; Building AI, data and software systems for African and global problems</li>
+      <li>BSc Software Engineering (ML) &middot; African Leadership University &middot; Completing December 2026</li>
+      <li>Based in Kenya &middot; Internships and project work now &middot; Full-time from January 2027</li>
     </ul>
     <div class="cta reveal">
-      <a href="#work" class="btn solid">View the work</a>
-      <a href="https://github.com/mwaniasam" target="_blank" rel="noopener" class="btn ghost">GitHub</a>
+      <a href="#work" class="btn solid">View work</a>
       <a href="https://docs.google.com/document/d/1P5MNIAe3ejL193irf26fcbxkm3EahZN5T39hx1_UtCg/view" target="_blank" rel="noopener" class="btn ghost">Resume</a>
       <a href="#contact" class="btn ghost">Contact</a>
     </div>
@@ -491,11 +580,10 @@ footer{border-top:1px solid var(--line);padding-top:30px;padding-bottom:44px;dis
 </div>
 
 <div class="wrap"><div class="stats reveal">
-  <div class="stat"><div class="n" data-count="7">7</div><div class="c lbl">Systems built</div></div>
-  <div class="stat"><div class="n" data-count="2">2</div><div class="c lbl">Live deployments</div></div>
-  <div class="stat"><div class="n" data-count="5" data-suffix="GB">5GB</div><div class="c lbl">Largest dataset processed</div></div>
-  <div class="stat"><div class="n">17th</div><div class="c lbl">Zindi final rank, of 1,651 participants</div></div>
-  <div class="stat"><div class="n" data-count="30">30</div><div class="c lbl">Controlled RL experiments, team study</div></div>
+  <div class="stat"><div class="n" data-count="7">7</div><div class="c lbl">Systems built end to end</div></div>
+  <div class="stat"><div class="n" data-count="2">2</div><div class="c lbl">ML services live in production</div></div>
+  <div class="stat"><div class="n">17th</div><div class="c lbl">Of 1,651 on Zindi</div></div>
+  <div class="stat"><div class="n" data-count="664">664</div><div class="c lbl">Automated tests on the capstone</div></div>
 </div></div>
 
 <section id="flagship">
@@ -526,53 +614,32 @@ footer{border-top:1px solid var(--line);padding-top:30px;padding-bottom:44px;dis
 
 <section id="work">
   <div class="wrap">
-    <div class="shead"><h2>Selected work</h2></div>
-    <div id="projects"></div>
-    <button class="allbtn" id="allwork" type="button" aria-expanded="false"><span>View all work</span>
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 4.5L6 7.5L9 4.5"/></svg></button>
+    <div class="shead"><h2>Selected work</h2><div class="lbl">2024 &ndash; 2026</div></div>
+    <div class="tiles" id="tiles"></div>
+    <div class="minis" id="minis"></div>
   </div>
 </section>
 
 <section id="research">
-  <div class="wrap two">
-    <div class="lbl">Research</div>
-    <div>
-      <h2 style="margin-bottom:26px">Research</h2>
-      <p class="pull">Machine learning for <em>public institutions, financial systems, development and governance</em>.</p>
-
-      <div class="rcard reveal" style="margin-top:30px">
-        <span class="rstat">Results in &middot; Capstone, Sept &ndash; Nov 2026</span>
-        <h3>Uncovering Hidden Supplier Links in Kenyan Public Procurement: A Graph-Based Machine Learning Approach</h3>
-        <div class="lbl">Research project &middot; Record linkage &middot; Kenya and Estonia</div>
-        <dl class="case" style="margin:22px 0 20px">
-          <dt>Problem</dt><dd>Supplier screening compares a bidder's registered name against debarment and sanctions lists. A debarred party can return through a related company with an unrelated name, and two "competing" bidders can share one owner. In 2021 the African Development Bank debarred a Kenyan firm and five affiliates whose names shared nothing with the parent.</dd>
-          <dt>Question</dt><dd>The proposal asked whether a graph model could flag a risky bidder from its network. With only 18 confirmed Kenyan cases, no model beat a size-only baseline, so the question became: <strong style="color:var(--text);font-weight:600">are two suppliers under one control?</strong> Kenyan awards disclose 12,441 ownership links to learn from.</dd>
-          <dt>Approach</dt><dd>Supplier pairs scored from shared owners or directors, shared contacts and award behaviour, validated in Estonia against its open ownership register and in Kenya on held-back disclosed links. Every protocol and pass mark was committed to GitHub before its run.</dd>
-          <dt>Result</dt><dd>Kenya: average precision 0.146 against 0.067 for Adamic-Adar. Estonia: AUC 0.85 against 0.57 on firms the model never saw. Two tests failed, and are reported next to the ones that passed.</dd>
-          <dt>Path</dt><dd>Procurement research &rarr; pair-level machine learning &rarr; <a href="aegisveritas/" style="color:var(--accent);border-bottom:1px solid var(--accent)">AegisVeritas</a> &rarr; a pre-award check for Kenya's e-GP system.</dd>
-          <dt>Status</dt><dd>System built and evaluated. Expert interviews (ALU ethics approval SEPT26-BEL-070) and the dissertation are in progress.</dd>
-        </dl>
-        <button class="more" type="button" aria-expanded="false" data-t="research" data-open="Hide the methodology" data-closed="Read the methodology"><span>Read the methodology</span>
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 4.5L6 7.5L9 4.5"/></svg></button>
-        <div class="deep" id="deep-research">
-          <dl class="case" style="margin:0">
-            <dt>Data</dt><dd>Kenya's PPIP portal and PPRA award files, with 12,441 disclosed ownership links as labels; World Bank, AfDB, OpenSanctions, ICIJ and EACC lists; and Estonia's procurement data with its open beneficial ownership register.</dd>
-            <dt>Method</dt><dd>Candidate pairs are firms that win from the same buyer within 30 days, or that share a disclosed record. Three evidence channels, each a log-likelihood ratio, are combined Fellegi-Sunter style: identity, contacts weighted down when many firms share them, and behaviour from LightGBM on 20 award-pattern features with isotonic calibration.</dd>
-            <dt>Baselines</dt><dd>Adamic-Adar link prediction and random ranking; for the original question, a size-only baseline.</dd>
-            <dt>Evaluation</dt><dd>Pre-registered tests: an Estonian holdout of unseen firms, whole-system recall in the top 1,000, a Kenyan holdout of 7,884 pairs with 178 linked, and an external check against KeRRA contractor registers. A retrained model goes live only if it beats the baseline and the live model on a fixed holdout.</dd>
-            <dt>Limitations</dt><dd>The Kenyan labels come from disclosed ownership, so the Kenyan result measures recovery of disclosed links; Estonia's register supports the claim for hidden ones. 75 of the top 100 Kenyan pairs are not confirmed links. Pairs where a firm has fewer than 3 awards are not scored. Entity resolution precision has not yet been measured on a hand-checked sample.</dd>
-            <dt class="why">Why it matters</dt><dd class="why">Kenya's tender documents already ask bidders to declare common control, but no evaluation committee can check that across the whole market. AegisVeritas checks the bidders on one tender against the market in seconds, before the award, with the evidence a person needs to decide.</dd>
-          </dl>
-        </div>
-        <div class="chips">
-          <span class="pill">Record linkage</span><span class="pill">LightGBM</span><span class="pill">Pre-registered evaluation</span><span class="pill">Beneficial ownership</span><span class="pill">Procurement integrity</span>
-        </div>
-        <div class="cta" style="margin-top:22px"><a href="aegisveritas/" class="btn solid" style="min-height:46px;padding:0 22px;font-size:14px">Read the full case study</a></div>
+  <div class="wrap">
+    <div class="shead"><h2>Research</h2><div class="lbl">Capstone and studies</div></div>
+    <div class="rgrid reveal">
+      <div>
+        <span class="lbl" style="color:var(--accent)">Capstone &middot; 2026 &middot; Results in</span>
+        <h3>Hidden supplier links in Kenyan public procurement</h3>
+        <p>Pre-registered evaluation on Kenyan and Estonian data: average precision 0.146 against 0.067 for the baseline, and AUC 0.85 against 0.57 on unseen firms. Expert interviews under ALU ethics approval SEPT26-BEL-070.</p>
+        <a class="go" href="aegisveritas/#method">Method and results &rarr;</a>
       </div>
-
-      <h4 style="margin-top:34px">Completed research work</h4>
-      <p class="body"><a href="#p-freeway" style="color:var(--accent);border-bottom:1px solid var(--accent)">Freeway DQN</a>: a controlled 30-experiment study of how much Deep Q-Network performance is decided by hyperparameters. In my sweep, a discount factor of 0.90 beat the conventional 0.99. The full experiment log is public.</p>
-      <p class="body" style="margin-bottom:0"><span class="lbl">Interests</span><br>Graph machine learning &middot; Entity resolution &middot; Risk analytics &middot; AI for public-sector and financial systems &middot; Evaluation methodology</p>
+      <div>
+        <span class="lbl">Study &middot; 2026</span>
+        <h3>How much do hyperparameters decide DQN performance?</h3>
+        <p>A 30-experiment controlled study with a public log. In my sweep, a discount factor of 0.90 beat the conventional 0.99.</p>
+        <a class="go" href="#p-freeway">Details &rarr;</a>
+      </div>
+      <div>
+        <span class="lbl">Interests</span>
+        <ul><li>Record linkage and graph ML</li><li>Risk analytics</li><li>AI for public institutions and finance</li><li>Low-resource African language NLP</li><li>Evaluation methodology</li></ul>
+      </div>
     </div>
   </div>
 </section>
@@ -581,97 +648,28 @@ footer{border-top:1px solid var(--line);padding-top:30px;padding-bottom:44px;dis
   <div class="wrap two">
     <div class="lbl">About</div>
     <div>
-      <h2 style="margin-bottom:26px">About</h2>
-      <p class="body">Software engineer specialising in machine learning and data systems, based in Kenya. The work spans model training and evaluation, backend APIs, data pipelines and deployment: a problem taken from raw data to a running service with a retraining path.</p>
-      <p class="body">Current research: <a href="aegisveritas/" style="color:var(--accent);border-bottom:1px solid var(--accent)">AegisVeritas</a>, which finds hidden common control between bidders in Kenyan public procurement, with pre-registered results on Kenyan and Estonian data. The focus is problems where software meets financial systems, public institutions and development.</p>
-      <p class="body">BSc Software Engineering (Machine Learning), African Leadership University. Completing December 2026, graduation ceremony June 2027. Open to internships, graduate roles, research opportunities, contract work and full-time roles: internships and project-based work now, full-time from January 2027. Remote, or relocating where employer-sponsored opportunities are available.</p>
-      <p class="body">Every completed project includes source code and documentation, every model is evaluated against a stated baseline, and live evidence is linked where available.</p>
-
-      <div class="lbl" style="color:var(--accent);margin-top:38px">Engineering approach</div>
-      <div class="prin" style="margin-top:16px">
-        <div><span class="ix">01</span><h5>Every model has a baseline</h5><p>A metric with nothing to compare it to is decoration. AegisVeritas is scored against Adamic-Adar, maize yield against the mean predictor, the Milan forecasters against SARIMA, the Zindi pipeline against TF-IDF retrieval, the DQN sweep against a shared default configuration.</p></div>
-        <div><span class="ix">02</span><h5>Production deployment</h5><p>Containerised, deployed and given a retraining path. Two services are running on Render.</p></div>
-        <div><span class="ix">03</span><h5>Testing and validation</h5><p>Pre-registered tests, with the pass mark committed before each run. On AegisVeritas: 664 backend tests and 80 of 80 browser tests across three engines. On CoffeeGuard: zero failed requests at 50 concurrent users.</p></div>
-        <div><span class="ix">04</span><h5>Limitations are reported</h5><p>AegisVeritas reports its two failed tests and one withdrawn result next to the ones that passed. The maize model's R squared of 0.237 is documented with why it was weak and what would improve it.</p></div>
-        <div><span class="ix">05</span><h5>Built for handover</h5><p>Each repository includes enough documentation for another engineer to reproduce and extend the work.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="skills">
-  <div class="wrap">
-    <div class="shead"><h2>Skills</h2><div class="lbl">Grouped by capability &middot; used in the work above</div></div>
-    <div class="stackgrid">
-      <div><div class="lbl" style="color:var(--accent)">Machine Learning</div><ul><li><i></i>PyTorch</li><li><i></i>TensorFlow / Keras</li><li><i></i>scikit-learn</li><li><i></i>Stable Baselines3</li><li><i></i>statsmodels, pmdarima</li><li><i></i>Hugging Face Transformers, FAISS, LoRA</li></ul></div>
-      <div><div class="lbl" style="color:var(--accent)">Data &amp; Analytics</div><ul><li><i></i>Python, pandas, NumPy</li><li><i></i>PyArrow, Parquet</li><li><i></i>GeoPandas</li><li><i></i>PostgreSQL, MySQL, SQLite</li><li><i></i>Prisma</li></ul></div>
-      <div><div class="lbl" style="color:var(--accent)">Backend &amp; APIs</div><ul><li><i></i>FastAPI, Pydantic</li><li><i></i>Flask</li><li><i></i>REST API design</li><li><i></i>NextAuth</li><li><i></i>LLM integration (Gemini)</li></ul></div>
-      <div><div class="lbl" style="color:var(--accent)">ML Systems</div><ul><li><i></i>Docker, Docker Compose</li><li><i></i>CUDA, GPU training</li><li><i></i>Model serving</li><li><i></i>Load testing, Locust</li><li><i></i>Deployment, Render</li></ul></div>
-      <div><div class="lbl" style="color:var(--accent)">Engineering</div><ul><li><i></i>Linux</li><li><i></i>Git</li><li><i></i>TypeScript, Next.js, React</li><li><i></i>Flutter, Dart</li><li><i></i>pytest, Playwright</li></ul></div>
-      <div><div class="lbl" style="color:var(--accent)">Graph &amp; AI</div><ul><li><i></i>Neo4j</li><li><i></i>Record linkage, Fellegi-Sunter</li><li><i></i>LightGBM, isotonic calibration</li><li><i></i>PyTorch Geometric</li><li><i></i>Pre-registered evaluation</li></ul><div class="wip">Used in AegisVeritas</div></div>
-    </div>
-  </div>
-</section>
-
-<section id="experience">
-  <div class="wrap">
-    <div class="shead"><h2>Experience</h2><div class="lbl">Education, research and contributions</div></div>
-    <div class="xp">
-      <div class="xrow reveal">
-        <div><div class="yr">Jan 2024 &ndash; Dec 2026</div><div class="lbl" style="margin-top:6px">Education</div></div>
-        <div><h4>African Leadership University</h4><p>BSc Software Engineering, Machine Learning specialisation. Graduation ceremony June 2027.</p></div>
-      </div>
-      <div class="xrow reveal">
-        <div><div class="yr">2026</div><div class="lbl" style="margin-top:6px">Research &middot; Capstone</div></div>
-        <div><h4>AegisVeritas: hidden supplier links in Kenyan public procurement</h4><p>Built and evaluated a screening system over Kenya's public procurement records, supervised by Kevin Sebineza. Pre-registered results: average precision 0.146 against 0.067 in Kenya, AUC 0.85 against 0.57 in Estonia. 664 backend tests and a tamper-evident audit log. <a href="aegisveritas/">Case study</a></p></div>
-      </div>
-      <div class="xrow reveal">
-        <div><div class="yr">June 2026</div><div class="lbl" style="margin-top:6px">Competition</div></div>
-        <div><h4>Zindi: Multilingual Health Question Answering in Low-Resource African Languages</h4><p>Final rank 17th of 1,651 participants. Dense retrieval with per-language answer selection across five African languages, 44 logged experiments. <a href="#p-healthqa">View project</a></p></div>
-      </div>
-      <div class="xrow reveal">
-        <div><div class="yr">2025 &ndash; 2026</div><div class="lbl" style="margin-top:6px">Team engineering</div></div>
-        <div><h4>Collaborative projects</h4><p>Freeway DQN, a three-person reinforcement learning study where I owned the discount factor and batch size experiments and the final combined agent. MoMo Analyst, a four-person mobile money analytics project where I built the data pipeline.</p></div>
-      </div>
-      <div class="xrow reveal">
-        <div><div class="yr">Ongoing</div><div class="lbl" style="margin-top:6px">Public code</div></div>
-        <div><h4>Project repositories</h4><p>Source code for every completed project on this page is publicly available, with a README another engineer can follow. <a href="https://github.com/mwaniasam" target="_blank" rel="noopener">github.com/mwaniasam</a></p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="opportunities">
-  <div class="wrap">
-    <div class="shead"><h2>Opportunities</h2></div>
-    <div class="tracks">
-      <div class="track hire">
-        <span class="tix">Employment</span>
-        <h3>Roles</h3>
-        <p class="tdesc">Open to internships, graduate positions, research roles and full-time engineering positions in machine learning, data, backend and ML systems.</p>
-        <ul class="tlist">
-          <li>Internships and project-based work: available now</li>
-          <li>Full-time: from January 2027</li>
-          <li>Remote, or relocating where employer-sponsored opportunities are available</li>
-        </ul>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:auto;padding-top:6px">
-          <a class="btn solid" href="#contact" style="min-height:46px;padding:0 22px;font-size:14px">Get in touch</a>
-          <a class="btn ghost" href="https://docs.google.com/document/d/1P5MNIAe3ejL193irf26fcbxkm3EahZN5T39hx1_UtCg/view" target="_blank" rel="noopener" style="min-height:46px;padding:0 22px;font-size:14px">Resume</a>
+      <p class="pull">Software engineer in Kenya, building machine learning and data systems where software meets <em>public institutions, finance and development</em>.</p>
+      <p class="body">I take a problem from raw data to a running service: evaluated against a stated baseline, deployed, tested, and documented so another engineer can extend it. Failed results are reported next to the ones that passed.</p>
+      <div class="how"><span>Every model has a baseline</span><span>Pre-registered tests</span><span>Deployed and load tested</span><span>Limitations reported</span></div>
+      <div class="agrid reveal">
+        <div>
+          <span class="lbl" style="color:var(--accent)">Education</span>
+          <h4>BSc Software Engineering, Machine Learning</h4>
+          <p>African Leadership University<br>Jan 2024 &ndash; Dec 2026 &middot; graduation June 2027</p>
         </div>
-      </div>
-      <div class="track">
-        <span class="tix">Contract</span>
-        <h3>Selected projects</h3>
-        <p class="tdesc">Available for selected machine learning, data and software engineering projects with a clear scope.</p>
-        <div class="tmeta"><span>Scope</span><span>Agreed in writing first</span></div>
-        <a class="tproof" href="#contact">Describe the project</a>
-      </div>
-      <div class="track">
-        <span class="tix">Consulting</span>
-        <h3>Scope and pricing</h3>
-        <p class="tdesc">Project scope and pricing are available on request, or on the consulting page for teams that already know what they need built.</p>
-        <div class="tmeta"><span>Details</span><span>Separate page</span></div>
-        <a class="tproof" href="consulting/">Consulting</a>
+        <div>
+          <span class="lbl" style="color:var(--accent)">Highlights</span>
+          <ul>
+            <li><b>AegisVeritas</b> capstone, supervised by Kevin Sebineza</li>
+            <li><b>17th of 1,651</b> on Zindi, five African languages</li>
+            <li><b>Two ML services</b> live in production</li>
+            <li><b>Team work:</b> Freeway DQN (3), MoMo Analyst (4, data pipeline)</li>
+          </ul>
+        </div>
+        <div>
+          <span class="lbl" style="color:var(--accent)">Skills</span>
+          <div class="sk"><span>Python</span><span>PyTorch</span><span>TensorFlow</span><span>scikit-learn</span><span>LightGBM</span><span>Hugging Face</span><span>FastAPI</span><span>PostgreSQL</span><span>Neo4j</span><span>Docker</span><span>CUDA</span><span>Next.js</span><span>TypeScript</span><span>pytest</span><span>Playwright</span><span>Linux</span></div>
+        </div>
       </div>
     </div>
   </div>
@@ -679,21 +677,20 @@ footer{border-top:1px solid var(--line);padding-top:30px;padding-bottom:44px;dis
 
 <section id="contact">
   <div class="wrap">
-    <h2 style="margin-bottom:24px">Contact</h2>
     <div class="ctwo">
       <div>
-        <p class="body" style="margin-bottom:10px"><strong style="color:var(--text)">Interested in working together?</strong></p>
-        <p class="body" style="margin-bottom:26px">I am open to engineering roles, research opportunities, internships, graduate positions and selected technical projects. Send me a brief description of the opportunity or problem and I will get back to you within a day.</p>
+        <h2 style="margin-bottom:22px">Let's talk</h2>
+        <p class="body" style="margin-bottom:26px">Open to internships and project work now, and full-time roles from January 2027. Remote, or relocating where employer-sponsored opportunities are available. I reply within a day.</p>
         <button class="mail" id="mail"><span id="mailtext">mwaaniasamuel@gmail.com</span>
           <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="8" height="8"/><path d="M11 5V2H2v9h3"/></svg>
         </button>
         <div class="copied lbl" id="copied" style="margin-top:12px">Copied to clipboard</div>
-        <a class="btn solid" href="https://docs.google.com/document/d/1P5MNIAe3ejL193irf26fcbxkm3EahZN5T39hx1_UtCg/export?format=pdf" target="_blank" rel="noopener" style="margin-top:26px">Download resume (PDF)</a>
-        <div class="links" style="margin-top:34px">
-          <a href="https://github.com/mwaniasam" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://www.linkedin.com/in/samuel-mwania-73sa17" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://docs.google.com/document/d/1P5MNIAe3ejL193irf26fcbxkm3EahZN5T39hx1_UtCg/view" target="_blank" rel="noopener">Resume</a>
+        <div class="cta" style="margin-top:22px">
+          <a class="btn solid" href="https://docs.google.com/document/d/1P5MNIAe3ejL193irf26fcbxkm3EahZN5T39hx1_UtCg/export?format=pdf" target="_blank" rel="noopener">Download resume</a>
+          <a class="btn ghost" href="https://www.linkedin.com/in/samuel-mwania-73sa17" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn ghost" href="https://github.com/mwaniasam" target="_blank" rel="noopener">GitHub</a>
         </div>
+        <p class="lbl" style="margin-top:26px;line-height:1.9">Contract or consulting work? <a href="consulting/" style="color:var(--accent);border-bottom:1px solid var(--accent)">Scope and rates</a></p>
       </div>
 
       <form class="cform" id="cform" novalidate>
@@ -712,7 +709,7 @@ footer{border-top:1px solid var(--line);padding-top:30px;padding-bottom:44px;dis
         </div>
         <div class="fld" style="margin-bottom:14px">
           <label for="c-msg">The opportunity or problem</label>
-          <textarea id="c-msg" name="message" rows="6" required></textarea>
+          <textarea id="c-msg" name="message" rows="5" required></textarea>
         </div>
         <input type="text" name="_honey" id="c-honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <button type="submit" class="btn solid" id="c-send" style="width:100%">Send</button>
@@ -1028,21 +1025,30 @@ const PROJECTS = [
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const dig=(o,p)=>p.split('.').reduce((a,k)=>(a&&a[k]!==undefined?a[k]:""),o);
 
-const ORDER=["aegis","maize","coffeeguard","healthqa","freeway","milan","synapse","momo"];
-const SELECTED=5;
-PROJECTS.sort((x,y)=>ORDER.indexOf(x.id)-ORDER.indexOf(y.id));
+const TILE_IDS=["healthqa","coffeeguard","maize","freeway"], MINI_IDS=["milan","synapse","momo"];
+const SEQ=[...TILE_IDS,...MINI_IDS];
+const byId=Object.fromEntries(PROJECTS.map(p=>[p.id,p]));
+const HL={
+  healthqa:["17th","of 1,651 on Zindi. Score 0.6908, 41% above the TF-IDF baseline, across five African languages."],
+  coffeeguard:["98.8%","accuracy and 98.36% macro F1 on 58,549 leaf images. Live, with zero failed requests under load."],
+  maize:["Live API","Call the deployed model from this page. R squared 0.237, with the cause and the fix documented."],
+  freeway:["0.90 > 0.99","A discount factor of 0.90 beat the conventional 0.99 in a 30-experiment DQN study."],
+  milan:["5GB to 28MB","Telecom telemetry ingested under 3GB of memory; LSTM and TCN beat a SARIMA baseline."],
+  synapse:["12,623","lines of TypeScript: an adaptive learning platform driven by in-browser cognitive tests."],
+  momo:["1,691","mobile money messages parsed into a queryable database. I built the data pipeline."]
+};
+const ARROW='<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 6h8M7 3l3 3-3 3"/></svg>';
 
 function shotsOf(p){return (p.media||[]).map(m=>({...m,src:m.url||dig(ASSETS,m.key)}));}
 function leadHTML(m){
   if(!m) return "";
   return m.src
     ? `<figure class="lead"><div class="leadbox"><img src="${esc(m.src)}" alt="${esc(m.label)}" loading="lazy"></div><figcaption>${esc(m.label)}</figcaption></figure>`
-    : `<figure class="lead"><div class="leadbox slot"><div class="sn">${esc(m.label)}</div><div class="sd">${esc(m.file)}</div></div></figure>`;
+    : "";
 }
 function galleryHTML(p,rest){
   const yt=p.youtube?dig(ASSETS,p.youtube):"";
-  const cards=rest.map(m=>{
-    if(!m.src) return `<figure class="gitem"><div class="slot" style="min-height:190px"><div class="sn">${esc(m.label)}</div><div class="sd">${esc(m.file)}</div></div></figure>`;
+  const cards=rest.filter(m=>m.src).map(m=>{
     if(m.video) return `<figure class="gitem"><video controls preload="metadata" src="${esc(m.src)}" aria-label="${esc(m.label)}"></video><figcaption>${esc(m.label)}</figcaption></figure>`;
     return `<figure class="gitem"><img src="${esc(m.src)}" alt="${esc(m.label)}" loading="lazy"><figcaption>${esc(m.label)}</figcaption></figure>`;
   });
@@ -1056,11 +1062,7 @@ function galleryHTML(p,rest){
       </figure>`);
   }
   if(!cards.length) return "";
-  return `<button class="gbtn" type="button" aria-expanded="false" data-g="${esc(p.id)}">
-       <span>View ${cards.length} more</span>
-       <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 4.5L6 7.5L9 4.5"/></svg>
-     </button>
-     <div class="gallery" id="gal-${esc(p.id)}">${cards.join("")}</div>`;
+  return `<h4>Gallery</h4><div class="gallery open">${cards.join("")}</div>`;
 }
 function tableHTML(t){
   const head=t.head.map(h=>`<th>${esc(h)}</th>`).join("");
@@ -1075,70 +1077,99 @@ function rowsHTML(p,keys){
 function linksHTML(p){
   return `<div class="links">${p.links.map(l=>`<a href="${esc(l.u)}"${l.live?' class="live"':""}${l.internal?"":' target="_blank" rel="noopener"'}>${esc(l.t)}</a>`).join("")}</div>`;
 }
-const SUMMARY=[["problem","Problem"],["result","Result"],["eng","Engineering"]];
-const DETAIL=[["data","Data"],["method","Method"],["baseline","Baseline"],["limits","Limitations"],["why","Why it matters"]];
-function projectHTML(p,i){
-  const shots=shotsOf(p);
-  const lead=p.liveDemo?"":leadHTML(shots[0]);
-  const rest=p.liveDemo?shots:shots.slice(1);
-  const badge=p.live?'<span class="badge">Live in production</span>':p.dev?'<span class="badge dev">In development</span>':p.award?`<span class="badge dev">${esc(p.award)}</span>`:"";
-  const kpis=(p.kpis&&p.kpis.length)?`<div class="kpis">${p.kpis.map(k=>`<div class="kpi"><div class="v">${esc(k[0])}</div><div class="k lbl">${esc(k[1])}</div></div>`).join("")}</div>`:"";
-  return `<article class="proj two reveal${i>=SELECTED?" extra":""}" id="p-${esc(p.id)}">
-    <div class="meta"><div class="pnum">${String(i+1).padStart(2,"0")}</div><div class="yr">${esc(p.year)}</div></div>
-    <div>
-      <div class="ptitle"><h3 class="pn">${esc(p.name)}</h3>${badge}</div>
-      <p class="pline">${esc(p.line)}</p>
-      <p class="sub">${esc(p.sub)}</p>
-      <dl class="case">${rowsHTML(p,SUMMARY)}<dt>Evidence</dt><dd>${linksHTML(p)}</dd></dl>
-      ${p.liveDemo?'<div class="livehook"></div>':""}
-      ${lead}
-      ${p.note?`<p class="body" style="font-size:15px;color:var(--faint)">${esc(p.note)}</p>`:""}
-      <button class="more" type="button" aria-expanded="false" data-t="${esc(p.id)}" data-open="Hide project detail" data-closed="View project"><span>View project</span>
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 4.5L6 7.5L9 4.5"/></svg></button>
-      <div class="deep" id="deep-${esc(p.id)}">
-        <dl class="case">${rowsHTML(p,DETAIL)}</dl>
-        ${kpis}
-        ${p.story.map(t=>`<p class="body">${esc(t)}</p>`).join("")}
-        ${(p.deep||[]).map(d=>`<h4>${esc(d.h)}</h4><p class="body">${esc(d.t)}</p>`).join("")}
-        ${(p.tables||[]).map(tableHTML).join("")}
-        ${p.liveDemo?leadHTML(shots[0]):""}
-        ${galleryHTML(p,p.liveDemo?shots.slice(1):rest)}
+function badgeOf(p){
+  return p.live?'<span class="badge">Live in production</span>':p.award?`<span class="badge dev">${esc(p.award)}</span>`:"";
+}
+const ALL_ROWS=[["problem","Problem"],["data","Data"],["method","Method"],["baseline","Baseline"],["result","Result"],["eng","Engineering"],["limits","Limitations"],["why","Why it matters"]];
+
+/* ---------- tiles ---------- */
+function tileHTML(id){
+  const p=byId[id],[big,text]=HL[id],shot=shotsOf(p)[0];
+  const live=p.links.find(l=>l.live),src=p.links.find(l=>/^Source/.test(l.t));
+  const thumb=shot&&shot.src
+    ? `<img src="${esc(shot.src)}" alt="" loading="lazy">`
+    : "";
+  return `<article class="tile reveal" id="p-${esc(id)}">
+    <button class="tthumb${thumb?"":" ttype"}" type="button" data-open="${esc(id)}" aria-label="Open ${esc(p.name)} details">${thumb||`<b>${esc(big)}</b><span>${esc(p.name)}</span>`}${badgeOf(p)}</button>
+    <div class="tbody">
+      <div class="tline">${esc(p.line)}</div>
+      <h3>${esc(p.name)}</h3>
+      <p class="thl"><b>${esc(big)}</b> ${esc(text)}</p>
+      <div class="tlinks">
+        <button class="tdet" type="button" data-open="${esc(id)}">${p.liveDemo?"Details and live demo":"Details"} ${ARROW}</button>
+        ${live?`<a class="live" href="${esc(live.u)}" target="_blank" rel="noopener">Live</a>`:""}
+        ${src?`<a href="${esc(src.u)}" target="_blank" rel="noopener">Source</a>`:""}
       </div>
-    </div></article>`;
+    </div>
+  </article>`;
 }
-const projEl=document.getElementById("projects");
-projEl.innerHTML=PROJECTS.map(projectHTML).join("");
+document.getElementById("tiles").innerHTML=TILE_IDS.map(tileHTML).join("");
+document.getElementById("minis").innerHTML=MINI_IDS.map(id=>{const p=byId[id],[big,text]=HL[id];
+  return `<button class="mini" type="button" id="p-${esc(id)}" data-open="${esc(id)}"><b>${esc(p.name)}</b><span>${esc(big)} ${esc(text)}</span><i>Details &rarr;</i></button>`;}).join("");
 
-/* the live console is evidence for the maize project, so it lives in that card */
-const liveHook=document.querySelector("#p-maize .livehook"),liveHold=document.getElementById("livehold");
-if(liveHook&&liveHold){liveHook.appendChild(document.getElementById("live"));liveHold.remove();}
-
-const allBtn=document.getElementById("allwork");
-const extraN=Math.max(PROJECTS.length-SELECTED,0);
-function setAll(open){
-  projEl.classList.toggle("all",open);
-  allBtn.setAttribute("aria-expanded",open);
-  allBtn.querySelector("span").textContent=open?"Show selected work only":`View all work (${extraN} more)`;
+/* ---------- project panel ---------- */
+const drawer=document.getElementById("drawer"),dbody=document.getElementById("dbody"),dcount=document.getElementById("dcount");
+const liveEl=document.getElementById("live"),liveHold=document.getElementById("livehold");
+let drawerOpen=false,drawerLast=null;
+function panelHTML(p){
+  const shots=shotsOf(p),i=SEQ.indexOf(p.id);
+  const prev=byId[SEQ[(i-1+SEQ.length)%SEQ.length]],next=byId[SEQ[(i+1)%SEQ.length]];
+  const kpis=(p.kpis&&p.kpis.length)?`<div class="kpis">${p.kpis.map(k=>`<div class="kpi"><div class="v">${esc(k[0])}</div><div class="k lbl">${esc(k[1])}</div></div>`).join("")}</div>`:"";
+  return `<div class="ptitle"><h3 class="pn" id="dtitle">${esc(p.name)}</h3>${badgeOf(p)}</div>
+    <p class="pline">${esc(p.line)}</p>
+    <p class="sub">${esc(p.sub)}</p>
+    ${p.liveDemo?'<div class="livehook"></div>':""}
+    <dl class="case">${rowsHTML(p,ALL_ROWS)}<dt>Evidence</dt><dd>${linksHTML(p)}</dd></dl>
+    ${kpis}
+    ${leadHTML(shots[0])}
+    ${p.story.map(t=>`<p class="body">${esc(t)}</p>`).join("")}
+    ${(p.deep||[]).map(d=>`<h4>${esc(d.h)}</h4><p class="body">${esc(d.t)}</p>`).join("")}
+    ${(p.tables||[]).map(tableHTML).join("")}
+    ${galleryHTML(p,shots.slice(1))}
+    ${p.note?`<p class="body" style="font-size:15px;color:var(--faint)">${esc(p.note)}</p>`:""}
+    <div class="dnav">
+      <button type="button" data-open="${esc(prev.id)}"><span class="lbl">&larr; Previous</span><b>${esc(prev.name)}</b></button>
+      <button type="button" data-open="${esc(next.id)}"><span class="lbl">Next &rarr;</span><b>${esc(next.name)}</b></button>
+    </div>`;
 }
-if(extraN){setAll(false);allBtn.addEventListener("click",()=>setAll(!projEl.classList.contains("all")));}
-else allBtn.remove();
-
-document.addEventListener("click",e=>{
-  const b=e.target.closest(".more");
-  if(!b) return;
-  const open=document.getElementById("deep-"+b.dataset.t).classList.toggle("open");
-  b.setAttribute("aria-expanded",open);
-  b.querySelector("span").textContent=open?b.dataset.open:b.dataset.closed;
-});
-projEl.addEventListener("click",e=>{
-  const g=e.target.closest(".gbtn");
-  if(g){
-    const gal=document.getElementById("gal-"+g.dataset.g);
-    const open=gal.classList.toggle("open");
-    g.setAttribute("aria-expanded",open);
-    g.querySelector("span").textContent=open?"Show less":("View "+gal.children.length+" more");
-    return;
+function parkLive(){ if(liveEl&&liveHold&&liveEl.parentNode!==liveHold) liveHold.appendChild(liveEl); }
+function openProject(id){
+  const p=byId[id]; if(!p||!SEQ.includes(id)) return false;
+  parkLive();
+  if(!drawerOpen) drawerLast=document.activeElement;
+  dbody.innerHTML=panelHTML(p);
+  const hook=dbody.querySelector(".livehook"); if(hook&&liveEl) hook.appendChild(liveEl);
+  dcount.textContent=`${String(SEQ.indexOf(id)+1).padStart(2,"0")} / ${String(SEQ.length).padStart(2,"0")} · ${p.year}`;
+  dbody.scrollTop=0;
+  if(!drawerOpen){
+    drawer.classList.add("on");
+    requestAnimationFrame(()=>requestAnimationFrame(()=>drawer.classList.add("in")));
+    document.body.style.overflow="hidden";
+    drawerOpen=true;
   }
+  if(location.hash!=="#p-"+id) history.replaceState(null,"","#p-"+id);
+  document.getElementById("dclose").focus({preventScroll:true});
+  return true;
+}
+function closeProject(){
+  if(!drawerOpen) return;
+  drawerOpen=false;
+  drawer.classList.remove("in");
+  document.body.style.overflow="";
+  history.replaceState(null,"",location.pathname+location.search);
+  setTimeout(()=>{ if(!drawerOpen){ drawer.classList.remove("on"); parkLive(); dbody.innerHTML=""; } },reduce0()?0:480);
+  if(drawerLast&&drawerLast.focus) drawerLast.focus({preventScroll:true});
+}
+function reduce0(){return window.matchMedia("(prefers-reduced-motion: reduce)").matches;}
+document.addEventListener("click",e=>{
+  const o=e.target.closest("[data-open]");
+  if(o){ e.preventDefault(); openProject(o.dataset.open); return; }
+  const a=e.target.closest('a[href^="#p-"]');
+  if(a&&openProject(a.getAttribute("href").slice(3))) e.preventDefault();
+});
+document.getElementById("dclose").addEventListener("click",closeProject);
+document.getElementById("dback").addEventListener("click",closeProject);
+dbody.addEventListener("click",e=>{
   const v=e.target.closest(".vfacade");
   if(v){
     const fig=v.closest(".vid"),id=fig.dataset.yt;
@@ -1146,6 +1177,8 @@ projEl.addEventListener("click",e=>{
       `<div class="embed"><iframe src="https://www.youtube.com/embed/${id}?autoplay=1" title="Video demo" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>`;
   }
 });
+function fromHash(){ const h=location.hash; if(h.startsWith("#p-")) openProject(h.slice(3)); }
+addEventListener("hashchange",fromHash);
 
 /* ---------- live services ---------- */
 const SVCS=[
@@ -1346,15 +1379,15 @@ function lbOpen(scope,src){
 function lbClose(){
   lb.classList.remove("on");
   lbimg.removeAttribute("src");
-  document.body.style.overflow="";
+  document.body.style.overflow=drawerOpen?"hidden":"";
   if(lbLast&&lbLast.focus) lbLast.focus();
 }
 function lbStep(d){ if(!lbSet.length)return; lbAt=(lbAt+d+lbSet.length)%lbSet.length; lbShow(); }
 
-document.getElementById("projects").addEventListener("click",e=>{
+dbody.addEventListener("click",e=>{
   const img=e.target.closest(".leadbox img, .gitem img");
   if(!img) return;
-  lbOpen(img.closest("article")||document, img.currentSrc||img.src);
+  lbOpen(dbody, img.currentSrc||img.src);
 });
 document.getElementById("lbclose").addEventListener("click",lbClose);
 lbprev.addEventListener("click",e=>{e.stopPropagation();lbStep(-1);});
@@ -1440,15 +1473,15 @@ if(cform){
 
 /* ---------- palette ---------- */
 const pal=document.getElementById("pal"),palq=document.getElementById("palq"),palres=document.getElementById("palres");
-const INDEX=[{l:"About",h:"section",t:"#about"},{l:"Selected work",h:"section",t:"#work"},{l:"Research",h:"section",t:"#research"},{l:"Skills",h:"section",t:"#skills"},{l:"Experience",h:"section",t:"#experience"},{l:"Opportunities",h:"section",t:"#opportunities"},{l:"Contact",h:"section",t:"#contact"},
-  {l:"Live maize yield model",h:"demo",t:"#p-maize"},
-  ...PROJECTS.map(p=>({l:p.name,h:p.year,t:"#p-"+p.id})),{l:"AegisVeritas case study",h:"page",t:"aegisveritas/"},{l:"Consulting",h:"page",t:"consulting/"},{l:"GitHub",h:"external",t:"https://github.com/mwaniasam"}];
+const INDEX=[{l:"Selected work",h:"section",t:"#work"},{l:"Research",h:"section",t:"#research"},{l:"About",h:"section",t:"#about"},{l:"Contact",h:"section",t:"#contact"},
+  {l:"AegisVeritas case study",h:"flagship",t:"aegisveritas/"},{l:"Live maize yield model",h:"demo",t:"#p-maize"},
+  ...SEQ.map(id=>({l:byId[id].name,h:byId[id].year,t:"#p-"+id})),{l:"Resume",h:"external",t:"https://docs.google.com/document/d/1P5MNIAe3ejL193irf26fcbxkm3EahZN5T39hx1_UtCg/view"},{l:"Consulting",h:"page",t:"consulting/"},{l:"GitHub",h:"external",t:"https://github.com/mwaniasam"}];
 let cur=0,shown=INDEX;
 function draw(q){shown=INDEX.filter(i=>!q||i.l.toLowerCase().includes(q.toLowerCase()));cur=0;
   palres.innerHTML=shown.length?shown.map((i,n)=>`<button class="${n===0?"cur":""}"><span>${esc(i.l)}</span><span class="lbl">${esc(i.h)}</span></button>`).join(""):`<button class="cur"><span>Nothing matched</span></button>`;}
 function openP(){pal.classList.add("on");palq.value="";draw("");palq.focus();}
 function closeP(){pal.classList.remove("on");}
-function go(n){const it=shown[n];if(!it)return;closeP();if(it.t.startsWith("#")){const el=document.querySelector(it.t);if(el&&el.classList.contains("extra"))setAll(true);location.hash=it.t;}else if(it.t.startsWith("http"))window.open(it.t,"_blank","noopener");else location.href=it.t;}
+function go(n){const it=shown[n];if(!it)return;closeP();if(it.t.startsWith("#p-")){openProject(it.t.slice(3));}else if(it.t.startsWith("#")){closeProject();location.hash=it.t;}else if(it.t.startsWith("http"))window.open(it.t,"_blank","noopener");else location.href=it.t;}
 document.getElementById("opensearch").addEventListener("click",openP);
 pal.addEventListener("click",e=>{if(e.target===pal)closeP();});
 palq.addEventListener("input",()=>draw(palq.value));
@@ -1461,6 +1494,20 @@ document.addEventListener("keydown",e=>{
     k[cur]&&k[cur].classList.remove("cur");cur=(cur+(e.key==="ArrowDown"?1:-1)+k.length)%k.length;k[cur].classList.add("cur");k[cur].scrollIntoView({block:"nearest"});}
   if(e.key==="Enter"){e.preventDefault();go(cur);}
 });
+
+/* ---------- project panel: keyboard and deep links ---------- */
+document.addEventListener("keydown",e=>{
+  if(!drawerOpen||e.defaultPrevented) return;
+  if(lb.classList.contains("on")||pal.classList.contains("on")) return;
+  if(e.key==="Escape"){e.preventDefault();closeProject();}
+  if(e.key==="Tab"){
+    const f=[...drawer.querySelectorAll('button,a[href],select,input,textarea,iframe,[tabindex]:not([tabindex="-1"])')].filter(x=>x.offsetParent!==null);
+    if(!f.length) return;
+    if(e.shiftKey&&document.activeElement===f[0]){e.preventDefault();f[f.length-1].focus();}
+    else if(!e.shiftKey&&document.activeElement===f[f.length-1]){e.preventDefault();f[0].focus();}
+  }
+});
+fromHash();
 
 /* ---------- mobile menu ---------- */
 const hm=document.getElementById("hamburger"), ml=document.getElementById("menulinks");
