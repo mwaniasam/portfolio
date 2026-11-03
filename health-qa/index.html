@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multilingual Health QA: answers in five African languages · Samuel Mwania</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNiIgZmlsbD0iIzBBMEEwQyIvPjxwYXRoIGQ9Ik0yMC45IDEwLjRjLTEuMDUtMS4zNi0yLjYtMi4wNS00LjY0LTIuMDUtMS43MiAwLTMuMDkuNC00LjEgMS4yLTEuMDIuOC0xLjUzIDEuODctMS41MyAzLjIgMCAxLjEyLjM1IDIuMDIgMS4wNSAyLjcuNy42NyAxLjgzIDEuMiAzLjQgMS42bDIuMDUuNTJjLjkzLjI0IDEuNTguNSAxLjk1LjguMzcuMjguNTUuNjguNTUgMS4yIDAgLjYyLS4yNiAxLjEtLjc5IDEuNDQtLjUyLjM0LTEuMjYuNTEtMi4yLjUxLTEuOSAwLTMuMi0uNzItMy45LTIuMTZsLTIuNzQgMS41Yy41IDEuMTYgMS4zMiAyLjA2IDIuNDUgMi43IDEuMTQuNjMgMi41My45NSA0LjE5Ljk1IDEuODYgMCAzLjM0LS40MiA0LjQzLTEuMjcgMS4xLS44NSAxLjY1LTEuOTkgMS42NS0zLjQyIDAtMS4xNy0uMzYtMi4xMS0xLjA5LTIuODItLjcyLS43MS0xLjkzLTEuMjctMy42Mi0xLjY4bC0xLjk1LS40OGMtLjgzLS4yLTEuNDEtLjQ0LTEuNzQtLjctLjMzLS4yNy0uNS0uNjMtLjUtMS4wOSAwLS41Ni4yMy0xIC43LTEuMzIuNDctLjMyIDEuMTMtLjQ4IDEuOTgtLjQ4IDEuNiAwIDIuNzMuNiAzLjM4IDEuOHoiIGZpbGw9IiNGNUYzRjAiLz48cmVjdCB4PSI5IiB5PSIyNC40IiB3aWR0aD0iMTQiIGhlaWdodD0iMi40IiByeD0iMS4yIiBmaWxsPSIjRkY0QTFDIi8+PC9zdmc+">
+<link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#08080A" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F2F0EC" media="(prefers-color-scheme: light)">
+<meta name="author" content="Samuel Mwania">
+<meta name="description" content="Health question answering in Akan, Amharic, Luganda, Swahili and English. Dense retrieval with per-language answer selection; 17th of 1,651 on Zindi.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Samuel Mwania">
+<meta property="og:locale" content="en_GB">
+<meta property="article:author" content="https://www.mwaaniasam.com/">
+<meta property="article:published_time" content="2026-11-03">
+<meta property="og:title" content="Multilingual Health QA · 17th of 1,651">
+<meta property="og:description" content="Find the vetted answer, don't invent one: health question answering in five African languages, 0.4908 to 0.6908 over 44 logged experiments.">
+<meta property="og:url" content="https://www.mwaaniasam.com/health-qa/">
+<meta property="og:image" content="https://www.mwaaniasam.com/health-qa/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Multilingual Health QA case study: 17th of 1,651 on Zindi; public score 0.6908 against a 0.4908 baseline.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Multilingual Health QA · 17th of 1,651">
+<meta name="twitter:description" content="Find the vetted answer, don't invent one: health question answering in five African languages, 0.4908 to 0.6908 over 44 logged experiments.">
+<meta name="twitter:image" content="https://www.mwaaniasam.com/health-qa/og.png">
+<link rel="canonical" href="https://www.mwaaniasam.com/health-qa/">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "TechArticle",
+ "@id": "https://www.mwaaniasam.com/health-qa/#article",
+ "headline": "Multilingual Health QA: health question answering in five African languages",
+ "description": "Health question answering in Akan, Amharic, Luganda, Swahili and English. Dense retrieval with per-language answer selection; 17th of 1,651 on Zindi.",
+ "image": "https://www.mwaaniasam.com/health-qa/og.png",
+ "url": "https://www.mwaaniasam.com/health-qa/",
+ "mainEntityOfPage": "https://www.mwaaniasam.com/health-qa/",
+ "datePublished": "2026-11-03",
+ "dateModified": "2026-11-03",
+ "inLanguage": "en",
+ "author": {
+  "@type": "Person",
+  "@id": "https://www.mwaaniasam.com/#person",
+  "name": "Samuel Mwania",
+  "url": "https://www.mwaaniasam.com/"
+ },
+ "isPartOf": {
+  "@type": "WebSite",
+  "@id": "https://www.mwaaniasam.com/#website",
+  "url": "https://www.mwaaniasam.com/",
+  "name": "Samuel Mwania"
+ },
+ "about": [
+  "Question answering",
+  "Low-resource languages",
+  "Dense retrieval",
+  "Natural language processing",
+  "Global health"
+ ],
+ "keywords": "Zindi, multilingual question answering, Akan, Amharic, Luganda, Swahili, AfriE5, FAISS, cross-encoder, LoRA"
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F0EC;--surface:#FFFFFF;--surface2:#E9E6E0;--raise:#FFFFFF;
+  --text:#0B0B0D;--muted:#4E5056;--faint:#63646A;
+  --line:rgba(11,11,13,.16);--line2:rgba(11,11,13,.08);
+  --accent:#BB320E;--accent-fill:#D93A10;--accent-soft:rgba(217,58,16,.07);--base:#8A8C92;--track:rgba(11,11,13,.06);
+  --ok:#1A7339;--bad:#B02A19;
+  --shadow:0 30px 80px -20px rgba(11,11,13,.28);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#08080A;--surface:#0F0F12;--surface2:#16161A;--raise:#1A1A1F;
+  --text:#F5F3F0;--muted:#A0A2A8;--faint:#82848A;
+  --line:rgba(245,243,240,.14);--line2:rgba(245,243,240,.07);
+  --accent:#FF4A1C;--accent-fill:#E02D00;--accent-soft:rgba(255,74,28,.08);--base:#7A7C82;--track:rgba(245,243,240,.06);
+  --ok:#3FCF6E;--bad:#FF6B52;
+  --shadow:0 30px 90px -20px rgba(0,0,0,.8);
+}}
+:root[data-theme="dark"]{
+  --bg:#08080A;--surface:#0F0F12;--surface2:#16161A;--raise:#1A1A1F;
+  --text:#F5F3F0;--muted:#A0A2A8;--faint:#82848A;
+  --line:rgba(245,243,240,.14);--line2:rgba(245,243,240,.07);
+  --accent:#FF4A1C;--accent-fill:#E02D00;--accent-soft:rgba(255,74,28,.08);--base:#7A7C82;--track:rgba(245,243,240,.06);
+  --ok:#3FCF6E;--bad:#FF6B52;
+  --shadow:0 30px 90px -20px rgba(0,0,0,.8);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Archivo,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+::selection{background:var(--accent-fill);color:#fff}
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(16px,5vw,64px)}
+.lbl{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.mono{font-family:'JetBrains Mono',monospace}
+.prog{position:fixed;top:0;left:0;height:2px;width:0;background:var(--accent-fill);z-index:90}
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.14;mix-blend-mode:overlay;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* header */
+header{position:sticky;top:0;z-index:70;background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(16px);border-bottom:1px solid var(--line2)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.back{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;white-space:nowrap}
+.back:hover{color:var(--accent)}
+.toc{display:flex;gap:22px;font-size:14px}
+.toc a{color:var(--muted);position:relative;transition:color .18s}
+.toc a:hover,.toc a.on{color:var(--text)}
+.toc a.on::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--accent-fill)}
+@media(max-width:940px){.toc{display:none}}
+.ib{width:36px;height:36px;border:1px solid var(--line);border-radius:2px;display:grid;place-items:center;color:var(--muted);transition:.18s}
+.ib:hover{border-color:var(--accent);color:var(--accent)}
+
+/* hero */
+.hero{position:relative;z-index:2;padding-top:clamp(44px,7vw,96px);padding-bottom:clamp(36px,5vw,64px)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;padding:6px 11px;border:1px solid var(--line);border-radius:2px;color:var(--muted);white-space:nowrap}
+.chip.hot{border-color:var(--accent);color:var(--accent)}
+.chip.ok{border-color:var(--ok);color:var(--ok)}
+h1{font-weight:800;font-size:clamp(52px,11vw,148px);line-height:.86;letter-spacing:-.055em;margin:22px 0 0}
+.kicker{font-weight:700;font-size:clamp(24px,3.6vw,44px);letter-spacing:-.035em;line-height:1.05;margin:18px 0 0}
+.kicker em{font-style:normal;color:var(--accent)}
+.lede{font-size:clamp(17px,1.9vw,21px);line-height:1.6;color:var(--muted);max-width:720px;margin:22px 0 0}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line2);border:1px solid var(--line2);margin-top:34px}
+@media(max-width:820px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.facts>div{background:var(--bg);padding:16px 18px}
+.facts .v{font-size:15px;line-height:1.5;margin-top:6px}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 24px;border-radius:2px;font-size:15px;font-weight:600;transition:.2s}
+.btn.solid{background:var(--accent-fill);color:#fff}
+.btn.solid:hover{filter:brightness(.9)}
+.btn.ghost{border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+/* browser frame */
+.frame{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow)}
+.frame .bar{height:34px;display:flex;align-items:center;gap:7px;padding:0 14px;border-bottom:1px solid var(--line2);background:var(--surface2)}
+.frame .bar i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.frame .bar span{margin-left:10px;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--faint);letter-spacing:.04em}
+.frame img{width:100%;height:auto;cursor:zoom-in}
+.phone{border:1px solid var(--line);border-radius:26px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow);padding:8px}
+.phone img{border-radius:19px;width:100%;height:auto;cursor:zoom-in}
+.herofig{margin:clamp(40px,6vw,72px) 0 0;position:relative}
+.herofig::before{content:"";position:absolute;inset:-6% 0 30% 0;background:radial-gradient(60% 60% at 50% 40%,var(--accent-soft),transparent 70%);z-index:-1}
+figcaption{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.04em;color:var(--faint);line-height:1.7;margin-top:12px}
+
+/* headline numbers */
+.headline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;z-index:2}
+@media(max-width:900px){.headline{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.hn{padding:28px 22px 26px;border-right:1px solid var(--line2)}
+.status{white-space:nowrap;display:inline-block}
+.hn:last-child{border-right:none}
+@media(max-width:900px){.hn:nth-child(2){border-right:none}.hn:nth-child(-n+2){border-bottom:1px solid var(--line2)}}
+@media(max-width:560px){.headline{grid-template-columns:1fr}.hn,.hn:nth-child(2){border-right:none;border-bottom:1px solid var(--line2)}.hn:last-child{border-bottom:none}.hn{padding:22px 4px}}
+.hn .n{font-weight:800;font-size:clamp(34px,4.4vw,52px);letter-spacing:-.045em;line-height:1}
+.hn .n small{font-size:.42em;font-weight:600;color:var(--faint);letter-spacing:-.01em;margin-left:6px}
+.hn .d{font-size:14px;line-height:1.55;color:var(--muted);margin-top:10px}
+.hn .s{margin-top:10px}
+
+/* sections */
+section{position:relative;z-index:2;padding:clamp(56px,8vw,112px) 0;border-top:1px solid var(--line2)}
+.sh{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:clamp(18px,5vw,64px);align-items:start}
+@media(max-width:880px){.sh{grid-template-columns:1fr}}
+.sx{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent);letter-spacing:.08em}
+h2{font-weight:800;font-size:clamp(32px,5vw,60px);letter-spacing:-.04em;line-height:1;margin:0 0 24px}
+h3{font-weight:700;font-size:clamp(20px,2.4vw,26px);letter-spacing:-.025em;margin:0 0 10px;line-height:1.2}
+p.body{font-size:17px;line-height:1.75;color:var(--muted);margin:0 0 18px;max-width:780px}
+p.body strong{color:var(--text);font-weight:600}
+.pull{font-weight:600;font-size:clamp(22px,3vw,32px);line-height:1.25;letter-spacing:-.025em;margin:0 0 26px;max-width:880px}
+.pull em{font-style:normal;color:var(--accent)}
+.src{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.04em;color:var(--faint);line-height:1.7;margin-top:10px}
+
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line2);border:1px solid var(--line2)}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);border:1px solid var(--line2)}
+@media(max-width:900px){.grid3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.grid2,.grid3{grid-template-columns:1fr}}
+.cell{background:var(--bg);padding:24px 22px}
+.cell .ix{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);display:block;margin-bottom:12px}
+.cell h4{margin:0 0 8px;font-size:16px;font-weight:700;letter-spacing:-.01em}
+.cell p{margin:0;font-size:14.5px;line-height:1.65;color:var(--muted)}
+
+.names{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 4px}
+.names span{font-weight:600;font-size:15px;padding:10px 14px;border:1px solid var(--line);background:var(--surface);border-radius:2px}
+.names span:first-child{border-color:var(--accent)}
+
+/* architecture */
+.arch{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:8px}
+@media(max-width:900px){.arch{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.arch{grid-template-columns:1fr}}
+.col .lbl{display:block;margin-bottom:10px}
+.node{border:1px solid var(--line);background:var(--surface);padding:14px 14px 13px;border-radius:4px;margin-bottom:10px;position:relative}
+.node b{display:block;font-size:14.5px;font-weight:700;letter-spacing:-.01em}
+.node span{display:block;font-size:12.5px;line-height:1.5;color:var(--muted);margin-top:4px}
+.node.key{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.flowline{height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);margin:6px 0 22px;opacity:.6}
+
+/* charts */
+.charts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media(max-width:900px){.charts{grid-template-columns:1fr}}
+.chart{border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:22px 22px 18px}
+.chart .ct{font-size:16.5px;font-weight:700;letter-spacing:-.015em;margin:0 0 4px}
+.chart .cs{font-size:13.5px;line-height:1.55;color:var(--muted);margin:0 0 18px}
+.chart .tag{float:right;margin-left:12px}
+@media(max-width:640px){.chart .tag{float:none;margin:0 0 12px}}
+.status{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border:1px solid var(--ok);color:var(--ok);border-radius:2px}
+.status.fail{border-color:var(--bad);color:var(--bad)}
+.status.cor{border-color:var(--accent);color:var(--accent)}
+.bars{display:flex;flex-direction:column;gap:12px}
+.br{display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:12px;align-items:center}
+@media(max-width:520px){.br{grid-template-columns:1fr;gap:5px}}
+.br .nm{font-size:13.5px;line-height:1.3;color:var(--text)}
+.br .nm small{display:block;font-size:11.5px;color:var(--faint)}
+.trk{position:relative;height:22px;display:flex;align-items:center}
+.fill{height:22px;border-radius:0 4px 4px 0;background:var(--base);min-width:3px;position:relative;outline:none}
+.fill.me{background:var(--accent-fill)}
+.fill .val{position:absolute;left:calc(100% + 8px);top:50%;transform:translateY(-50%);font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--text);white-space:nowrap}
+.axis{position:absolute;top:-6px;bottom:-6px;width:1px;background:color-mix(in srgb,var(--text) 50%,transparent)}
+.axis span{position:absolute;top:-16px;left:50%;transform:translateX(-50%);font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--faint);white-space:nowrap}
+.tip{position:relative}
+.tip:hover::before,.tip:focus-visible::before{content:attr(data-tip);position:absolute;bottom:calc(100% + 10px);left:0;z-index:20;
+  background:var(--text);color:var(--bg);font-family:'JetBrains Mono',monospace;font-size:11.5px;line-height:1.5;padding:8px 10px;border-radius:4px;
+  width:max-content;max-width:280px;white-space:normal;box-shadow:var(--shadow);pointer-events:none}
+.tip:focus-visible{box-shadow:0 0 0 2px var(--bg),0 0 0 4px var(--accent)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;font-size:12.5px;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:7px;vertical-align:-1px;background:var(--base)}
+.legend i.me{background:var(--accent-fill)}
+details.tbl{margin-top:14px;border-top:1px solid var(--line2);padding-top:10px}
+details.tbl summary{cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+details.tbl summary:hover{color:var(--accent)}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}
+th,td{text-align:left;padding:8px 10px 8px 0;border-bottom:1px solid var(--line2);vertical-align:top}
+th{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);font-weight:400}
+td.num{font-family:'JetBrains Mono',monospace;white-space:nowrap;font-variant-numeric:tabular-nums}
+.scroller{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+/* waffle */
+.waffles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+@media(max-width:520px){.waffles{grid-template-columns:1fr}}
+.waffle{display:grid;grid-template-columns:repeat(10,1fr);gap:3px;max-width:240px}
+.waffle i{aspect-ratio:1;border-radius:2px;background:var(--track);border:1px solid var(--line2)}
+.waffle i.on{background:var(--accent-fill);border-color:transparent}
+.waffle.rand i.on{background:var(--base)}
+.wl{font-size:13.5px;margin:0 0 10px}
+.wl b{font-family:'JetBrains Mono',monospace;font-weight:500}
+
+/* log chart */
+.lr .fill{border-radius:0 4px 4px 0}
+
+/* failures */
+.fails{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line2);border:1px solid var(--line2)}
+@media(max-width:760px){.fails{grid-template-columns:1fr}}
+.fail{background:var(--bg);padding:26px 24px}
+.fail .big{font-weight:800;font-size:34px;letter-spacing:-.04em;line-height:1;margin-bottom:10px}
+.fail h4{margin:0 0 8px;font-size:16px;font-weight:700}
+.fail p{margin:0;font-size:14.5px;line-height:1.65;color:var(--muted)}
+.fail .fix{margin-top:12px;font-size:13.5px;color:var(--text);border-left:2px solid var(--accent);padding-left:12px;line-height:1.55}
+
+/* engineering */
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line2);border:1px solid var(--line2);margin-bottom:28px}
+@media(max-width:820px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.kpi{background:var(--bg);padding:20px 18px}
+.kpi .v{font-weight:800;font-size:30px;letter-spacing:-.04em;line-height:1}
+.kpi .k{margin-top:10px;font-size:13px;line-height:1.5;color:var(--muted)}
+
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:22px}
+.g-wide{grid-column:span 8}.g-side{grid-column:span 4}.g-half{grid-column:span 6}
+@media(max-width:900px){.g-wide,.g-side,.g-half{grid-column:span 12}}
+.phones{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+/* video */
+.vbox{position:relative;aspect-ratio:16/9;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface2)}
+.vbox button{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;width:100%}
+.vbox .play{width:64px;height:64px;border-radius:50%;background:var(--accent-fill);color:#fff;display:grid;place-items:center;transition:transform .2s}
+.vbox button:hover .play{transform:scale(1.06)}
+.vbox iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+.stack{display:flex;flex-wrap:wrap;gap:8px}
+.ending{text-align:left}
+.ending .pull{max-width:900px}
+footer{border-top:1px solid var(--line);padding-top:28px;padding-bottom:44px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;position:relative;z-index:2}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:200;background:rgba(5,5,6,.94);display:none;align-items:center;justify-content:center;padding:clamp(14px,4vw,48px)}
+.lb.on{display:flex}
+.lb img{max-width:100%;max-height:88vh;width:auto;height:auto;border-radius:6px}
+.lb button{position:absolute;top:16px;right:16px;width:44px;height:44px;border:1px solid rgba(245,243,240,.25);border-radius:2px;color:#F5F3F0;display:grid;place-items:center}
+
+.reveal{opacity:0;transform:translateY(22px)}
+.reveal.in{opacity:1;transform:none;transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
+@media print{.grain,.prog,header,.cta,.lb{display:none}.reveal{opacity:1;transform:none}}
+
+::placeholder{color:var(--faint);opacity:1}
+/* visible keyboard focus everywhere */
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.fld select:focus-visible,.fld input:focus-visible,.cform input:focus-visible,.cform select:focus-visible,.cform textarea:focus-visible,.palin input:focus-visible{outline:none}
+
+/* health QA page */
+h1.hq{font-size:clamp(46px,8.6vw,120px)}
+.route td{font-size:14px;line-height:1.55;color:var(--muted)}
+.route td:first-child{color:var(--text);font-weight:600;white-space:nowrap;padding-right:18px}
+.route td:nth-child(2){color:var(--text)}
+@media(max-width:620px){.route td:first-child{white-space:normal}}
+.wgrid{display:grid;grid-template-columns:repeat(11,1fr);gap:4px;max-width:340px;margin-top:6px}
+.wgrid i{aspect-ratio:1;border-radius:2px;background:var(--track);border:1px solid var(--line2)}
+.wgrid i.k,.legend i.me{background:var(--accent-fill);border-color:transparent}
+.wgrid i.r,.legend i.rj{background:var(--base);border-color:transparent}
+.wgrid i.p,.legend i.pt{background:color-mix(in srgb,var(--base) 45%,var(--track));border-color:transparent}
+.wgrid i.u,.legend i.ut{background:transparent;border:1px dashed var(--faint)}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="prog" id="prog"></div>
+
+<header>
+  <div class="wrap nav">
+    <a href="../" class="back" aria-label="Back to portfolio"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 3L5 8l5 5"/></svg>S.&nbsp;MWANIA</a>
+    <nav class="toc" id="toc">
+      <a href="#problem">Problem</a><a href="#system">System</a><a href="#results">Results</a><a href="#failures">What failed</a><a href="#engineering">Engineering</a><a href="#limits">Limits</a>
+    </nav>
+    <button class="ib" id="theme" aria-label="Toggle colour theme"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 9.3A5.5 5.5 0 0 1 6.7 3a5.5 5.5 0 1 0 6.3 6.3z"/></svg></button>
+  </div>
+</header>
+
+<main>
+<div class="wrap hero">
+  <div class="chips reveal">
+    <span class="chip hot">Zindi · 2026</span>
+    <span class="chip ok">17th of 1,651</span>
+    <span class="chip">Open-source models only</span>
+  </div>
+  <h1 class="reveal hq">Multilingual Health&nbsp;QA</h1>
+  <p class="kicker reveal">Find the vetted answer. <em>Don't invent one.</em></p>
+  <p class="lede reveal">Health question answering in Akan, Amharic, Luganda, Swahili and English, across Ethiopia, Ghana, Kenya and Uganda. For each question, the system finds the closest questions that health professionals have already answered, then chooses the answer with a strategy picked for each language. It placed 17th of 1,651 participants.</p>
+  <div class="facts reveal">
+    <div><div class="lbl">Role</div><div class="v">Sole author</div></div>
+    <div><div class="lbl">Context</div><div class="v">Zindi competition; final project for Machine Learning Techniques I, African Leadership University</div></div>
+    <div><div class="lbl">Data</div><div class="v">36,501 question–answer pairs in 8 language–country subsets</div></div>
+    <div><div class="lbl">Stack</div><div class="v">AfriE5, FAISS, XLM-RoBERTa, Qwen2.5-7B with LoRA</div></div>
+  </div>
+  <div class="cta reveal">
+    <a href="#results" class="btn solid">See the results</a>
+    <a href="https://github.com/mwaniasam/multilingual-health-qa" class="btn ghost" target="_blank" rel="noopener">Source on GitHub</a>
+    <a href="https://github.com/mwaniasam/multilingual-health-qa/blob/main/docs/experiment_log.csv" class="btn ghost" target="_blank" rel="noopener">Experiment log, 44 rows</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="headline reveal">
+    <div class="hn"><div class="n">17th<small>of 1,651</small></div><div class="d">Final rank on the Zindi leaderboard, out of 1,651 participants.</div><div class="s"><span class="status">Final rank</span></div></div>
+    <div class="hn"><div class="n">0.6908<small>vs 0.4908</small></div><div class="d">Public score against my own TF-IDF retrieval baseline, 41% higher.</div><div class="s"><span class="status">Public leaderboard</span></div></div>
+    <div class="hn"><div class="n">44</div><div class="d">Experiments logged with a verdict each. 24 were rejected, and they stay in the log.</div><div class="s"><span class="status">Public ledger</span></div></div>
+    <div class="hn"><div class="n">0</div><div class="d">Paid APIs in the final solution. Every model is open-source and the pipeline reruns in Colab.</div><div class="s"><span class="status">Reproducible</span></div></div>
+  </div>
+</div>
+
+<section id="problem">
+  <div class="wrap sh">
+    <div class="sx">01 · Problem</div>
+    <div>
+      <h2>Health answers in the language people ask in</h2>
+      <p class="pull">Five languages, four countries, and very few NLP tools for most of them. The answers are judged against <em>references written by health professionals</em>.</p>
+      <p class="body">The competition asked for answers to 2,618 health questions across eight language–country subsets. Each answer is scored against a reference: ROUGE-1 and ROUGE-L, which reward word overlap, count for 37% each, and an LLM judge of factual accuracy, completeness and language quality counts for 26%. Overlap scoring punishes paraphrase, and in health a fluent answer that is wrong is worse than no answer.</p>
+      <div class="chart reveal" style="margin-top:30px">
+        <p class="ct">Training data per subset</p>
+        <p class="cs">Question–answer pairs in the training and validation files. Amharic has the least, under a quarter of Ugandan English.</p>
+        <div class="bars" data-max="11000" id="datachart">
+          <div class="br"><div class="nm">English<small>Uganda</small></div><div class="trk"><div class="fill tip" tabindex="0" data-v="9312" data-tip="9,312 pairs · English, Uganda"><span class="val">9,312</span></div></div></div>
+          <div class="br"><div class="nm">Akan<small>Ghana</small></div><div class="trk"><div class="fill tip" tabindex="0" data-v="5569" data-tip="5,569 pairs · Akan, Ghana"><span class="val">5,569</span></div></div></div>
+          <div class="br"><div class="nm">English<small>Ghana</small></div><div class="trk"><div class="fill tip" tabindex="0" data-v="5547" data-tip="5,547 pairs · English, Ghana"><span class="val">5,547</span></div></div></div>
+          <div class="br"><div class="nm">English<small>Ethiopia</small></div><div class="trk"><div class="fill tip" tabindex="0" data-v="4479" data-tip="4,479 pairs · English, Ethiopia"><span class="val">4,479</span></div></div></div>
+          <div class="br"><div class="nm">Luganda<small>Uganda</small></div><div class="trk"><div class="fill tip" tabindex="0" data-v="4229" data-tip="4,229 pairs · Luganda, Uganda"><span class="val">4,229</span></div></div></div>
+          <div class="br"><div class="nm">Swahili<small>Kenya</small></div><div class="trk"><div class="fill tip" tabindex="0" data-v="2588" data-tip="2,588 pairs · Swahili, Kenya"><span class="val">2,588</span></div></div></div>
+          <div class="br"><div class="nm">English<small>Kenya</small></div><div class="trk"><div class="fill tip" tabindex="0" data-v="2470" data-tip="2,470 pairs · English, Kenya"><span class="val">2,470</span></div></div></div>
+          <div class="br"><div class="nm">Amharic<small>Ethiopia</small></div><div class="trk"><div class="fill me tip" tabindex="0" data-v="2307" data-tip="2,307 pairs · Amharic, Ethiopia, the smallest subset"><span class="val">2,307</span></div></div></div>
+        </div>
+        <details class="tbl"><summary>Show as table</summary><div class="scroller"><table><thead><tr><th>Subset</th><th>Train</th><th>Validation</th><th>Total</th><th>Test questions</th></tr></thead><tbody>
+          <tr><td>English, Uganda</td><td class="num">7,624</td><td class="num">1,688</td><td class="num">9,312</td><td class="num">744</td></tr>
+          <tr><td>Akan, Ghana</td><td class="num">4,455</td><td class="num">1,114</td><td class="num">5,569</td><td class="num">492</td></tr>
+          <tr><td>English, Ghana</td><td class="num">4,443</td><td class="num">1,104</td><td class="num">5,547</td><td class="num">491</td></tr>
+          <tr><td>English, Ethiopia</td><td class="num">3,915</td><td class="num">564</td><td class="num">4,479</td><td class="num">60</td></tr>
+          <tr><td>Luganda, Uganda</td><td class="num">3,383</td><td class="num">846</td><td class="num">4,229</td><td class="num">374</td></tr>
+          <tr><td>Swahili, Kenya</td><td class="num">2,070</td><td class="num">518</td><td class="num">2,588</td><td class="num">229</td></tr>
+          <tr><td>English, Kenya</td><td class="num">2,080</td><td class="num">390</td><td class="num">2,470</td><td class="num">167</td></tr>
+          <tr><td>Amharic, Ethiopia</td><td class="num">1,845</td><td class="num">462</td><td class="num">2,307</td><td class="num">61</td></tr>
+          <tr><td><b>All</b></td><td class="num">29,815</td><td class="num">6,686</td><td class="num">36,501</td><td class="num">2,618</td></tr>
+        </tbody></table></div><div class="src">Source: competition Train, Val and Test files</div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="system">
+  <div class="wrap sh">
+    <div class="sx">02 · System</div>
+    <div>
+      <h2>Retrieve, then choose per language</h2>
+      <p class="body">The final pipeline treats the training answers as a library. A question is matched to similar questions that already have expert answers, and the answer is chosen from the best fifteen. No single strategy was best everywhere, so each subset uses the one that scored best on its own held-out data.</p>
+      <div class="arch reveal" aria-label="Pipeline">
+        <div class="col"><span class="lbl">Input</span>
+          <div class="node"><b>Test question</b><span>One of eight language–country subsets</span></div>
+        </div>
+        <div class="col"><span class="lbl">Retrieve</span>
+          <div class="node key"><b>AfriE5-Large-instruct</b><span>African-language embedder, fine-tuned question to question with hard negatives</span></div>
+          <div class="node"><b>FAISS, top 15</b><span>Cosine search within the same subset; a second fine-tune blended in per language</span></div>
+        </div>
+        <div class="col"><span class="lbl">Choose</span>
+          <div class="node"><b>Per-language routing</b><span>Consensus vote, reranker and stitcher, or generation</span></div>
+        </div>
+        <div class="col"><span class="lbl">Output</span>
+          <div class="node"><b>One answer</b><span>The same text in all three scored columns</span></div>
+        </div>
+      </div>
+      <div class="flowline"></div>
+      <div class="scroller reveal">
+        <table class="route">
+          <thead><tr><th>Subset</th><th>Strategy</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td>Akan, Amharic</td><td>XLM-RoBERTa cross-encoder reranks the candidates, then an extractive stitcher joins the best sentences</td><td>Single retrieved answers missed too much of the reference; verbatim sentences recover overlap without paraphrase</td></tr>
+            <tr><td>English, Ghana</td><td>Qwen2.5-7B, fine-tuned with LoRA, writes the answer</td><td>The one subset where generation clearly beat the best possible retrieved answer</td></tr>
+            <tr><td>Luganda</td><td>A Luganda-specific retriever adapter, then a consensus vote</td><td>Trained on 541 answer-similarity triplets; a small but measured gain</td></tr>
+            <tr><td>All other subsets</td><td>Consensus vote (MBR): the candidate that agrees most with the others</td><td>Dense top-1 was already strong; consensus filters out odd matches</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="results">
+  <div class="wrap sh">
+    <div class="sx">03 · Results</div>
+    <div>
+      <h2>Results</h2>
+      <p class="body">Every submission was scored on the public leaderboard. The chart shows the path from my baseline to the final file, including the two generation models that scored well below it.</p>
+      <div class="charts">
+        <div class="chart reveal" style="grid-column:1/-1">
+          <span class="tag status">Final · 17th of 1,651</span>
+          <p class="ct">Public score, step by step</p>
+          <p class="cs">Each row is one submission. The line marks the TF-IDF baseline; generation models fell below it.</p>
+          <div class="bars" data-max="0.84" data-ref="0.4908" data-reflabel="baseline">
+            <div class="br"><div class="nm">TF-IDF retrieval<small>baseline</small></div><div class="trk"><div class="fill tip" tabindex="0" data-v="0.4908" data-tip="0.4908 · character n-gram TF-IDF retrieval, the baseline"><span class="val">0.4908</span></div></div></div>
+            <div class="br"><div class="nm">mT5-base<small>generation</small></div><div class="trk"><div class="fill tip" tabindex="0" data-v="0.2396" data-tip="0.2396 · mT5-base fine-tuned to generate answers"><span class="val">0.2396</span></div></div></div>
+            <div class="br"><div class="nm">AfriTeVa V2<small>generation</small></div><div class="trk"><div class="fill tip" tabindex="0" data-v="0.2971" data-tip="0.2971 · AfriTeVa V2, an African-language generator"><span class="val">0.2971</span></div></div></div>
+            <div class="br"><div class="nm">E5-base<small>dense retrieval</small></div><div class="trk"><div class="fill tip" tabindex="0" data-v="0.5742" data-tip="0.5742 · E5-base semantic retrieval"><span class="val">0.5742</span></div></div></div>
+            <div class="br"><div class="nm">AfriE5-Large<small>+ hard negatives</small></div><div class="trk"><div class="fill tip" tabindex="0" data-v="0.6545" data-tip="0.6545 · AfriE5-Large-instruct fine-tuned with hard negatives"><span class="val">0.6545</span></div></div></div>
+            <div class="br"><div class="nm">+ Consensus vote<small>MBR</small></div><div class="trk"><div class="fill tip" tabindex="0" data-v="0.6597" data-tip="0.6597 · MBR consensus selection over the top candidates"><span class="val">0.6597</span></div></div></div>
+            <div class="br"><div class="nm">+ Stitcher<small>extractive</small></div><div class="trk"><div class="fill tip" tabindex="0" data-v="0.6650" data-tip="0.6650 · extractive sentence stitcher for weaker subsets"><span class="val">0.6650</span></div></div></div>
+            <div class="br"><div class="nm">+ Unicode scoring<small>and one answer in all columns</small></div><div class="trk"><div class="fill tip" tabindex="0" data-v="0.6843" data-tip="0.6843 · local scorer fixed for Amharic and Akan, tuning redone"><span class="val">0.6843</span></div></div></div>
+            <div class="br"><div class="nm">+ Blended retrievers<small>second final</small></div><div class="trk"><div class="fill tip" tabindex="0" data-v="0.6898" data-tip="0.6898 · embedding interpolation; kept as the second selected final"><span class="val">0.6898</span></div></div></div>
+            <div class="br"><div class="nm">+ Reranker<small>final</small></div><div class="trk"><div class="fill me tip" tabindex="0" data-v="0.6908" data-tip="0.6908 · cross-encoder reranker for Akan and Amharic; the best file"><span class="val">0.6908</span></div></div></div>
+          </div>
+          <details class="tbl"><summary>Show as table</summary><div class="scroller"><table><thead><tr><th>Submission</th><th>Public score</th><th>Key change</th></tr></thead><tbody>
+            <tr><td>TF-IDF character n-gram retrieval</td><td class="num">0.4908</td><td>Baseline</td></tr>
+            <tr><td>mT5-base seq2seq</td><td class="num">0.2396</td><td>Generation loses overlap</td></tr>
+            <tr><td>AfriTeVa V2 seq2seq</td><td class="num">0.2971</td><td>Better than mT5, still below retrieval</td></tr>
+            <tr><td>E5-base semantic retrieval</td><td class="num">0.5742</td><td>Dense embeddings</td></tr>
+            <tr><td>AfriE5-Large + hard negatives</td><td class="num">0.6545</td><td>African-language embedder</td></tr>
+            <tr><td>+ MBR consensus selection</td><td class="num">0.6597</td><td>Consensus over top-1</td></tr>
+            <tr><td>+ Extractive stitcher</td><td class="num">0.6650</td><td>Verbatim sentence extraction</td></tr>
+            <tr><td>+ Unicode fix and identical columns</td><td class="num">0.6843</td><td>Correct Amharic and Akan scoring</td></tr>
+            <tr><td>+ Embedding interpolation (V4)</td><td class="num">0.6898</td><td>Second selected final</td></tr>
+            <tr><td>+ Cross-encoder reranker (V7)</td><td class="num">0.6908</td><td>Best, selected final</td></tr>
+          </tbody></table></div><div class="src">Source: score progression in the project README and experiment log</div></details>
+        </div>
+
+        <div class="chart reveal">
+          <span class="tag status">Experiment log</span>
+          <p class="ct">44 experiments, one verdict each</p>
+          <p class="cs">Each square is one experiment in the public log.</p>
+          <div class="wgrid" id="wlog" role="img" aria-label="44 experiments: 15 kept, 24 rejected, 2 partial or superseded, 3 not run"></div>
+          <div class="legend wl2"><span><i class="me"></i>Kept, 15</span><span><i class="rj"></i>Rejected, 24</span><span><i class="pt"></i>Partial or superseded, 2</span><span><i class="ut"></i>Not run, 3</span></div>
+          <div class="src" style="margin-top:14px">Kept includes the two selected final files. Not run: ideas logged with the reasoning behind them, left for later.</div>
+        </div>
+
+        <div class="chart reveal">
+          <span class="tag status">Biggest gains</span>
+          <p class="ct">Where the score came from</p>
+          <p class="cs">Gain in public score from each step, largest first.</p>
+          <div class="bars" data-max="0.105">
+            <div class="br"><div class="nm">Dense embeddings<small>E5-base</small></div><div class="trk"><div class="fill tip" tabindex="0" data-v="0.0834" data-tip="+0.083 · TF-IDF to E5-base dense retrieval"><span class="val">+0.083</span></div></div></div>
+            <div class="br"><div class="nm">African embedder<small>AfriE5-Large</small></div><div class="trk"><div class="fill tip" tabindex="0" data-v="0.0803" data-tip="+0.080 · AfriE5-Large with hard negatives"><span class="val">+0.080</span></div></div></div>
+            <div class="br"><div class="nm">Scoring fix<small>Unicode tokens</small></div><div class="trk"><div class="fill me tip" tabindex="0" data-v="0.0193" data-tip="+0.019 · Unicode tokeniser fix and identical columns"><span class="val">+0.019</span></div></div></div>
+            <div class="br"><div class="nm">Blended retrievers<small>interpolation</small></div><div class="trk"><div class="fill tip" tabindex="0" data-v="0.0055" data-tip="+0.006 · embedding interpolation"><span class="val">+0.006</span></div></div></div>
+            <div class="br"><div class="nm">Stitcher<small>extractive</small></div><div class="trk"><div class="fill tip" tabindex="0" data-v="0.0053" data-tip="+0.005 · extractive stitcher"><span class="val">+0.005</span></div></div></div>
+            <div class="br"><div class="nm">Consensus vote<small>MBR</small></div><div class="trk"><div class="fill tip" tabindex="0" data-v="0.0052" data-tip="+0.005 · MBR consensus"><span class="val">+0.005</span></div></div></div>
+          </div>
+          <div class="src" style="margin-top:14px">The scoring fix, highlighted, gained more than the last three model changes together.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="failures">
+  <div class="wrap sh">
+    <div class="sx">04 · What failed</div>
+    <div>
+      <h2>Reported in full</h2>
+      <p class="body">Most of the 44 experiments lost. The log keeps each one with its result and the reason it was dropped, so the final pipeline can be traced back to evidence.</p>
+      <div class="fails reveal">
+        <div class="fail"><div class="big">0.24</div><h4>Generation lost to my own baseline</h4><p>mT5-base scored 0.2396, AfriTeVa V2 0.2971 and free-form Qwen-7B answers 0.3505, all below 0.4908 for simple retrieval. Paraphrased answers lose word overlap with the reference.</p><div class="fix">Retrieve expert-written answers; generate only where it measurably wins, for Ghanaian English.</div></div>
+        <div class="fail"><div class="big">&minus;0.0014</div><h4>A better ROUGE that lost overall</h4><p>A later file raised Ghanaian English ROUGE on held-out data by 0.017, but the LLM judge column fell by 0.0063, and the leaderboard score dropped.</p><div class="fix">Rejected. The final file is the one that scored best on all three columns.</div></div>
+        <div class="fail"><div class="big">Leak</div><h4>A bug in my own tuning</h4><p>While re-tuning the stitcher, a held-out question could retrieve itself as its own best match, which inflated local scores.</p><div class="fix">Caught and fixed before submission; the final file was checked clean.</div></div>
+        <div class="fail"><div class="big">Forgetting</div><h4>One retriever for all languages hurt the strong ones</h4><p>Fine-tuning the retriever on every subset at once lifted the weak languages and degraded the strong ones.</p><div class="fix">Blend the base and fine-tuned retrievers per language, with weights chosen on held-out data.</div></div>
+        <div class="fail" style="grid-column:1/-1"><div class="big">+0.01 given up</div><h4>A paid API that helped, removed</h4><p>Refining answers with the Gemini API added about 0.01 to the public score, but the final solution had to use open-source models only. Gemini was used in early experiments and is not in the final pipeline.</p><div class="fix">The final pipeline is fully open-source, so anyone can rerun it.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="engineering">
+  <div class="wrap sh">
+    <div class="sx">05 · Engineering</div>
+    <div>
+      <h2>A scoring fix worth more than a model</h2>
+      <p class="body">The organiser's scorer splits text into words with Unicode-aware rules. My first local scorer did not, so Amharic and Akan answers were being scored wrongly on my machine, and every tuning decision for them rested on that.</p>
+      <div class="kpis reveal">
+        <div class="kpi"><div class="v">0.04<small style="font-size:.45em;color:var(--faint)"> → 0.21</small></div><div class="k">local Amharic score once the tokeniser matched the organiser's</div></div>
+        <div class="kpi"><div class="v">+0.019</div><div class="k">public score after the fix, with tuning redone and one answer in all columns: 0.6650 to 0.6843</div></div>
+        <div class="kpi"><div class="v">15</div><div class="k">candidates per question, the depth that scored best in a sweep</div></div>
+        <div class="kpi"><div class="v">2,618</div><div class="k">test answers, one per question, the same text in all three columns</div></div>
+      </div>
+      <div class="grid2 reveal">
+        <div class="cell"><span class="ix">Reproducible</span><p>A Colab notebook rebuilds the final file end to end: load data and cached embeddings, load the four trained models from Drive, run the builder. A local ROUGE harness matches the organiser's scorer, and a simulator weights local results by the test mix.</p></div>
+        <div class="cell"><span class="ix">Responsible</span><p>Answers come from a corpus written by health professionals, and the strongest languages get no free-form generation at all. ROUGE disadvantages morphologically rich languages such as Akan and Amharic, so their numbers are read with that in mind.</p></div>
+      </div>
+      <div class="stack" style="margin-top:22px">
+        <span class="chip">Python</span><span class="chip">PyTorch</span><span class="chip">sentence-transformers</span><span class="chip">AfriE5-Large-instruct</span><span class="chip">FAISS</span><span class="chip">XLM-RoBERTa</span><span class="chip">Qwen2.5-7B</span><span class="chip">PEFT / LoRA</span><span class="chip">BGE-M3</span><span class="chip">rouge-score</span><span class="chip">Google Colab</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="limits">
+  <div class="wrap sh">
+    <div class="sx">06 · Limits and next</div>
+    <div>
+      <h2>What the score does not show</h2>
+      <div class="grid2 reveal">
+        <div class="cell"><span class="ix">Known limitations</span><p>Most answers are retrieved, not written, so quality depends on the corpus holding a similar question. ROUGE rewards overlap with one reference and can undervalue a correct answer phrased differently, especially in Akan and Amharic. Scores come from automatic metrics and an LLM judge, not from clinicians.</p></div>
+        <div class="cell"><span class="ix">Next</span><p>Three ideas are logged but not run: a larger Qwen3 embedding model as an extra retrieval leg, answer length as a reranker feature, and pseudo-labelling the reranker on test questions. Each is logged with the reasoning behind it.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ending">
+  <div class="wrap">
+    <p class="pull">In health, the safest answer is often one <em>an expert already wrote</em>.</p>
+    <div class="cta">
+      <a href="../#contact" class="btn solid">Get in touch</a>
+      <a href="../aegisveritas/" class="btn ghost">AegisVeritas case study</a>
+      <a href="/Samuel-Mwania-Resume.pdf" target="_blank" rel="noopener" class="btn ghost">Resume</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="wrap">
+  <div class="lbl" style="line-height:2">Samuel Mwania · Multilingual Health QA case study<br>© 2026</div>
+  <div class="lbl" style="line-height:2;text-align:right"><a href="../" style="color:var(--muted)">Portfolio</a> &middot; <a href="https://github.com/mwaniasam" target="_blank" rel="noopener" style="color:var(--muted)">GitHub</a><br>Juja, Kenya · UTC+3</div>
+</footer>
+
+<script>
+/* theme: shares the portfolio's saved choice */
+const root=document.documentElement;
+try{const s=localStorage.getItem("theme");if(s)root.setAttribute("data-theme",s);}catch(_){}
+document.getElementById("theme").addEventListener("click",()=>{
+  const dark=getComputedStyle(root).getPropertyValue("--bg").trim().toUpperCase().startsWith("#08");
+  const n=dark?"light":"dark";root.setAttribute("data-theme",n);
+  try{localStorage.setItem("theme",n);}catch(_){}
+});
+
+/* bar widths from data: linear charts use data-max, the odds chart uses a log scale */
+document.querySelectorAll(".bars[data-max]").forEach(b=>{
+  const max=parseFloat(b.dataset.max);
+  b.querySelectorAll(".fill").forEach(f=>{f.style.width=Math.max(parseFloat(f.dataset.v)/max*100,0.6)+"%";});
+  if(b.dataset.ref){
+    b.querySelectorAll(".trk").forEach((t,i)=>{
+      const a=document.createElement("div");a.className="axis";a.style.left=(parseFloat(b.dataset.ref)/max*100)+"%";
+      if(i===0)a.innerHTML=`<span>${b.dataset.reflabel}</span>`;t.appendChild(a);
+    });
+  }
+});
+/* experiment log: 44 squares in verdict order */
+document.getElementById("wlog").innerHTML=[["k",15],["r",24],["p",2],["u",3]].map(([c,n])=>`<i class="${c}"></i>`.repeat(n)).join("");
+
+/* reveal */
+const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if("IntersectionObserver" in window&&!reduce){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}}),{rootMargin:"0px 0px -6% 0px",threshold:.04});
+  document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+  const links=[...document.querySelectorAll("#toc a")];
+  const io2=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id));}),{rootMargin:"-45% 0px -50% 0px"});
+  document.querySelectorAll("section[id]").forEach(s=>io2.observe(s));
+}else document.querySelectorAll(".reveal").forEach(el=>el.classList.add("in"));
+
+/* progress bar */
+const prog=document.getElementById("prog");
+addEventListener("scroll",()=>{const d=document.documentElement,m=d.scrollHeight-d.clientHeight;prog.style.width=(m>0?d.scrollTop/m*100:0)+"%";},{passive:true});
+
+</script>
+</body>
+</html>
