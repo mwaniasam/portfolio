@@ -663,7 +663,7 @@ footer{border-top:1px solid var(--line);padding-top:30px;padding-bottom:44px;dis
   <div class="stat"><div class="n" data-count="7">7</div><div class="c lbl">Systems built end to end</div></div>
   <div class="stat"><div class="n" data-count="2">2</div><div class="c lbl">ML services live in production</div></div>
   <div class="stat"><div class="n">17th</div><div class="c lbl">Of 1,651 on Zindi</div></div>
-  <div class="stat"><div class="n" data-count="664">664</div><div class="c lbl">Automated tests on the capstone</div></div>
+  <div class="stat"><div class="n" data-count="665">665</div><div class="c lbl">Automated tests on the capstone</div></div>
 </div></div>
 
 <section id="flagship">
@@ -686,7 +686,7 @@ footer{border-top:1px solid var(--line);padding-top:30px;padding-bottom:44px;dis
       </div>
       <a href="aegisveritas/" class="flagshot" aria-label="Open the AegisVeritas case study">
         <div class="fb"><i></i><i></i><i></i></div>
-        <img src="aegisveritas/img/queue-chromium-desktop.webp" width="1280" height="720" loading="lazy" alt="AegisVeritas review queue: supplier pairs ranked by likelihood of common control, each with its evidence. Firm names are invented.">
+        <img src="aegisveritas/img/av-evidence.webp" width="1024" height="902" loading="lazy" alt="AegisVeritas evidence card for one supplier pair: likelihood of common control, the evidence behind it, what to check next and the verdict form. Real records, firm names masked.">
       </a>
     </div>
   </div>
@@ -707,7 +707,7 @@ footer{border-top:1px solid var(--line);padding-top:30px;padding-bottom:44px;dis
       <div>
         <span class="lbl" style="color:var(--accent)">Capstone &middot; 2026 &middot; Results in</span>
         <h3>Hidden supplier links in Kenyan public procurement</h3>
-        <p>Pre-registered evaluation on Kenyan and Estonian data: average precision 0.146 against 0.067 for the baseline, and AUC 0.85 against 0.57 on unseen firms. Expert interviews under ALU ethics approval SEPT26-BEL-070.</p>
+        <p>Pre-registered evaluation on Kenyan and Estonian data: average precision 0.146 against 0.067 for the baseline, and AUC 0.85 against 0.57 on unseen firms. Expert evaluation under way, under ALU ethics approval SEPT26-BEL-070.</p>
         <a class="go" href="aegisveritas/#method">Method and results &rarr;</a>
       </div>
       <div>
@@ -1058,21 +1058,21 @@ const PROJECTS = [
  sub:"Finds bidders in Kenyan public procurement that look independent but are linked to each other or to a debarred party",
  cs:{problem:"A debarred company rarely bids under its own name. It bids through a clean-looking company that shares a director, owner, phone or address with it, and a name check passes it. Two competing bidders can also share one owner.",
   result:"Pre-registered and passed: average precision 0.146 against 0.067 for Adamic-Adar on 7,884 held-back Kenyan pairs, with 25 of the top 100 flags real links. AUC 0.85 against 0.57 on Estonian firms the model never saw, checked against Estonia's open register.",
-  eng:"FastAPI, PostgreSQL with row-level security, Neo4j, Celery and Redis, a Next.js app, and a SHA-256 hash-chained audit log. 664 backend tests, 80 of 80 browser tests across three engines, and 54 of 54 system checks on real data.",
+  eng:"FastAPI, PostgreSQL with row-level security, Neo4j, Celery and Redis, a Next.js app, and a SHA-256 hash-chained audit log. 665 backend tests, 80 of 80 browser tests across three engines, and 54 of 54 system checks on real data.",
   data:"Kenya's PPIP portal and PPRA award files, with 12,441 disclosed ownership links as labels; World Bank, AfDB, OpenSanctions, ICIJ and EACC lists; Estonia's procurement data and open ownership register for validation.",
   method:"Supplier pairs scored from three kinds of evidence: shared owners or directors, shared contacts, and award behaviour from LightGBM on 20 features with isotonic calibration. Combined Fellegi-Sunter style, so every flag keeps its reasons. A new model goes live only if it beats the baseline and the live model on a fixed holdout.",
   baseline:"Adamic-Adar link prediction. Random ranking scores 0.023 on the Kenyan holdout.",
   limits:"Hidden links in Kenya are not yet proven: there is no open register to check against, and 75 of the top 100 Kenyan pairs are not confirmed links. A model trained on Estonia alone failed in Kenya, and the pre-registered KeRRA register test missed its pass mark.",
   why:"The proposal's graph neural network did not beat a size-only baseline on 18 confirmed Kenyan cases. Changing the question to whether two firms share one control is what made the labels, and the results, possible."},
- story:["The system is not on the open internet, by design: its findings name firms that have not been found to do anything wrong. A person always decides, as Kenya's Data Protection Act requires, and firm names are visible only to investigator, auditor and admin roles."],
- kpis:[["0.146","Kenya AP"],["0.85","Estonia AUC"],["25/100","Top flags linked"],["210×","KeRRA P.O. Box"],["664","Backend tests"],["80/80","Browser tests"]],
+ story:["The system is not on the open internet, by design: its findings name firms that have not been found to do anything wrong. Invited evaluators reach it through Cloudflare Access. A person always decides, as Kenya's Data Protection Act requires, and firm names are visible only to investigator, auditor and admin roles."],
+ kpis:[["0.146","Kenya AP"],["0.85","Estonia AUC"],["25/100","Top flags linked"],["210×","KeRRA P.O. Box"],["665","Backend tests"],["80/80","Browser tests"]],
  deep:[
   {h:"A register the model never saw",t:"In KeRRA contractor registers, supplier pairs linked by owner or director shared a P.O. Box 209.9 times more often than matched controls: 30 of 253 against 5 of 8,852, p = 1.0e-42. A shared box shows a relationship, not wrongdoing."},
   {h:"A safety gate that caught my own model",t:"A live model built with an untested change scored 0.075 on the holdout. The gate exposed it, and the engine now runs exactly the model that was tested, which scores 0.146."}],
  tables:[],
- media:[{url:"aegisveritas/img/pair-chromium-desktop.webp",label:"Evidence card for one supplier pair. Firm names are invented."},
-        {url:"aegisveritas/img/queue-chromium-desktop.webp",label:"Review queue, ranked by likelihood of common control"},
-        {url:"aegisveritas/img/05-investigate.webp",label:"Investigation canvas: the path to a debarred firm"}],
+ media:[{url:"aegisveritas/img/av-evidence.webp",label:"Evidence card for one supplier pair. Real records, firm names masked."},
+        {url:"aegisveritas/img/av-egp.webp",label:"Pre-award check at e-GP bid opening"},
+        {url:"aegisveritas/img/av-queue.webp",label:"Review queue, ranked by likelihood of common control"}],
  links:[{t:"Case study",u:"aegisveritas/",internal:true,live:true},
         {t:"Walkthrough video",u:"https://youtu.be/g4tlftDK7T4"},
         {t:"Research",u:"#research",internal:true}]},

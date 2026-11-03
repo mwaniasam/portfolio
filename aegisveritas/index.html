@@ -208,6 +208,7 @@ p.body strong{color:var(--text);font-weight:600}
 .chart .ct{font-size:16.5px;font-weight:700;letter-spacing:-.015em;margin:0 0 4px}
 .chart .cs{font-size:13.5px;line-height:1.55;color:var(--muted);margin:0 0 18px}
 .chart .tag{float:right;margin-left:12px}
+@media(max-width:640px){.chart .tag{float:none;margin:0 0 12px}}
 .status{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border:1px solid var(--ok);color:var(--ok);border-radius:2px}
 .status.fail{border-color:var(--bad);color:var(--bad)}
 .status.cor{border-color:var(--accent);color:var(--accent)}
@@ -323,7 +324,7 @@ footer{border-top:1px solid var(--line);padding-top:28px;padding-bottom:44px;dis
   <div class="chips reveal">
     <span class="chip hot">Capstone · 2026</span>
     <span class="chip ok">Working system · pre-registered results</span>
-    <span class="chip">Private by design</span>
+    <span class="chip">Invite-only access</span>
   </div>
   <h1 class="reveal">AegisVeritas</h1>
   <p class="kicker reveal">Two bidders. <em>One owner.</em></p>
@@ -337,11 +338,12 @@ footer{border-top:1px solid var(--line);padding-top:28px;padding-bottom:44px;dis
   <div class="cta reveal">
     <a href="#results" class="btn solid">See the results</a>
     <a href="#walkthrough" class="btn ghost"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Watch the walkthrough</a>
+    <a href="AegisVeritas_Technical_Report.pdf" class="btn ghost" target="_blank" rel="noopener">Technical report (PDF)</a>
   </div>
   <figure class="herofig reveal">
-    <div class="frame"><div class="bar"><i></i><i></i><i></i><span>aegisveritas · demo data</span></div>
-      <img src="img/01-landing.webp" width="1280" height="800" alt="AegisVeritas landing page showing a screening result: a company linked through a shared director to a firm on a World Bank debarment list" fetchpriority="high"></div>
-    <figcaption>The landing page, on demo data. Every company and person shown on this page is invented.</figcaption>
+    <div class="frame"><div class="bar"><i></i><i></i><i></i><span>e-GP bid opening · pre-award check</span></div>
+      <img src="img/av-egp.webp" width="1024" height="871" alt="Simulated e-GP bid-opening screen: AegisVeritas warns the evaluation committee that two of three bidders may be under common control, with the evidence and a recommended action" fetchpriority="high"></div>
+    <figcaption>At bid opening, a simulated e-GP screen sends one tender's bidders to AegisVeritas; the check and its answer are real, returned in 0.64 s. Real records, firm names masked.</figcaption>
   </figure>
 </div>
 
@@ -350,7 +352,7 @@ footer{border-top:1px solid var(--line);padding-top:28px;padding-bottom:44px;dis
     <div class="hn"><div class="n">0.146<small>vs 0.067</small></div><div class="d">Average precision on 7,884 held-back Kenyan pairs, against the Adamic-Adar baseline.</div><div class="s"><span class="status">Pre-registered · passed</span></div></div>
     <div class="hn"><div class="n">0.85<small>vs 0.57</small></div><div class="d">AUC on Estonian firms the model never saw, checked against Estonia's open ownership register.</div><div class="s"><span class="status">Pre-registered · passed</span></div></div>
     <div class="hn"><div class="n">25<small>of 100</small></div><div class="d">Real links among the top 100 flags. Picking pairs at random finds about 2.</div><div class="s"><span class="status">Kenyan holdout</span></div></div>
-    <div class="hn"><div class="n">210×</div><div class="d">More often, owner-linked pairs share a P.O. Box in road-authority registers the model never saw. p = 1.0e-42.</div><div class="s"><span class="status cor">Corroborated</span></div></div>
+    <div class="hn"><div class="n">210×</div><div class="d">More often, owner-linked pairs share a P.O. Box in road-authority registers the model never saw. p = 1.0e-42.</div><div class="s"><span class="status cor">Corroborated · post hoc</span></div></div>
   </div>
 </div>
 
@@ -453,11 +455,11 @@ footer{border-top:1px solid var(--line);padding-top:28px;padding-bottom:44px;dis
   <div class="wrap sh">
     <div class="sx">04 · Results</div>
     <div>
-      <h2>Pre-registered results</h2>
-      <p class="body">Before every test, the protocol and its pass mark were committed to GitHub, so the rules could not move after the results were seen. The baseline throughout is <strong>Adamic-Adar</strong>, the standard link-prediction score.</p>
+      <h2>Results</h2>
+      <p class="body">Tests marked pre-registered had their protocol and pass mark committed to GitHub before the run, so the rules could not move after the results were seen. The baseline throughout is <strong>Adamic-Adar</strong>, the standard link-prediction score.</p>
       <div class="charts">
         <div class="chart reveal">
-          <span class="tag status">Passed</span>
+          <span class="tag status">Pre-registered · passed</span>
           <p class="ct">Estonia: firms the model never saw</p>
           <p class="cs">AUC, with true owners hidden from the model and answers checked against Estonia's open register. 0.5 is a coin flip.</p>
           <div class="bars" data-max="1" data-ref="0.5" data-reflabel="coin flip">
@@ -468,7 +470,7 @@ footer{border-top:1px solid var(--line);padding-top:28px;padding-bottom:44px;dis
         </div>
 
         <div class="chart reveal">
-          <span class="tag status">Passed</span>
+          <span class="tag status">Pre-registered · passed</span>
           <p class="ct">Estonia: the whole system</p>
           <p class="cs">Share of all register-linked pairs found in the top 1,000, before and after adding register candidates to behaviour.</p>
           <div class="bars" data-max="0.6">
@@ -482,7 +484,7 @@ footer{border-top:1px solid var(--line);padding-top:28px;padding-bottom:44px;dis
         </div>
 
         <div class="chart reveal">
-          <span class="tag status">Passed</span>
+          <span class="tag status">Pre-registered · passed</span>
           <p class="ct">Kenya: held-back supplier pairs</p>
           <p class="cs">Average precision on 7,884 pairs the model never trained on, only 178 truly linked. Reproduced on a full retrain.</p>
           <div class="bars" data-max="0.19">
@@ -505,15 +507,15 @@ footer{border-top:1px solid var(--line);padding-top:28px;padding-bottom:44px;dis
         </div>
 
         <div class="chart reveal" style="grid-column:1/-1">
-          <span class="tag status cor">Corroborated</span>
+          <span class="tag status cor">Corroborated · not pre-registered</span>
           <p class="ct">A register the model never saw</p>
-          <p class="cs">KeRRA, the rural roads authority, publishes contractor registers that list each firm's P.O. Box. The model flags pairs from ownership records only; the registers were never part of its data.</p>
+          <p class="cs">KeRRA, the rural roads authority, publishes contractor registers that list each firm's P.O. Box. The model flags pairs from ownership records only; the registers were never part of its data. This check was run after the detector was built.</p>
           <div class="bars" data-max="0.14">
             <div class="br"><div class="nm">Owner-linked pairs<small>30 of 253</small></div><div class="trk"><div class="fill me tip" tabindex="0" data-v="0.1186" data-tip="11.86% of pairs linked by owner or director share a P.O. Box (30 of 253)"><span class="val">11.86%</span></div></div></div>
-            <div class="br"><div class="nm">Matched controls<small>5 of 8,852</small></div><div class="trk"><div class="fill tip" tabindex="0" data-v="0.00056" data-tip="0.056% of matched control pairs, which won from the same buyers, share one (5 of 8,852)"><span class="val">0.056%</span></div></div></div>
+            <div class="br"><div class="nm">Same-buyer controls<small>5 of 8,852</small></div><div class="trk"><div class="fill tip" tabindex="0" data-v="0.00056" data-tip="0.056% of control pairs that won from the same buyers share one (5 of 8,852)"><span class="val">0.056%</span></div></div></div>
           </div>
-          <p class="cs" style="margin:16px 0 0">209.9 times more often, and at least 63.8 times at the cautious end of the 95% interval. Fisher's exact test, p = 1.0e-42. A shared box shows a relationship, not wrongdoing.</p>
-          <div class="src">Source: KeRRA contractor registers (22 files, 20 regions); verification report, 28 October 2026</div>
+          <p class="cs" style="margin:16px 0 0">209.9 times more often than same-buyer controls, and at least 63.8 times at the cautious end of the 95% interval (Fisher's exact test, p = 1.0e-42). Against random pairs from the same region: 118.6 times, at least 23.2 times (p = 2.7e-27). A shared box shows a relationship, not wrongdoing.</p>
+          <div class="src">Source: KeRRA contractor registers (22 files, 20 regions); verification report of 30 October 2026, section 5</div>
         </div>
       </div>
       <p class="body" style="margin-top:26px">The Kenyan labels come from disclosed ownership, so the Kenyan result shows that award behaviour can recover links that were disclosed. Estonia's official register is what supports the claim for hidden links.</p>
@@ -532,6 +534,7 @@ footer{border-top:1px solid var(--line);padding-top:28px;padding-bottom:44px;dis
         <div class="fail"><div class="big">2×</div><h4>An outside test on road-contractor registers missed its pass mark</h4><p>The pre-registered KeRRA test found no signal at its primary endpoint, twice: with the pair model and with the evidence engine.</p><div class="fix">The system now refuses to judge pairs unlike its training data.</div></div>
         <div class="fail"><div class="big">0.075</div><h4>My own safety gate caught a weaker model running live</h4><p>The engine-2 model used importance weighting that was never tested, and a step-shaped calibrator.</p><div class="fix">Engine-3 trains exactly the model that was tested, and scores 0.146.</div></div>
         <div class="fail"><div class="big">0.87</div><h4>A result I withdrew</h4><p>An Estonia-to-Kenya AUC of 0.87 turned out to have read the synthetic sample market, not real data.</p><div class="fix">Withdrawn and replaced by the real-data runs above.</div></div>
+        <div class="fail" style="grid-column:1/-1"><div class="big">242× &rarr; 209.9×</div><h4>Every number rerun after submission</h4><p>The submitted figures came from a run on an older database that still held duplicate company records. After a clean rebuild, concealed pairs went from 3,976 to 3,916 and the P.O. Box ratio from 242 to 209.9 times. The submission is tagged in git, and every run is kept.</p><div class="fix">The conclusion is unchanged; the page reports the rerun.</div></div>
       </div>
     </div>
   </div>
@@ -544,7 +547,7 @@ footer{border-top:1px solid var(--line);padding-top:28px;padding-bottom:44px;dis
       <h2>Built to be trusted</h2>
       <p class="body">Because it names firms, the system has to be correct, explainable and hard to misuse. The tests, timings and design choices below come from the technical report.</p>
       <div class="kpis reveal">
-        <div class="kpi"><div class="v">664</div><div class="k">backend tests passing; 81% to 97% line coverage in the engine, screening and service code</div></div>
+        <div class="kpi"><div class="v">665</div><div class="k">backend tests passing; 81% to 97% line coverage in the engine, screening and service code</div></div>
         <div class="kpi"><div class="v">80/80</div><div class="k">browser tests across Chromium, Firefox and WebKit, laptop and phone sizes</div></div>
         <div class="kpi"><div class="v">54/54</div><div class="k">system checks: every endpoint and page of the running stack, on real data</div></div>
         <div class="kpi"><div class="v">155<small style="font-size:.45em;color:var(--faint)"> req/s</small></div><div class="k">with 10 clients at once and 0 failed requests</div></div>
@@ -571,7 +574,7 @@ footer{border-top:1px solid var(--line);padding-top:28px;padding-bottom:44px;dis
           </tbody></table></div>
         </div>
         <div class="cell"><span class="ix">Design</span><p>Seven data connectors implement one abstract connector; two risk models share one interface, so the graph model can be swapped for rules. The screening orchestrator depends on interfaces, not on Neo4j or PyTorch, so a baseline can replace the model with no other change.</p></div>
-        <div class="cell"><span class="ix">Responsible by design</span><p>A person always decides, as Kenya's Data Protection Act requires. The API serves links by kind and date, never people's names. Firm names can be masked as stable codes for recordings. The system is not on the open internet: its findings name firms that have not been found to do anything wrong.</p></div>
+        <div class="cell"><span class="ix">Responsible by design</span><p>A person always decides, as Kenya's Data Protection Act requires. The API serves links by kind and date, never people's names. Firm names can be masked as stable codes for recordings. The system is not on the open internet, because its findings name firms that have not been found to do anything wrong. Invited evaluators reach it through Cloudflare Access, behind a one-time code and an app account.</p></div>
       </div>
       <div class="stack" style="margin-top:22px">
         <span class="chip">Python 3.11</span><span class="chip">FastAPI</span><span class="chip">SQLAlchemy 2.0 async</span><span class="chip">PostgreSQL 15</span><span class="chip">Neo4j 5</span><span class="chip">Redis + Celery</span><span class="chip">LightGBM</span><span class="chip">scikit-learn</span><span class="chip">PyTorch Geometric</span><span class="chip">Next.js 14</span><span class="chip">TypeScript</span><span class="chip">Tailwind</span><span class="chip">Playwright</span><span class="chip">pytest</span><span class="chip">Docker Compose</span>
@@ -585,14 +588,18 @@ footer{border-top:1px solid var(--line);padding-top:28px;padding-bottom:44px;dis
     <div class="sx">07 · Screens</div>
     <div>
       <h2>The product</h2>
-      <p class="body">Captured during the browser tests and the walkthrough. Every company and person shown is invented demo data.</p>
+      <p class="body">The review queue, evidence card and e-GP screens run on real records with firm names masked as stable codes. The screening, investigation and audit screens use an invented demo company, and the people named in them are invented too.</p>
       <div class="gal">
-        <figure class="g-wide reveal" style="margin:0"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>review queue</span></div><img src="img/queue-chromium-desktop.webp" width="1280" height="720" loading="lazy" alt="Review queue listing supplier pairs ranked by likelihood of common control, each with its evidence"></div><figcaption>Review queue: supplier pairs ranked by likelihood of common control</figcaption></figure>
-        <figure class="g-side reveal" style="margin:0"><div class="phones"><div class="phone"><img src="img/queue-chromium-phone.webp" width="688" height="1400" loading="lazy" alt="Review queue on a phone"></div><div class="phone"><img src="img/pair-chromium-phone.webp" width="688" height="1400" loading="lazy" alt="Evidence card on a phone"></div></div><figcaption>The same views on a phone, 412 px wide</figcaption></figure>
-        <figure class="g-half reveal" style="margin:0"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>evidence card</span></div><img src="img/pair-chromium-desktop.webp" width="1280" height="720" loading="lazy" alt="Evidence card for one supplier pair with the verdict form"></div><figcaption>Evidence card: what the evidence is, how reliable it proved, what to check next</figcaption></figure>
-        <figure class="g-half reveal" style="margin:0"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>screening</span></div><img src="img/04-screen-hidden-link.webp" width="1353" height="995" loading="lazy" alt="Screening result: a company on no list shares a director with a debarred company"></div><figcaption>Screening: on no list, but one director away from a debarred firm</figcaption></figure>
-        <figure class="g-half reveal" style="margin:0"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>investigation</span></div><img src="img/05-investigate.webp" width="1353" height="965" loading="lazy" alt="Investigation canvas tracing the path from a supplier to a debarred company"></div><figcaption>Investigation canvas: the path, two hops out</figcaption></figure>
-        <figure class="g-half reveal" style="margin:0"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>audit</span></div><img src="img/09-audit.webp" width="1369" height="977" loading="lazy" alt="Audit log with the hash chain verified intact"></div><figcaption>Audit log: append-only, hash-chained, verified in the app</figcaption></figure>
+        <figure class="g-half reveal" style="margin:0"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>review queue</span></div><img src="img/av-queue.webp" width="1024" height="872" loading="lazy" alt="Review queue listing supplier pairs ranked by likelihood of common control, firm names masked"></div><figcaption>Review queue: 10,867 leads and 12,441 disclosed links, ranked by likelihood of common control. Real records, names masked.</figcaption></figure>
+        <figure class="g-half reveal" style="margin:0"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>evidence card</span></div><img src="img/av-evidence.webp" width="1024" height="902" loading="lazy" alt="Evidence card for one supplier pair: the kinds of evidence, how strong each proved, what to check next, and the verdict form"></div><figcaption>Evidence card: each kind of evidence and how strong it proved, what to check next, and a verdict saved to the audit log.</figcaption></figure>
+        <figure class="g-half reveal" style="margin:0"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>screening · demo data</span></div><img src="img/av-screen.webp" width="1024" height="886" loading="lazy" alt="Screening result for an invented demo company: a direct sanctions-list match with the factors behind the score"></div><figcaption>Screening: a direct list match, with every factor behind the score and its source. Invented demo company.</figcaption></figure>
+        <figure class="g-half reveal" style="margin:0"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>investigation · demo data</span></div><img src="img/av-investigate.webp" width="1024" height="872" loading="lazy" alt="Investigation canvas showing the ownership network of an invented demo company, two hops out"></div><figcaption>Investigation canvas: the ownership and award network, two hops out. Invented company and people.</figcaption></figure>
+        <figure class="g-wide reveal" style="margin:0"><div class="frame"><div class="bar"><i></i><i></i><i></i><span>audit log</span></div><img src="img/av-audit.webp" width="1024" height="871" loading="lazy" alt="Audit log with the hash chain verified intact across 91 entries"></div><figcaption>Audit log: every screening, verdict and tender check, hash-chained and verified in the app.</figcaption></figure>
+        <div class="g-side reveal" style="display:flex;flex-direction:column;justify-content:center;gap:14px">
+          <span class="lbl" style="color:var(--accent)">See it working</span>
+          <p class="body" style="margin:0">The system is invite-only. Evaluators and recruiters can ask for a guided session.</p>
+          <a class="btn solid" href="mailto:mwaaniasamuel@gmail.com?subject=AegisVeritas%20evaluator%20access" style="align-self:flex-start">Request access</a>
+        </div>
       </div>
       <div id="walkthrough" style="margin-top:44px">
         <h3>Walkthrough</h3>
@@ -609,8 +616,8 @@ footer{border-top:1px solid var(--line);padding-top:28px;padding-bottom:44px;dis
     <div>
       <h2>A reason to look, not an accusation</h2>
       <div class="grid2 reveal">
-        <div class="cell"><span class="ix">Known limitations</span><p>Hidden links in Kenya are not yet proven: there is no public register to check against. 75 of the top 100 Kenyan pairs are not confirmed links; some may be hidden links and some will be innocent. Pairs where a firm has fewer than 3 awards (770,624 candidates) are not scored. Entity resolution precision has not yet been measured on a hand-checked sample, and a 9,000-firm stress test ran out of memory, so scoring moves to batches next.</p></div>
-        <div class="cell"><span class="ix">Next</span><p>Twelve to fifteen expert interviews with procurement officers, auditors, compliance analysts and investigators, under ALU ethics approval SEPT26-BEL-070. Then invite-only access through Cloudflare Access, and a pilot with an organisation that works with procurement authorities.</p></div>
+        <div class="cell"><span class="ix">Known limitations</span><p>Hidden links in Kenya are not yet proven: there is no public register to check against. 75 of the top 100 Kenyan pairs are not confirmed links; some may be hidden links and some will be innocent. Pairs where a firm has fewer than 3 awards (770,624 candidates) are not scored. Suppliers are matched by normalised name, so two different firms with the same name would be treated as one, and entity resolution precision has not yet been measured on a hand-checked sample. A 9,000-firm stress test ran out of memory, so scoring moves to batches next.</p></div>
+        <div class="cell"><span class="ix">Now and next</span><p>Invite-only access has been live since 28 October 2026. Expert evaluation is under way: practitioners complete guided tasks in the app and a questionnaire that includes the System Usability Scale, under ALU ethics approval SEPT26-BEL-070. Next is a pilot with an organisation that works with procurement authorities.</p></div>
       </div>
     </div>
   </div>
