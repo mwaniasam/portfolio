@@ -93,7 +93,7 @@ header{position:sticky;top:0;z-index:70;background:color-mix(in srgb,var(--bg) 8
 .kbd{border:1px solid var(--line);border-radius:2px;padding:1px 5px;font-size:10px}
 
 /* HERO */
-.hero{position:relative;padding:clamp(40px,6vw,76px) 0 clamp(30px,4vw,48px);display:grid;grid-template-columns:minmax(0,1.32fr) minmax(0,.88fr);gap:clamp(24px,4vw,56px);align-items:end}
+.hero{position:relative;padding-top:clamp(40px,6vw,76px);padding-bottom:clamp(30px,4vw,48px);display:grid;grid-template-columns:minmax(0,1.32fr) minmax(0,.88fr);gap:clamp(24px,4vw,56px);align-items:end}
 @media(max-width:940px){.hero{grid-template-columns:1fr;align-items:start}}
 .eyebrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .status{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:2px;padding:6px 12px}
@@ -351,6 +351,24 @@ figure.lead figcaption{font-family:'JetBrains Mono',monospace;font-size:11px;let
 .stackgrid li{list-style:none;font-size:15px;color:var(--muted);padding:6px 0;display:flex;align-items:center;gap:10px}
 .stackgrid li i{width:4px;height:4px;background:var(--faint);flex:0 0 auto}
 .stackgrid .wip{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-top:8px}
+/* FLAGSHIP */
+.flagcard{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(26px,4vw,56px);align-items:center;
+  border:1px solid var(--line);background:var(--surface);padding:clamp(24px,4vw,52px);position:relative;overflow:hidden}
+.flagcard::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)}
+.flagcard::after{content:"";position:absolute;right:-10%;top:-30%;width:70%;height:120%;background:radial-gradient(closest-side,var(--accent-soft),transparent);pointer-events:none}
+@media(max-width:940px){.flagcard{grid-template-columns:1fr}}
+.flagcard h2{font-size:clamp(40px,6vw,76px);margin:14px 0 0;text-transform:none;letter-spacing:-.05em}
+.flagkick{font-weight:700;font-size:clamp(20px,2.6vw,30px);letter-spacing:-.03em;margin:10px 0 0}
+.flagkick em{font-style:normal;color:var(--accent)}
+.flagstats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);border:1px solid var(--line2);margin:24px 0 0}
+.flagstats>div{background:var(--surface);padding:14px 14px 12px}
+.flagstats b{display:block;font-weight:800;font-size:clamp(24px,2.6vw,32px);letter-spacing:-.04em;line-height:1}
+.flagstats span{display:block;margin-top:8px;font-size:12.5px;line-height:1.45;color:var(--muted)}
+@media(max-width:520px){.flagstats{grid-template-columns:1fr}.flagstats>div{display:grid;grid-template-columns:96px 1fr;gap:12px;align-items:baseline}.flagstats span{margin-top:0}}
+.flagshot{position:relative;z-index:1;border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:var(--shadow);background:var(--surface2)}
+.flagshot .fb{height:28px;display:flex;align-items:center;gap:6px;padding:0 12px;border-bottom:1px solid var(--line2)}
+.flagshot .fb i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.flagshot img{width:100%;height:auto}
 /* RESEARCH + EXPERIENCE */
 .rcard{border:1px solid var(--line);background:var(--surface);padding:clamp(22px,3vw,34px)}
 .rcard h3{margin:10px 0 8px;font-size:clamp(22px,3vw,30px);font-weight:700;letter-spacing:-.03em;line-height:1.15}
@@ -366,7 +384,7 @@ figure.lead figcaption{font-family:'JetBrains Mono',monospace;font-size:11px;let
 .mail:hover{border-color:var(--accent);color:var(--accent)}
 .copied{opacity:0;transition:opacity .2s;color:var(--accent)}
 .copied.show{opacity:1}
-footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:flex-end}
+footer{border-top:1px solid var(--line);padding-top:30px;padding-bottom:44px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:flex-end}
 .pal{position:fixed;inset:0;z-index:100;background:color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:blur(10px);display:none;justify-content:center;align-items:flex-start;padding:11vh 18px 18px}
 .pal.on{display:flex}
 .palbox{width:100%;max-width:600px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden}
@@ -479,6 +497,32 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
   <div class="stat"><div class="n" data-count="30">30</div><div class="c lbl">Controlled RL experiments, team study</div></div>
 </div></div>
 
+<section id="flagship">
+  <div class="wrap">
+    <div class="flagcard reveal">
+      <div style="position:relative;z-index:1">
+        <span class="lbl" style="color:var(--accent)">Flagship &middot; Capstone 2026</span>
+        <h2>AegisVeritas</h2>
+        <p class="flagkick">Two bidders. <em>One owner.</em></p>
+        <p class="body" style="margin:16px 0 0">Finds bidders in Kenyan public procurement that look independent but are linked to each other or to a debarred party, before the contract is signed. Built end to end, evaluated with pre-registered tests on Kenyan and Estonian data, and every flag shows its evidence.</p>
+        <div class="flagstats">
+          <div><b>0.146</b><span>average precision in Kenya, against 0.067 for the baseline</span></div>
+          <div><b>0.85</b><span>AUC on Estonian firms the model never saw</span></div>
+          <div><b>25/100</b><span>top flags are real links; random finds about 2</span></div>
+        </div>
+        <div class="cta" style="margin-top:24px">
+          <a href="aegisveritas/" class="btn solid">Read the case study</a>
+          <a href="aegisveritas/#walkthrough" class="btn ghost">Watch the walkthrough</a>
+        </div>
+      </div>
+      <a href="aegisveritas/" class="flagshot" aria-label="Open the AegisVeritas case study">
+        <div class="fb"><i></i><i></i><i></i></div>
+        <img src="aegisveritas/img/queue-chromium-desktop.webp" width="1280" height="720" loading="lazy" alt="AegisVeritas review queue: supplier pairs ranked by likelihood of common control, each with its evidence. Firm names are invented.">
+      </a>
+    </div>
+  </div>
+</section>
+
 <section id="work">
   <div class="wrap">
     <div class="shead"><h2>Selected work</h2></div>
@@ -496,32 +540,33 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
       <p class="pull">Machine learning for <em>public institutions, financial systems, development and governance</em>.</p>
 
       <div class="rcard reveal" style="margin-top:30px">
-        <span class="rstat">In progress &middot; Capstone, Sept &ndash; Nov 2026</span>
+        <span class="rstat">Results in &middot; Capstone, Sept &ndash; Nov 2026</span>
         <h3>Uncovering Hidden Supplier Links in Kenyan Public Procurement: A Graph-Based Machine Learning Approach</h3>
-        <div class="lbl">Research project &middot; Graph Machine Learning &middot; Kenya</div>
+        <div class="lbl">Research project &middot; Record linkage &middot; Kenya and Estonia</div>
         <dl class="case" style="margin:22px 0 20px">
-          <dt>Problem</dt><dd>Supplier screening compares a bidder's registered name against debarment and sanctions lists. A debarred party can return through a related company with an unrelated name: in 2021 the African Development Bank debarred a Kenyan firm and five affiliates whose names shared nothing with the parent, found only by tracing common officers.</dd>
-          <dt>Question</dt><dd>Can relational structure in public procurement and ownership records identify supplier exposure that name-based screening does not detect, and do learned graph representations remain effective on a real Kenyan graph?</dd>
-          <dt>Approach</dt><dd>An ownership, directorship and contract award graph built from public Kenyan records, a graph attention network scoring the neighbourhood around each bidder, and a comparison against engineered-feature baselines and the judgement of compliance professionals.</dd>
-          <dt>Path</dt><dd>Procurement research &rarr; graph machine learning &rarr; <a href="#p-aegis" style="color:var(--accent);border-bottom:1px solid var(--accent)">AegisVeritas</a> &rarr; production screening system.</dd>
-          <dt>Status</dt><dd>Proposal complete; the research runs to November 2026. Results will be published here when the evaluation is done.</dd>
+          <dt>Problem</dt><dd>Supplier screening compares a bidder's registered name against debarment and sanctions lists. A debarred party can return through a related company with an unrelated name, and two "competing" bidders can share one owner. In 2021 the African Development Bank debarred a Kenyan firm and five affiliates whose names shared nothing with the parent.</dd>
+          <dt>Question</dt><dd>The proposal asked whether a graph model could flag a risky bidder from its network. With only 18 confirmed Kenyan cases, no model beat a size-only baseline, so the question became: <strong style="color:var(--text);font-weight:600">are two suppliers under one control?</strong> Kenyan awards disclose 12,441 ownership links to learn from.</dd>
+          <dt>Approach</dt><dd>Supplier pairs scored from shared owners or directors, shared contacts and award behaviour, validated in Estonia against its open ownership register and in Kenya on held-back disclosed links. Every protocol and pass mark was committed to GitHub before its run.</dd>
+          <dt>Result</dt><dd>Kenya: average precision 0.146 against 0.067 for Adamic-Adar. Estonia: AUC 0.85 against 0.57 on firms the model never saw. Two tests failed, and are reported next to the ones that passed.</dd>
+          <dt>Path</dt><dd>Procurement research &rarr; pair-level machine learning &rarr; <a href="aegisveritas/" style="color:var(--accent);border-bottom:1px solid var(--accent)">AegisVeritas</a> &rarr; a pre-award check for Kenya's e-GP system.</dd>
+          <dt>Status</dt><dd>System built and evaluated. Expert interviews (ALU ethics approval SEPT26-BEL-070) and the dissertation are in progress.</dd>
         </dl>
         <button class="more" type="button" aria-expanded="false" data-t="research" data-open="Hide the methodology" data-closed="Read the methodology"><span>Read the methodology</span>
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 4.5L6 7.5L9 4.5"/></svg></button>
         <div class="deep" id="deep-research">
           <dl class="case" style="margin:0">
-            <dt>Data</dt><dd>Public records only: PPRA contract awards and the published beneficial ownership of awarded entities, World Bank and AfDB debarment listings, OpenSanctions, the ICIJ Offshore Leaks and adjudicated EACC cases. The procurement portal held 109,163 awards to 79,870 suppliers by August 2026. Cases still under investigation are excluded.</dd>
-            <dt>Method</dt><dd>A graph linking companies, people, awards and adverse records, built with entity resolution whose precision is measured on at least 200 manually adjudicated pairs. A graph attention network with ego identifiers, reverse message passing and port numbering scores each bidder's neighbourhood.</dd>
-            <dt>Baselines</dt><dd>A deterministic baseline, conventional machine learning on tabular features, and engineered graph features with a tree ensemble as the principal comparison.</dd>
-            <dt>Evaluation</dt><dd>Entity-disjoint splits, with the edge that defines each label removed before scoring. Ten random seeds with confidence intervals, an ablation over each architectural component, and permutation testing against at least 10,000 label shuffles. ROC AUC, average precision and recall at a low false positive rate. Twelve to fifteen semi-structured interviews with Kenyan compliance and procurement professionals.</dd>
-            <dt>System</dt><dd>AegisVeritas, the graph-based screening platform listed under Selected work, where the research becomes a production system: bidder and supplier-list screening, ownership path tracing, the factors behind every assessment, and a tamper-evident audit trail of analyst decisions. No decision is automated.</dd>
-            <dt>Limitations</dt><dd>Unlabelled entities are treated as negatives, so compromised but undetected entities count against the model and reported performance is a lower bound. About 800 of Kenya's 34,000 procuring authorities use the national electronic portal, and the completeness of published beneficial ownership is unknown; both are measured and reported with the results. Entity resolution accuracy may differ across naming conventions and is measured rather than assumed.</dd>
-            <dt class="why">Why it matters</dt><dd class="why">The study is designed to identify both where graph representations help and where data limitations constrain their effectiveness. The literature review found no published empirical evaluation of graph representation learning for debarment-circumvention detection using African procurement and ownership data.</dd>
+            <dt>Data</dt><dd>Kenya's PPIP portal and PPRA award files, with 12,441 disclosed ownership links as labels; World Bank, AfDB, OpenSanctions, ICIJ and EACC lists; and Estonia's procurement data with its open beneficial ownership register.</dd>
+            <dt>Method</dt><dd>Candidate pairs are firms that win from the same buyer within 30 days, or that share a disclosed record. Three evidence channels, each a log-likelihood ratio, are combined Fellegi-Sunter style: identity, contacts weighted down when many firms share them, and behaviour from LightGBM on 20 award-pattern features with isotonic calibration.</dd>
+            <dt>Baselines</dt><dd>Adamic-Adar link prediction and random ranking; for the original question, a size-only baseline.</dd>
+            <dt>Evaluation</dt><dd>Pre-registered tests: an Estonian holdout of unseen firms, whole-system recall in the top 1,000, a Kenyan holdout of 7,884 pairs with 178 linked, and an external check against KeRRA contractor registers. A retrained model goes live only if it beats the baseline and the live model on a fixed holdout.</dd>
+            <dt>Limitations</dt><dd>The Kenyan labels come from disclosed ownership, so the Kenyan result measures recovery of disclosed links; Estonia's register supports the claim for hidden ones. 75 of the top 100 Kenyan pairs are not confirmed links. Pairs where a firm has fewer than 3 awards are not scored. Entity resolution precision has not yet been measured on a hand-checked sample.</dd>
+            <dt class="why">Why it matters</dt><dd class="why">Kenya's tender documents already ask bidders to declare common control, but no evaluation committee can check that across the whole market. AegisVeritas checks the bidders on one tender against the market in seconds, before the award, with the evidence a person needs to decide.</dd>
           </dl>
         </div>
         <div class="chips">
-          <span class="pill">Graph attention networks</span><span class="pill">Entity resolution</span><span class="pill">Beneficial ownership</span><span class="pill">Procurement integrity</span><span class="pill">Design science</span>
+          <span class="pill">Record linkage</span><span class="pill">LightGBM</span><span class="pill">Pre-registered evaluation</span><span class="pill">Beneficial ownership</span><span class="pill">Procurement integrity</span>
         </div>
+        <div class="cta" style="margin-top:22px"><a href="aegisveritas/" class="btn solid" style="min-height:46px;padding:0 22px;font-size:14px">Read the full case study</a></div>
       </div>
 
       <h4 style="margin-top:34px">Completed research work</h4>
@@ -537,16 +582,16 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
     <div>
       <h2 style="margin-bottom:26px">About</h2>
       <p class="body">Software engineer specialising in machine learning and data systems, based in Kenya. The work spans model training and evaluation, backend APIs, data pipelines and deployment: a problem taken from raw data to a running service with a retraining path.</p>
-      <p class="body">Current research applies graph machine learning to Kenyan public procurement and ownership records, with a focus on problems where software meets financial systems, public institutions and development.</p>
+      <p class="body">Current research: <a href="aegisveritas/" style="color:var(--accent);border-bottom:1px solid var(--accent)">AegisVeritas</a>, which finds hidden common control between bidders in Kenyan public procurement, with pre-registered results on Kenyan and Estonian data. The focus is problems where software meets financial systems, public institutions and development.</p>
       <p class="body">BSc Software Engineering (Machine Learning), African Leadership University. Completing December 2026, graduation ceremony June 2027. Open to internships, graduate roles, research opportunities, contract work and full-time roles: internships and project-based work now, full-time from January 2027. Remote, or relocating where employer-sponsored opportunities are available.</p>
       <p class="body">Every completed project includes source code and documentation, every model is evaluated against a stated baseline, and live evidence is linked where available.</p>
 
       <div class="lbl" style="color:var(--accent);margin-top:38px">Engineering approach</div>
       <div class="prin" style="margin-top:16px">
-        <div><span class="ix">01</span><h5>Every model has a baseline</h5><p>A metric with nothing to compare it to is decoration. Maize yield is scored against the mean predictor, the Milan forecasters against SARIMA, the Zindi pipeline against TF-IDF retrieval, the DQN sweep against a shared default configuration.</p></div>
+        <div><span class="ix">01</span><h5>Every model has a baseline</h5><p>A metric with nothing to compare it to is decoration. AegisVeritas is scored against Adamic-Adar, maize yield against the mean predictor, the Milan forecasters against SARIMA, the Zindi pipeline against TF-IDF retrieval, the DQN sweep against a shared default configuration.</p></div>
         <div><span class="ix">02</span><h5>Production deployment</h5><p>Containerised, deployed and given a retraining path. Two services are running on Render.</p></div>
-        <div><span class="ix">03</span><h5>Testing and validation</h5><p>Load tests with Locust: zero failed requests at 50 concurrent users on CoffeeGuard. Strict request validation at the API boundary.</p></div>
-        <div><span class="ix">04</span><h5>Limitations are reported</h5><p>The maize model reached an R squared of 0.237. The write-up documents why the result was weak and what additional data or modelling changes could improve it.</p></div>
+        <div><span class="ix">03</span><h5>Testing and validation</h5><p>Pre-registered tests, with the pass mark committed before each run. On AegisVeritas: 664 backend tests and 80 of 80 browser tests across three engines. On CoffeeGuard: zero failed requests at 50 concurrent users.</p></div>
+        <div><span class="ix">04</span><h5>Limitations are reported</h5><p>AegisVeritas reports its two failed tests and one withdrawn result next to the ones that passed. The maize model's R squared of 0.237 is documented with why it was weak and what would improve it.</p></div>
         <div><span class="ix">05</span><h5>Built for handover</h5><p>Each repository includes enough documentation for another engineer to reproduce and extend the work.</p></div>
       </div>
     </div>
@@ -561,8 +606,8 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
       <div><div class="lbl" style="color:var(--accent)">Data &amp; Analytics</div><ul><li><i></i>Python, pandas, NumPy</li><li><i></i>PyArrow, Parquet</li><li><i></i>GeoPandas</li><li><i></i>PostgreSQL, MySQL, SQLite</li><li><i></i>Prisma</li></ul></div>
       <div><div class="lbl" style="color:var(--accent)">Backend &amp; APIs</div><ul><li><i></i>FastAPI, Pydantic</li><li><i></i>Flask</li><li><i></i>REST API design</li><li><i></i>NextAuth</li><li><i></i>LLM integration (Gemini)</li></ul></div>
       <div><div class="lbl" style="color:var(--accent)">ML Systems</div><ul><li><i></i>Docker, Docker Compose</li><li><i></i>CUDA, GPU training</li><li><i></i>Model serving</li><li><i></i>Load testing, Locust</li><li><i></i>Deployment, Render</li></ul></div>
-      <div><div class="lbl" style="color:var(--accent)">Engineering</div><ul><li><i></i>Linux</li><li><i></i>Git</li><li><i></i>TypeScript, Next.js, React</li><li><i></i>Flutter, Dart</li><li><i></i>Streamlit</li></ul></div>
-      <div><div class="lbl" style="color:var(--accent)">Graph &amp; AI</div><ul><li><i></i>Neo4j</li><li><i></i>PyTorch Geometric, graph attention networks</li><li><i></i>Entity resolution</li><li><i></i>Permutation testing, ablation</li></ul><div class="wip">In progress through capstone research</div></div>
+      <div><div class="lbl" style="color:var(--accent)">Engineering</div><ul><li><i></i>Linux</li><li><i></i>Git</li><li><i></i>TypeScript, Next.js, React</li><li><i></i>Flutter, Dart</li><li><i></i>pytest, Playwright</li></ul></div>
+      <div><div class="lbl" style="color:var(--accent)">Graph &amp; AI</div><ul><li><i></i>Neo4j</li><li><i></i>Record linkage, Fellegi-Sunter</li><li><i></i>LightGBM, isotonic calibration</li><li><i></i>PyTorch Geometric</li><li><i></i>Pre-registered evaluation</li></ul><div class="wip">Used in AegisVeritas</div></div>
     </div>
   </div>
 </section>
@@ -576,8 +621,8 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;display:flex;justify
         <div><h4>African Leadership University</h4><p>BSc Software Engineering, Machine Learning specialisation. Graduation ceremony June 2027.</p></div>
       </div>
       <div class="xrow reveal">
-        <div><div class="yr">Sept &ndash; Nov 2026</div><div class="lbl" style="margin-top:6px">Research &middot; Capstone</div></div>
-        <div><h4>Uncovering hidden supplier links in Kenyan public procurement</h4><p>Graph attention networks on a Kenyan ownership, directorship and contract award graph, delivered through AegisVeritas, a graph-based screening platform with a tamper-evident audit trail. Evaluated against engineered-feature baselines and through interviews with compliance professionals. In progress. <a href="#research">Read more</a></p></div>
+        <div><div class="yr">2026</div><div class="lbl" style="margin-top:6px">Research &middot; Capstone</div></div>
+        <div><h4>AegisVeritas: hidden supplier links in Kenyan public procurement</h4><p>Built and evaluated a screening system over Kenya's public procurement records, supervised by Kevin Sebineza. Pre-registered results: average precision 0.146 against 0.067 in Kenya, AUC 0.85 against 0.57 in Estonia. 664 backend tests and a tamper-evident audit log. <a href="aegisveritas/">Case study</a></p></div>
       </div>
       <div class="xrow reveal">
         <div><div class="yr">June 2026</div><div class="lbl" style="margin-top:6px">Competition</div></div>
@@ -930,23 +975,29 @@ const PROJECTS = [
  note:"Team project with Adebayo Seyi Quadri, Esther Afi Edi Sessenou and Avellin Bonaparte Uteramahoro. I built the data pipeline: parsing the SMS XML, categorising each transaction and loading it into MySQL.",
  links:[{t:"Source",u:"https://github.com/Bonaparte003/Momo-Data_Analyst"}]},
 /* ---------------- 7. AegisVeritas ---------------- */
-{id:"aegis",year:"2026",name:"AegisVeritas",dev:true,
- line:"Graph ML · Entity resolution · FastAPI · Neo4j · Audit trail",
- sub:"Graph-based screening platform, the production system behind the capstone research on Kenyan public procurement",
- cs:{problem:"Name-based screening passes a debarred party that returns through a related company with an unrelated name. The capstone research asks whether graph machine learning can detect that exposure; AegisVeritas is where the answer becomes a working system.",
-  result:"In development. Built so far: GNN risk scoring with a heuristic fallback for sparse subgraphs, five API endpoints with hash-chained audit logging, and 164+ passing automated tests. Evaluation results arrive with the capstone in November 2026.",
-  eng:"FastAPI with async SQLAlchemy 2.0, Neo4j for the entity graph, a PyTorch Geometric graph attention network, Argon2id authentication with timing-equalised handling of unknown accounts, and a Next.js front end.",
-  method:"A graph attention network scores the neighbourhood around each entity. Where an entity has too few recorded relationships, a heuristic scores it instead and the method used is reported with the result.",
-  baseline:"A deterministic baseline, conventional machine learning, and engineered graph features with a tree ensemble. See Research.",
-  limits:"Not yet evaluated on real data. Coverage depends on how completely the beneficial ownership of awarded entities has been published.",
-  why:"The same design extends beyond procurement to other domains with entities, relationships and adverse records, such as commercial banking, insurance and development finance."},
- story:["AegisVeritas screens entities against the relationships around them, not only their names. Kenyan public procurement is the first application, because award records and debarment lists are public and allow evaluation against verified labels."],
- kpis:[["164+","Passing tests"],["5","API endpoints"],["GAT","Scoring model"]],
+{id:"aegis",year:"2026",name:"AegisVeritas",award:"Capstone · pre-registered results",
+ line:"Record linkage · LightGBM · FastAPI · Neo4j · Next.js",
+ sub:"Finds bidders in Kenyan public procurement that look independent but are linked to each other or to a debarred party",
+ cs:{problem:"A debarred company rarely bids under its own name. It bids through a clean-looking company that shares a director, owner, phone or address with it, and a name check passes it. Two competing bidders can also share one owner.",
+  result:"Pre-registered and passed: average precision 0.146 against 0.067 for Adamic-Adar on 7,884 held-back Kenyan pairs, with 25 of the top 100 flags real links. AUC 0.85 against 0.57 on Estonian firms the model never saw, checked against Estonia's open register.",
+  eng:"FastAPI, PostgreSQL with row-level security, Neo4j, Celery and Redis, a Next.js app, and a SHA-256 hash-chained audit log. 664 backend tests, 80 of 80 browser tests across three engines, and 54 of 54 system checks on real data.",
+  data:"Kenya's PPIP portal and PPRA award files, with 12,441 disclosed ownership links as labels; World Bank, AfDB, OpenSanctions, ICIJ and EACC lists; Estonia's procurement data and open ownership register for validation.",
+  method:"Supplier pairs scored from three kinds of evidence: shared owners or directors, shared contacts, and award behaviour from LightGBM on 20 features with isotonic calibration. Combined Fellegi-Sunter style, so every flag keeps its reasons. A new model goes live only if it beats the baseline and the live model on a fixed holdout.",
+  baseline:"Adamic-Adar link prediction. Random ranking scores 0.023 on the Kenyan holdout.",
+  limits:"Hidden links in Kenya are not yet proven: there is no open register to check against, and 75 of the top 100 Kenyan pairs are not confirmed links. A model trained on Estonia alone failed in Kenya, and the pre-registered KeRRA register test missed its pass mark.",
+  why:"The proposal's graph neural network did not beat a size-only baseline on 18 confirmed Kenyan cases. Changing the question to whether two firms share one control is what made the labels, and the results, possible."},
+ story:["The system is not on the open internet, by design: its findings name firms that have not been found to do anything wrong. A person always decides, as Kenya's Data Protection Act requires, and firm names are visible only to investigator, auditor and admin roles."],
+ kpis:[["0.146","Kenya AP"],["0.85","Estonia AUC"],["25/100","Top flags linked"],["210×","KeRRA P.O. Box"],["664","Backend tests"],["80/80","Browser tests"]],
  deep:[
-  {h:"Label isolation before scoring",t:"The record that defines an entity's label is removed from its neighbourhood before any data reaches the model, so the model scores structure rather than reading the answer. The same isolation applies in benchmark and real-data evaluation and is verified by automated test."},
-  {h:"Every assessment explains itself",t:"Each assessment returns the factors behind it. No decision is automated: escalating or clearing an alert requires a written reason, and the audit entry, hash-chained to the one before it, is committed before the assessment is returned."}],
- tables:[],media:[],
- links:[{t:"Research design",u:"#research",internal:true}]},
+  {h:"A register the model never saw",t:"In KeRRA contractor registers, supplier pairs linked by owner or director shared a P.O. Box 209.9 times more often than matched controls: 30 of 253 against 5 of 8,852, p = 1.0e-42. A shared box shows a relationship, not wrongdoing."},
+  {h:"A safety gate that caught my own model",t:"A live model built with an untested change scored 0.075 on the holdout. The gate exposed it, and the engine now runs exactly the model that was tested, which scores 0.146."}],
+ tables:[],
+ media:[{url:"aegisveritas/img/pair-chromium-desktop.webp",label:"Evidence card for one supplier pair. Firm names are invented."},
+        {url:"aegisveritas/img/queue-chromium-desktop.webp",label:"Review queue, ranked by likelihood of common control"},
+        {url:"aegisveritas/img/05-investigate.webp",label:"Investigation canvas: the path to a debarred firm"}],
+ links:[{t:"Case study",u:"aegisveritas/",internal:true,live:true},
+        {t:"Walkthrough video",u:"https://youtu.be/g4tlftDK7T4"},
+        {t:"Research",u:"#research",internal:true}]},
 
 /* ---------------- 8. Multilingual Health QA ---------------- */
 {id:"healthqa",year:"2026",name:"Multilingual Health QA",award:"Zindi · 17th of 1,651",
@@ -976,11 +1027,11 @@ const PROJECTS = [
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const dig=(o,p)=>p.split('.').reduce((a,k)=>(a&&a[k]!==undefined?a[k]:""),o);
 
-const ORDER=["maize","coffeeguard","healthqa","aegis","freeway","milan","synapse","momo"];
+const ORDER=["aegis","maize","coffeeguard","healthqa","freeway","milan","synapse","momo"];
 const SELECTED=5;
 PROJECTS.sort((x,y)=>ORDER.indexOf(x.id)-ORDER.indexOf(y.id));
 
-function shotsOf(p){return (p.media||[]).map(m=>({...m,src:dig(ASSETS,m.key)}));}
+function shotsOf(p){return (p.media||[]).map(m=>({...m,src:m.url||dig(ASSETS,m.key)}));}
 function leadHTML(m){
   if(!m) return "";
   return m.src
@@ -1390,7 +1441,7 @@ if(cform){
 const pal=document.getElementById("pal"),palq=document.getElementById("palq"),palres=document.getElementById("palres");
 const INDEX=[{l:"About",h:"section",t:"#about"},{l:"Selected work",h:"section",t:"#work"},{l:"Research",h:"section",t:"#research"},{l:"Skills",h:"section",t:"#skills"},{l:"Experience",h:"section",t:"#experience"},{l:"Opportunities",h:"section",t:"#opportunities"},{l:"Contact",h:"section",t:"#contact"},
   {l:"Live maize yield model",h:"demo",t:"#p-maize"},
-  ...PROJECTS.map(p=>({l:p.name,h:p.year,t:"#p-"+p.id})),{l:"Consulting",h:"page",t:"consulting/"},{l:"GitHub",h:"external",t:"https://github.com/mwaniasam"}];
+  ...PROJECTS.map(p=>({l:p.name,h:p.year,t:"#p-"+p.id})),{l:"AegisVeritas case study",h:"page",t:"aegisveritas/"},{l:"Consulting",h:"page",t:"consulting/"},{l:"GitHub",h:"external",t:"https://github.com/mwaniasam"}];
 let cur=0,shown=INDEX;
 function draw(q){shown=INDEX.filter(i=>!q||i.l.toLowerCase().includes(q.toLowerCase()));cur=0;
   palres.innerHTML=shown.length?shown.map((i,n)=>`<button class="${n===0?"cur":""}"><span>${esc(i.l)}</span><span class="lbl">${esc(i.h)}</span></button>`).join(""):`<button class="cur"><span>Nothing matched</span></button>`;}
